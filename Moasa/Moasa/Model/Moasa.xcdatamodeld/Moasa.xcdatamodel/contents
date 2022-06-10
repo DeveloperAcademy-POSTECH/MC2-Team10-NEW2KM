@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ConsumedCategory" representedClassName=".ConsumedCategory" syncable="YES">
+        <attribute name="challengeCycle" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="consumedCategory" optional="YES" attributeType="String"/>
+        <attribute name="consumedItems" attributeType="Transformable" customClassName="Array&lt;ConsumedItem&gt;"/>
+        <attribute name="consumedLimit" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="ConsumedItem" representedClassName=".ConsumedItem" syncable="YES">
+        <attribute name="challengeCycle" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="consumedCategory" optional="YES" attributeType="String"/>
+        <attribute name="consumedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="consumedMemo" optional="YES" attributeType="String"/>
+        <attribute name="consumedName" optional="YES" attributeType="String"/>
+        <attribute name="consumedPrice" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="TargetItem" representedClassName=".TargetItem" syncable="YES">
+        <attribute name="challengeCycle" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fixedSaving" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="targetImage" optional="YES" attributeType="String"/>
+        <attribute name="targetName" optional="YES" attributeType="String"/>
+        <attribute name="targetPrice" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="ConsumedCategory" positionX="229.33984375" positionY="-2.0625" width="128" height="104"/>
+        <element name="ConsumedItem" positionX="67.29296875" positionY="155.5390625" width="128" height="134"/>
+        <element name="TargetItem" positionX="-63" positionY="-18" width="128" height="148"/>
     </elements>
 </model>
