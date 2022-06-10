@@ -1,14 +1,14 @@
 //
-//  MOARAApp.swift
-//  MOARA
+//  MOASAApp.swift
+//  MOASA
 //
-//  Created by Junyeong Park on 2022/06/10.
+//  Created by 박성수 on 2022/06/10.
 //
 
 import SwiftUI
 
 @main
-struct MOARAApp: App {
+struct MOASAApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
