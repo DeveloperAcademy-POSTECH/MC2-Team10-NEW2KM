@@ -38,6 +38,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A69108028530ABF001BD21B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4AEB760F2852F32100EC85B9 /* Moasa.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4AEB75F82852F32000EC85B9 = {
 			isa = PBXGroup;
 			children = (
@@ -62,7 +70,7 @@
 				4AEB76062852F32000EC85B9 /* ContentView.swift */,
 				4AEB76082852F32100EC85B9 /* Assets.xcassets */,
 				4AEB760D2852F32100EC85B9 /* Persistence.swift */,
-				4AEB760F2852F32100EC85B9 /* Moasa.xcdatamodeld */,
+				4A69108028530ABF001BD21B /* Model */,
 				4AEB760A2852F32100EC85B9 /* Preview Content */,
 			);
 			path = Moasa;
