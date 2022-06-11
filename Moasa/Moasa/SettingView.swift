@@ -31,7 +31,7 @@ struct SettingView: View {
                     }
                     Section(header: Text("목표 초기화")) {
                         ForEach(targetInitializeLabelList, id: \.self) { target in
-                            NavigationLink(destination: ChangeSettingDetailView(changeTitle: target)) {
+                            NavigationLink(destination: InitiateTargetSettingView()) {
                                 Text(target)
                             }
                         }
