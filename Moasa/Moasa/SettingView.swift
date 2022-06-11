@@ -14,7 +14,7 @@ struct SettingView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List { // 각 설정마다 이동하는 페이지 성격이 다를 것 같아 일단 3파트로 나눠 놨습니다.
+                List {
                     Section(header: Text("목표 설정")) {
                         ForEach(targetSettingLabelList, id: \.self) { target in
                             NavigationLink(destination: ChangeSettingDetailView(changeTitle: target)) {
@@ -24,14 +24,20 @@ struct SettingView: View {
                     }
                     Section(header: Text("예산 설정")) {
                         ForEach(budgetSettingLabelList, id: \.self) { budget in
-                            NavigationLink(destination: ChangeSettingDetailView(changeTitle: budget)) {
-                                Text(budget)
+                            if budget == "카테고리(항목, 예산)"{
+                                NavigationLink(destination: CategorySettingDetailView()) {
+                                    Text(budget)
+                                }
+                            } else {
+                                NavigationLink(destination: ChangeSettingDetailView(changeTitle: budget)) {
+                                    Text(budget)
+                                }
                             }
                         }
                     }
                     Section(header: Text("목표 초기화")) {
                         ForEach(targetInitializeLabelList, id: \.self) { target in
-                            NavigationLink(destination: InitiateTargetSettingView()) {
+                            NavigationLink(destination: InitiateTargetSettingDetailView()) {
                                 Text(target)
                             }
                         }

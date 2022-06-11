@@ -13,15 +13,22 @@ struct ChangeSettingDetailView: View {
     var changeTitle: String
     var body: some View {
         VStack(spacing: 50) {
-            HStack(alignment: .firstTextBaseline) {
-                Text("변경할")
-                Text("\(changeTitle)")
-                    .bold()
-                    .font(.system(size: 30))
-                Text("을 입력해 주세요.")
-                Spacer()
-            }.font(.system(size: 20))
-            .padding()
+            VStack {
+                HStack(alignment: .firstTextBaseline) {
+                    Text("변경할")
+                    Text("\(changeTitle)")
+                        .bold()
+                        .font(.system(size: 30))
+                    Text("을 입력해 주세요.")
+                    Spacer()
+                }.font(.system(size: 20))
+                    .padding()
+                HStack {
+                    Text("변경 전 '\(changeTitle)' : example")
+                    Spacer()
+                }
+                .padding()
+            }
             HStack {
                 TextField(changeTitle, text: $changeTargetName)
                 Button(action: {

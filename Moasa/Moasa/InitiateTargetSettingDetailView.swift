@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct InitiateTargetSettingView: View {
+struct InitiateTargetSettingDetailView: View {
+    @Environment(\.presentationMode) var presentation
     @State var targetClearAlert: Bool = false
     var body: some View {
         Button(action: {
-            // 초기화하는 화면으로 전환하는 action
             targetClearAlert.toggle()
         }, label: {
             Text("클릭시, 목표 물건을 초기화 합니다.")
@@ -20,13 +20,16 @@ struct InitiateTargetSettingView: View {
             title: Text("목표를 초기화 하시겠습니까?"),
             message: Text("초기화시 되돌릴 수 없습니다."),
             primaryButton: .cancel(Text("닫기")),
-            secondaryButton: .destructive(Text("초기화하기"), action: {}))
+            secondaryButton: .destructive(Text("초기화하기"), action : {
+                // 여기에 초기화하는 코드 추가하면 될 것 같다
+                presentation.wrappedValue.dismiss()
+            }))
         }
     }
 }
 
-struct InitiateTargetSettingView_Previews: PreviewProvider {
+struct InitiateTargetSettingDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        InitiateTargetSettingView()
+        InitiateTargetSettingDetailView()
     }
 }
