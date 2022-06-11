@@ -31,8 +31,8 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for idx in 0..<5 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newItem = ConsumedItem(context: viewContext)
+            newItem.consumedDate = Date()
         } //: SAMPLE DATA FOR PREVIEW
         do {
             try viewContext.save()
