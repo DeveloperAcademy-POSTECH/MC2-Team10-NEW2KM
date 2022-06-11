@@ -20,6 +20,7 @@
 		4AEB760E2852F32100EC85B9 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB760D2852F32100EC85B9 /* Persistence.swift */; };
 		4AEB76112852F32100EC85B9 /* Moasa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB760F2852F32100EC85B9 /* Moasa.xcdatamodeld */; };
 		4AEB76192852F39500EC85B9 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB76182852F39500EC85B9 /* .swiftlint.yml */; };
+		A725B8AC28534F1700A5F3A7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A725B8AB28534F1700A5F3A7 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		4AEB760D2852F32100EC85B9 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4AEB76102852F32100EC85B9 /* Moasa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moasa.xcdatamodel; sourceTree = "<group>"; };
 		4AEB76182852F39500EC85B9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		A725B8AB28534F1700A5F3A7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				4AEB76062852F32000EC85B9 /* ContentView.swift */,
+				A725B8AB28534F1700A5F3A7 /* MainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				4AEB76072852F32000EC85B9 /* ContentView.swift in Sources */,
 				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
 				4AEB76112852F32100EC85B9 /* Moasa.xcdatamodeld in Sources */,
+				A725B8AC28534F1700A5F3A7 /* MainView.swift in Sources */,
 				4A691092285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift in Sources */,
 				4A691093285312A7001BD21B /* ConsumedCategory+CoreDataProperties.swift in Sources */,
 				4A691094285312A7001BD21B /* TargetItem+CoreDataClass.swift in Sources */,
