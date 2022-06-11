@@ -20,6 +20,10 @@
 		4AEB760E2852F32100EC85B9 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB760D2852F32100EC85B9 /* Persistence.swift */; };
 		4AEB76112852F32100EC85B9 /* Moasa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB760F2852F32100EC85B9 /* Moasa.xcdatamodeld */; };
 		4AEB76192852F39500EC85B9 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB76182852F39500EC85B9 /* .swiftlint.yml */; };
+		DF65DD3E28545FBC00435F9E /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD3D28545FBC00435F9E /* SettingView.swift */; };
+		DF65DD4028546AEC00435F9E /* ChangeSettingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */; };
+		DF65DD422854966D00435F9E /* InitiateTargetSettingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD412854966D00435F9E /* InitiateTargetSettingDetailView.swift */; };
+		DF65DD442854A7FB00435F9E /* CategorySettingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD432854A7FB00435F9E /* CategorySettingDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +41,10 @@
 		4AEB760D2852F32100EC85B9 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4AEB76102852F32100EC85B9 /* Moasa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moasa.xcdatamodel; sourceTree = "<group>"; };
 		4AEB76182852F39500EC85B9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		DF65DD3D28545FBC00435F9E /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeSettingDetailView.swift; sourceTree = "<group>"; };
+		DF65DD412854966D00435F9E /* InitiateTargetSettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiateTargetSettingDetailView.swift; sourceTree = "<group>"; };
+		DF65DD432854A7FB00435F9E /* CategorySettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySettingDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +120,14 @@
 				4A69108228530B22001BD21B /* Utility */,
 				4AEB76042852F32000EC85B9 /* MoasaApp.swift */,
 				4AEB76082852F32100EC85B9 /* Assets.xcassets */,
+
+				4AEB760D2852F32100EC85B9 /* Persistence.swift */,
+				DF65DD3D28545FBC00435F9E /* SettingView.swift */,
+				DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */,
+				DF65DD432854A7FB00435F9E /* CategorySettingDetailView.swift */,
+				DF65DD412854966D00435F9E /* InitiateTargetSettingDetailView.swift */,
+
+
 				4A69108028530ABF001BD21B /* Model */,
 				4AEB760A2852F32100EC85B9 /* Preview Content */,
 			);
@@ -220,10 +236,17 @@
 			files = (
 				4A691090285312A7001BD21B /* ConsumedItem+CoreDataClass.swift in Sources */,
 				4AEB760E2852F32100EC85B9 /* Persistence.swift in Sources */,
+
+				DF65DD3E28545FBC00435F9E /* SettingView.swift in Sources */,
+				DF65DD422854966D00435F9E /* InitiateTargetSettingDetailView.swift in Sources */,
+
 				4A691095285312A7001BD21B /* TargetItem+CoreDataProperties.swift in Sources */,
 				4A691091285312A7001BD21B /* ConsumedItem+CoreDataProperties.swift in Sources */,
+
 				4AEB76072852F32000EC85B9 /* ContentView.swift in Sources */,
+				DF65DD442854A7FB00435F9E /* CategorySettingDetailView.swift in Sources */,
 				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
+				DF65DD4028546AEC00435F9E /* ChangeSettingDetailView.swift in Sources */,
 				4AEB76112852F32100EC85B9 /* Moasa.xcdatamodeld in Sources */,
 				4A691092285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift in Sources */,
 				4A691093285312A7001BD21B /* ConsumedCategory+CoreDataProperties.swift in Sources */,

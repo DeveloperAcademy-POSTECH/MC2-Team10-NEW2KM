@@ -27,10 +27,14 @@ Insert gif or link to demo
 ![App Screenshot](https://dummyimage.com/250x500/000/fff.png)
 
 ## :sparkles: Skills & Tech Stack
-swiftUI ...
+swiftUI, SwiftLint, CoreData
 
 
 ## :lock_with_ink_pen: License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+## ✔️ History
+2022.06.09 GIT REPO CREATED
+2022.06.10 ERD(ver1.0), DB -> CoreData
 
