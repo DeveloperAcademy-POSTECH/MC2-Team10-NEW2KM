@@ -14,6 +14,8 @@
 		4AEB760E2852F32100EC85B9 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB760D2852F32100EC85B9 /* Persistence.swift */; };
 		4AEB76112852F32100EC85B9 /* Moasa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB760F2852F32100EC85B9 /* Moasa.xcdatamodeld */; };
 		4AEB76192852F39500EC85B9 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB76182852F39500EC85B9 /* .swiftlint.yml */; };
+		DF65DD3E28545FBC00435F9E /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD3D28545FBC00435F9E /* SettingView.swift */; };
+		DF65DD4028546AEC00435F9E /* ChangeSettingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		4AEB760D2852F32100EC85B9 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4AEB76102852F32100EC85B9 /* Moasa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moasa.xcdatamodel; sourceTree = "<group>"; };
 		4AEB76182852F39500EC85B9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		DF65DD3D28545FBC00435F9E /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeSettingDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 				4AEB76062852F32000EC85B9 /* ContentView.swift */,
 				4AEB76082852F32100EC85B9 /* Assets.xcassets */,
 				4AEB760D2852F32100EC85B9 /* Persistence.swift */,
+				DF65DD3D28545FBC00435F9E /* SettingView.swift */,
+				DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */,
 				4A69108028530ABF001BD21B /* Model */,
 				4AEB760A2852F32100EC85B9 /* Preview Content */,
 			);
@@ -177,8 +183,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AEB760E2852F32100EC85B9 /* Persistence.swift in Sources */,
+				DF65DD3E28545FBC00435F9E /* SettingView.swift in Sources */,
 				4AEB76072852F32000EC85B9 /* ContentView.swift in Sources */,
 				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
+				DF65DD4028546AEC00435F9E /* ChangeSettingDetailView.swift in Sources */,
 				4AEB76112852F32100EC85B9 /* Moasa.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
