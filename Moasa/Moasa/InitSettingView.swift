@@ -70,7 +70,9 @@ struct InitSettingView: View {
                             .font(.system(size: 20, weight: .bold))
                     }
                 }).padding(.bottom, 40)
-            }
+            }.sheet(isPresented: self.$show, content: {
+                ImagePicker(images: self.$image, show: self.$show, sourceType: self.sourceType)
+            })
 
             VStack {
                 HStack {
