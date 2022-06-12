@@ -22,6 +22,7 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="targetImage" optional="YES" attributeType="Binary"/>
+        <attribute name="targetImage" optional="YES" attributeType="String"/>
         <attribute name="targetName" optional="YES" attributeType="String"/>
         <attribute name="targetPrice" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
@@ -29,5 +30,6 @@
         <element name="ConsumedCategory" positionX="229.33984375" positionY="-2.0625" width="128" height="104"/>
         <element name="ConsumedItem" positionX="67.29296875" positionY="155.5390625" width="128" height="134"/>
         <element name="TargetItem" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="TargetItem" positionX="-63" positionY="-18" width="128" height="148"/>
     </elements>
 </model>
