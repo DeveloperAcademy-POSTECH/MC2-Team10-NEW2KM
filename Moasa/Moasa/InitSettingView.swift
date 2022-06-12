@@ -42,6 +42,9 @@ struct InitSettingView: View {
                     .padding(.leading, 16)
                     .font(.system(size: 17, weight: .regular))
                     .padding(.top, 140)
+                Divider()
+                    .background(Color.accentColor)
+                    .padding(.horizontal, 16)
                 Spacer()
             }
 
@@ -60,6 +63,9 @@ struct InitSettingView: View {
                         .font(.system(size: 17, weight: .bold))
                         .padding(.trailing, 16)
                 }.padding(.top, 140)
+                Divider()
+                    .background(Color.accentColor)
+                    .padding(.horizontal, 16)
                 Spacer()
             }
 
@@ -78,6 +84,9 @@ struct InitSettingView: View {
                         .font(.system(size: 17, weight: .bold))
                         .padding(.trailing, 16)
                 }.padding(.top, 140)
+                Divider()
+                    .background(Color.accentColor)
+                    .padding(.horizontal, 16)
                 Spacer()
                 
             }
