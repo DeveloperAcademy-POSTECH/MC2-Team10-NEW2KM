@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+extension Color {
+    static let accentColor = Color("AccentColor")
+    static let kenCustomOrange = Color("KenCustomOrange")
+}
+
 struct InitSettingView: View {
     
     @State var targetName: String = ""
@@ -28,7 +33,7 @@ struct InitSettingView: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 190, height: 190)
                     .padding(.top, 50)
-
+            }
 
             VStack {
                 HStack {
@@ -68,7 +73,6 @@ struct InitSettingView: View {
                     .padding(.horizontal, 16)
                 Spacer()
             }
-
             VStack {
                 HStack {
                     Text("월 고정 저금액을 입력해주세요.")
@@ -88,11 +92,11 @@ struct InitSettingView: View {
                     .background(Color.accentColor)
                     .padding(.horizontal, 16)
                 Spacer()
-                
             }
         }.tabViewStyle(PageTabViewStyle())
+            .background(Color.kenCustomOrange)
+
     }
-}
 }
 
 struct InitSettingView_Previews: PreviewProvider {
