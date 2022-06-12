@@ -31,6 +31,7 @@ struct InitSettingView: View {
                         .padding(.top, 90)
                     Spacer()
                 }.padding(.leading, 16)
+
                 if self.image.count != 1 {
                     Button(action: {
                         self.show.toggle()
@@ -55,6 +56,20 @@ struct InitSettingView: View {
                     })
                 }
                 Spacer()
+                Button(action: {
+                }, label: {
+                    ZStack {
+                        Rectangle()
+                            .frame(width: 360, height: 60)
+                            .cornerRadius(13)
+                            .foregroundColor(self.image.count != 1 ? .accentColor: .gray)
+//                            .background(.white)
+                            .opacity(self.image.count != 1 ? 1 : 0.2)
+                        Text(self.image.count != 1 ? "다음" : "다음에 할게요")
+                            .foregroundColor(self.image.count != 1 ? .white: .gray)
+                            .font(.system(size: 20, weight: .bold))
+                    }
+                }).padding(.bottom, 40)
             }
 
             VStack {
@@ -73,6 +88,20 @@ struct InitSettingView: View {
                     .background(Color.accentColor)
                     .padding(.horizontal, 16)
                 Spacer()
+                Button(action: {
+                }, label: {
+                    ZStack {
+                        Rectangle()
+                            .frame(width: 360, height: 60)
+                            .cornerRadius(13)
+                            .foregroundColor(self.targetName > "" ? .accentColor: .gray)
+//                            .background(.white)
+                            .opacity(self.targetName > "" ? 1 : 0.2)
+                        Text(self.targetName > "" ? "다음" : "다음에 할게요")
+                            .foregroundColor(self.targetName > "" ? .white: .gray)
+                            .font(.system(size: 20, weight: .bold))
+                    }
+                }).padding(.bottom, 40)
             }
 
             VStack {
@@ -94,7 +123,21 @@ struct InitSettingView: View {
                     .background(Color.accentColor)
                     .padding(.horizontal, 16)
                 Spacer()
+                Button(action: {
+                }, label: {
+                    ZStack {
+                        Rectangle()
+                            .frame(width: 360, height: 60)
+                            .cornerRadius(13)
+                            .foregroundColor(self.targetPrice > "" ? .accentColor: .gray)
+                            .opacity(self.targetPrice > "" ? 1 : 0.2)
+                        Text(self.targetPrice > "" ? "다음" : "다음에 할게요")
+                            .foregroundColor(self.targetPrice > "" ? .white : .gray)
+                            .font(.system(size: 20, weight: .bold))
+                    }
+                }).padding(.bottom, 40)
             }
+
             VStack {
                 HStack {
                     Text("월 고정 저금액을 입력해주세요.")
@@ -122,7 +165,7 @@ struct InitSettingView: View {
                             .cornerRadius(13)
                             .foregroundColor(self.fixedSaving > "" ? .accentColor : .gray)
                             .opacity(self.fixedSaving > "" ? 1 : 0.2)
-                        Text("입력 완료")
+                        Text(self.fixedSaving > "" ? "입력 완료": "다음에 할게요")
                             .foregroundColor(self.fixedSaving > "" ? .white : .gray)
                             .font(.system(size: 20, weight: .bold))
                     }
@@ -130,7 +173,6 @@ struct InitSettingView: View {
             }
         }.tabViewStyle(PageTabViewStyle())
             .background(Color.kenCustomOrange)
-
     }
 }
 
