@@ -114,6 +114,19 @@ struct InitSettingView: View {
                     .background(Color.accentColor)
                     .padding(.horizontal, 16)
                 Spacer()
+                Button(action: {
+                }, label: {
+                    ZStack {
+                        Rectangle()
+                            .frame(width: 360, height: 60)
+                            .cornerRadius(13)
+                            .foregroundColor(self.fixedSaving > "" ? .accentColor : .gray)
+                            .opacity(self.fixedSaving > "" ? 1 : 0.2)
+                        Text("입력 완료")
+                            .foregroundColor(self.fixedSaving > "" ? .white : .gray)
+                            .font(.system(size: 20, weight: .bold))
+                    }
+                }).padding(.bottom, 40)
             }
         }.tabViewStyle(PageTabViewStyle())
             .background(Color.kenCustomOrange)
