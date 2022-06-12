@@ -25,6 +25,8 @@
 		9871F15B2855802D0077B058 /* Moasa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1522855802D0077B058 /* Moasa.xcdatamodeld */; };
 		9871F1642855843F0077B058 /* InitSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1632855843F0077B058 /* InitSettingView.swift */; };
 		9871F1B92855C7310077B058 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1B82855C7310077B058 /* ImagePicker.swift */; };
+		4AEB76112852F32100EC85B9 /* Moasa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB760F2852F32100EC85B9 /* Moasa.xcdatamodeld */; };
+		4AEB76192852F39500EC85B9 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB76182852F39500EC85B9 /* .swiftlint.yml */; };
 		DF65DD3E28545FBC00435F9E /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD3D28545FBC00435F9E /* SettingView.swift */; };
 		DF65DD4028546AEC00435F9E /* ChangeSettingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */; };
 		DF65DD422854966D00435F9E /* InitiateTargetSettingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD412854966D00435F9E /* InitiateTargetSettingDetailView.swift */; };
@@ -51,6 +53,8 @@
 		9871F1532855802D0077B058 /* Moasa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moasa.xcdatamodel; sourceTree = "<group>"; };
 		9871F1632855843F0077B058 /* InitSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitSettingView.swift; sourceTree = "<group>"; };
 		9871F1B82855C7310077B058 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		4AEB76102852F32100EC85B9 /* Moasa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moasa.xcdatamodel; sourceTree = "<group>"; };
+		4AEB76182852F39500EC85B9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		DF65DD3D28545FBC00435F9E /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeSettingDetailView.swift; sourceTree = "<group>"; };
 		DF65DD412854966D00435F9E /* InitiateTargetSettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiateTargetSettingDetailView.swift; sourceTree = "<group>"; };
@@ -80,6 +84,7 @@
 				4A69108E285312A7001BD21B /* TargetItem+CoreDataClass.swift */,
 				4A69108F285312A7001BD21B /* TargetItem+CoreDataProperties.swift */,
 				DF65DD452854EBA300435F9E /* Persistence.swift */,
+				4AEB760F2852F32100EC85B9 /* Moasa.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -88,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				9871F1632855843F0077B058 /* InitSettingView.swift */,
+				4AEB76062852F32000EC85B9 /* ContentView.swift */,
 				4AB8093E28557EE800C772D1 /* MainView.swift */,
 				DF65DD3D28545FBC00435F9E /* SettingView.swift */,
 			);
@@ -130,6 +136,8 @@
 				4AEB76082852F32100EC85B9 /* Assets.xcassets */,
 				4AEB76042852F32000EC85B9 /* MoasaApp.swift */,
 				9871F1B82855C7310077B058 /* ImagePicker.swift */,
+				4AEB76082852F32100EC85B9 /* Assets.xcassets */,
+				4AEB76042852F32000EC85B9 /* MoasaApp.swift */,
 				4A69108128530AFF001BD21B /* View */,
 				4AB8094428557F1A00C772D1 /* Component */,
 				4A69108028530ABF001BD21B /* Model */,
@@ -248,6 +256,7 @@
 				DF65DD422854966D00435F9E /* InitiateTargetSettingDetailView.swift in Sources */,
 				4A691095285312A7001BD21B /* TargetItem+CoreDataProperties.swift in Sources */,
 				4A691091285312A7001BD21B /* ConsumedItem+CoreDataProperties.swift in Sources */,
+				4AEB76072852F32000EC85B9 /* ContentView.swift in Sources */,
 				4AB8094028557EE800C772D1 /* BudgetContentView.swift in Sources */,
 				DF65DD442854A7FB00435F9E /* CategorySettingDetailView.swift in Sources */,
 				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
@@ -255,6 +264,7 @@
 				DF65DD4028546AEC00435F9E /* ChangeSettingDetailView.swift in Sources */,
 				4AB8094228557EE800C772D1 /* MainView.swift in Sources */,
 				4AEB76112852F32100EC85B9 /* (null) in Sources */,
+				4AEB76112852F32100EC85B9 /* Moasa.xcdatamodeld in Sources */,
 				4A691092285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift in Sources */,
 				4A691093285312A7001BD21B /* ConsumedCategory+CoreDataProperties.swift in Sources */,
 				4A691094285312A7001BD21B /* TargetItem+CoreDataClass.swift in Sources */,
