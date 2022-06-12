@@ -13,6 +13,10 @@ extension Color {
 }
 
 struct InitSettingView: View {
+ 
+    @State public var image: Data = .init(count: 1)
+    @State public var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @State public var show: Bool = false
     
     @State var targetName: String = ""
     @State var targetPrice: String = ""
@@ -27,12 +31,30 @@ struct InitSettingView: View {
                         .padding(.top, 90)
                     Spacer()
                 }.padding(.leading, 16)
-                Image(systemName: "photo.fill")
-                    .resizable()
-                    .clipShape(Circle())
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 190, height: 190)
-                    .padding(.top, 50)
+                if self.image.count != 1 {
+                    Button(action: {
+                        self.show.toggle()
+                    }, label: {
+                        Image(uiImage: UIImage(data: self.image)!)
+                            .resizable()
+                            .clipShape(Circle())
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 190, height: 190)
+                            .padding(.top, 50)
+                        })
+                } else {
+                    Button(action: {
+                        self.show.toggle()
+                    }, label: {
+                        Image(systemName: "photo.fill")
+                            .resizable()
+                            .clipShape(Circle())
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 190, height: 190)
+                            .padding(.top, 50)
+                    })
+                }
+                Spacer()
             }
 
             VStack {
