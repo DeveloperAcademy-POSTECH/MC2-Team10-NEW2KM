@@ -13,6 +13,10 @@
 		4A691093285312A7001BD21B /* ConsumedCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A69108D285312A7001BD21B /* ConsumedCategory+CoreDataProperties.swift */; };
 		4A691094285312A7001BD21B /* TargetItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A69108E285312A7001BD21B /* TargetItem+CoreDataClass.swift */; };
 		4A691095285312A7001BD21B /* TargetItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A69108F285312A7001BD21B /* TargetItem+CoreDataProperties.swift */; };
+		4AB8094028557EE800C772D1 /* BudgetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8093C28557EE800C772D1 /* BudgetContentView.swift */; };
+		4AB8094128557EE800C772D1 /* TargetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8093D28557EE800C772D1 /* TargetContentView.swift */; };
+		4AB8094228557EE800C772D1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8093E28557EE800C772D1 /* MainView.swift */; };
+		4AB8094328557EE800C772D1 /* MainTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8093F28557EE800C772D1 /* MainTitleView.swift */; };
 		4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB76042852F32000EC85B9 /* MoasaApp.swift */; };
 		4AEB76072852F32000EC85B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB76062852F32000EC85B9 /* ContentView.swift */; };
 		4AEB76092852F32100EC85B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB76082852F32100EC85B9 /* Assets.xcassets */; };
@@ -33,6 +37,10 @@
 		4A69108D285312A7001BD21B /* ConsumedCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ConsumedCategory+CoreDataProperties.swift"; path = "Moasa/Model/ConsumedCategory+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4A69108E285312A7001BD21B /* TargetItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TargetItem+CoreDataClass.swift"; path = "Moasa/Model/TargetItem+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		4A69108F285312A7001BD21B /* TargetItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TargetItem+CoreDataProperties.swift"; path = "Moasa/Model/TargetItem+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4AB8093C28557EE800C772D1 /* BudgetContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetContentView.swift; sourceTree = "<group>"; };
+		4AB8093D28557EE800C772D1 /* TargetContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetContentView.swift; sourceTree = "<group>"; };
+		4AB8093E28557EE800C772D1 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		4AB8093F28557EE800C772D1 /* MainTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTitleView.swift; sourceTree = "<group>"; };
 		4AEB76012852F32000EC85B9 /* Moasa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moasa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AEB76042852F32000EC85B9 /* MoasaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoasaApp.swift; sourceTree = "<group>"; };
 		4AEB76062852F32000EC85B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,8 +85,23 @@
 			isa = PBXGroup;
 			children = (
 				4AEB76062852F32000EC85B9 /* ContentView.swift */,
+				4AB8093E28557EE800C772D1 /* MainView.swift */,
+				DF65DD3D28545FBC00435F9E /* SettingView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		4AB8094428557F1A00C772D1 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				4AB8093C28557EE800C772D1 /* BudgetContentView.swift */,
+				4AB8093D28557EE800C772D1 /* TargetContentView.swift */,
+				4AB8093F28557EE800C772D1 /* MainTitleView.swift */,
+				DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */,
+				DF65DD432854A7FB00435F9E /* CategorySettingDetailView.swift */,
+				DF65DD412854966D00435F9E /* InitiateTargetSettingDetailView.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 		4AEB75F82852F32000EC85B9 = {
@@ -101,13 +124,10 @@
 		4AEB76032852F32000EC85B9 /* Moasa */ = {
 			isa = PBXGroup;
 			children = (
-				4A69108128530AFF001BD21B /* View */,
-				4AEB76042852F32000EC85B9 /* MoasaApp.swift */,
 				4AEB76082852F32100EC85B9 /* Assets.xcassets */,
-				DF65DD3D28545FBC00435F9E /* SettingView.swift */,
-				DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */,
-				DF65DD432854A7FB00435F9E /* CategorySettingDetailView.swift */,
-				DF65DD412854966D00435F9E /* InitiateTargetSettingDetailView.swift */,
+				4AEB76042852F32000EC85B9 /* MoasaApp.swift */,
+				4A69108128530AFF001BD21B /* View */,
+				4AB8094428557F1A00C772D1 /* Component */,
 				4A69108028530ABF001BD21B /* Model */,
 				4AEB760A2852F32100EC85B9 /* Preview Content */,
 			);
@@ -214,20 +234,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AB8094328557EE800C772D1 /* MainTitleView.swift in Sources */,
 				4A691090285312A7001BD21B /* ConsumedItem+CoreDataClass.swift in Sources */,
 				DF65DD3E28545FBC00435F9E /* SettingView.swift in Sources */,
 				DF65DD422854966D00435F9E /* InitiateTargetSettingDetailView.swift in Sources */,
 				4A691095285312A7001BD21B /* TargetItem+CoreDataProperties.swift in Sources */,
 				4A691091285312A7001BD21B /* ConsumedItem+CoreDataProperties.swift in Sources */,
 				4AEB76072852F32000EC85B9 /* ContentView.swift in Sources */,
+				4AB8094028557EE800C772D1 /* BudgetContentView.swift in Sources */,
 				DF65DD442854A7FB00435F9E /* CategorySettingDetailView.swift in Sources */,
 				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
 				DF65DD462854EBA300435F9E /* Persistence.swift in Sources */,
 				DF65DD4028546AEC00435F9E /* ChangeSettingDetailView.swift in Sources */,
+				4AB8094228557EE800C772D1 /* MainView.swift in Sources */,
 				4AEB76112852F32100EC85B9 /* Moasa.xcdatamodeld in Sources */,
 				4A691092285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift in Sources */,
 				4A691093285312A7001BD21B /* ConsumedCategory+CoreDataProperties.swift in Sources */,
 				4A691094285312A7001BD21B /* TargetItem+CoreDataClass.swift in Sources */,
+				4AB8094128557EE800C772D1 /* TargetContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
