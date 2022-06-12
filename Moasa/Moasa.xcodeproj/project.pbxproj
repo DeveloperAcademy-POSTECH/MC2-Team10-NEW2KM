@@ -84,24 +84,32 @@
 		4A69108128530AFF001BD21B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4AEB76062852F32000EC85B9 /* ContentView.swift */,
-				4AB8093E28557EE800C772D1 /* MainView.swift */,
-				DF65DD3D28545FBC00435F9E /* SettingView.swift */,
+				4AB809452855E4DD00C772D1 /* Main */,
+				4AB809462855E4F400C772D1 /* Setting */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		4AB8094428557F1A00C772D1 /* Component */ = {
+		4AB809452855E4DD00C772D1 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				4AB8093C28557EE800C772D1 /* BudgetContentView.swift */,
 				4AB8093D28557EE800C772D1 /* TargetContentView.swift */,
 				4AB8093F28557EE800C772D1 /* MainTitleView.swift */,
+				4AB8093E28557EE800C772D1 /* MainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		4AB809462855E4F400C772D1 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				DF65DD3D28545FBC00435F9E /* SettingView.swift */,
 				DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */,
 				DF65DD432854A7FB00435F9E /* CategorySettingDetailView.swift */,
 				DF65DD412854966D00435F9E /* InitiateTargetSettingDetailView.swift */,
 			);
-			path = Component;
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		4AEB75F82852F32000EC85B9 = {
@@ -126,8 +134,8 @@
 			children = (
 				4AEB76082852F32100EC85B9 /* Assets.xcassets */,
 				4AEB76042852F32000EC85B9 /* MoasaApp.swift */,
+				4AEB76062852F32000EC85B9 /* ContentView.swift */,
 				4A69108128530AFF001BD21B /* View */,
-				4AB8094428557F1A00C772D1 /* Component */,
 				4A69108028530ABF001BD21B /* Model */,
 				4AEB760A2852F32100EC85B9 /* Preview Content */,
 			);
