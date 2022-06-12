@@ -20,6 +20,7 @@
 		4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB76042852F32000EC85B9 /* MoasaApp.swift */; };
 		4AEB76092852F32100EC85B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB76082852F32100EC85B9 /* Assets.xcassets */; };
 		4AEB760C2852F32100EC85B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB760B2852F32100EC85B9 /* Preview Assets.xcassets */; };
+		4AEB76112852F32100EC85B9 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		4AEB76192852F39500EC85B9 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB76182852F39500EC85B9 /* .swiftlint.yml */; };
 		9871F15B2855802D0077B058 /* Moasa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1522855802D0077B058 /* Moasa.xcdatamodeld */; };
 		9871F1642855843F0077B058 /* InitSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1632855843F0077B058 /* InitSettingView.swift */; };
@@ -91,6 +92,7 @@
 		4A69108128530AFF001BD21B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9871F1632855843F0077B058 /* InitSettingView.swift */,
 				4AEB76062852F32000EC85B9 /* ContentView.swift */,
 				4AB8093E28557EE800C772D1 /* MainView.swift */,
 				DF65DD3D28545FBC00435F9E /* SettingView.swift */,
@@ -131,9 +133,8 @@
 		4AEB76032852F32000EC85B9 /* Moasa */ = {
 			isa = PBXGroup;
 			children = (
-				4AEB76042852F32000EC85B9 /* MoasaApp.swift */,
-				9871F1632855843F0077B058 /* InitSettingView.swift */,
 				4AEB76082852F32100EC85B9 /* Assets.xcassets */,
+				4AEB76042852F32000EC85B9 /* MoasaApp.swift */,
 				9871F1B82855C7310077B058 /* ImagePicker.swift */,
 				4AEB76082852F32100EC85B9 /* Assets.xcassets */,
 				4AEB76042852F32000EC85B9 /* MoasaApp.swift */,
@@ -262,6 +263,7 @@
 				DF65DD462854EBA300435F9E /* Persistence.swift in Sources */,
 				DF65DD4028546AEC00435F9E /* ChangeSettingDetailView.swift in Sources */,
 				4AB8094228557EE800C772D1 /* MainView.swift in Sources */,
+				4AEB76112852F32100EC85B9 /* (null) in Sources */,
 				4AEB76112852F32100EC85B9 /* Moasa.xcdatamodeld in Sources */,
 				4A691092285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift in Sources */,
 				4A691093285312A7001BD21B /* ConsumedCategory+CoreDataProperties.swift in Sources */,
