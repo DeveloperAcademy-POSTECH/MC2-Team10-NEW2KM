@@ -21,6 +21,7 @@
 		9871F15E2855802D0077B058 /* TargetItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1562855802D0077B058 /* TargetItem+CoreDataClass.swift */; };
 		9871F15F2855802D0077B058 /* ConsumedCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1572855802D0077B058 /* ConsumedCategory+CoreDataClass.swift */; };
 		9871F1602855802D0077B058 /* ConsumedItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1582855802D0077B058 /* ConsumedItem+CoreDataClass.swift */; };
+		9871F1642855843F0077B058 /* InitSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1632855843F0077B058 /* InitSettingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		9871F1562855802D0077B058 /* TargetItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TargetItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9871F1572855802D0077B058 /* ConsumedCategory+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConsumedCategory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9871F1582855802D0077B058 /* ConsumedItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConsumedItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9871F1632855843F0077B058 /* InitSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitSettingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				4AEB76042852F32000EC85B9 /* MoasaApp.swift */,
+				9871F1632855843F0077B058 /* InitSettingView.swift */,
 				4AEB76062852F32000EC85B9 /* ContentView.swift */,
 				4AEB76082852F32100EC85B9 /* Assets.xcassets */,
 				9871F14E28557F830077B058 /* ImagePicker.swift */,
@@ -206,6 +209,7 @@
 				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
 				9871F15A2855802D0077B058 /* TargetItem+CoreDataProperties.swift in Sources */,
 				9871F1592855802D0077B058 /* ConsumedCategory+CoreDataProperties.swift in Sources */,
+				9871F1642855843F0077B058 /* InitSettingView.swift in Sources */,
 				9871F15D2855802D0077B058 /* Persistence.swift in Sources */,
 				9871F15F2855802D0077B058 /* ConsumedCategory+CoreDataClass.swift in Sources */,
 			);
