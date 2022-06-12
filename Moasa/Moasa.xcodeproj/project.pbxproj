@@ -18,9 +18,12 @@
 		4AB8094228557EE800C772D1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8093E28557EE800C772D1 /* MainView.swift */; };
 		4AB8094328557EE800C772D1 /* MainTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8093F28557EE800C772D1 /* MainTitleView.swift */; };
 		4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB76042852F32000EC85B9 /* MoasaApp.swift */; };
-		4AEB76072852F32000EC85B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB76062852F32000EC85B9 /* ContentView.swift */; };
 		4AEB76092852F32100EC85B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB76082852F32100EC85B9 /* Assets.xcassets */; };
 		4AEB760C2852F32100EC85B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB760B2852F32100EC85B9 /* Preview Assets.xcassets */; };
+		4AEB76192852F39500EC85B9 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB76182852F39500EC85B9 /* .swiftlint.yml */; };
+		9871F15B2855802D0077B058 /* Moasa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1522855802D0077B058 /* Moasa.xcdatamodeld */; };
+		9871F1642855843F0077B058 /* InitSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1632855843F0077B058 /* InitSettingView.swift */; };
+		9871F1B92855C7310077B058 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1B82855C7310077B058 /* ImagePicker.swift */; };
 		4AEB76112852F32100EC85B9 /* Moasa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB760F2852F32100EC85B9 /* Moasa.xcdatamodeld */; };
 		4AEB76192852F39500EC85B9 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB76182852F39500EC85B9 /* .swiftlint.yml */; };
 		DF65DD3E28545FBC00435F9E /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD3D28545FBC00435F9E /* SettingView.swift */; };
@@ -43,9 +46,12 @@
 		4AB8093F28557EE800C772D1 /* MainTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTitleView.swift; sourceTree = "<group>"; };
 		4AEB76012852F32000EC85B9 /* Moasa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moasa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AEB76042852F32000EC85B9 /* MoasaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoasaApp.swift; sourceTree = "<group>"; };
-		4AEB76062852F32000EC85B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4AEB76082852F32100EC85B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AEB760B2852F32100EC85B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4AEB76182852F39500EC85B9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		9871F1532855802D0077B058 /* Moasa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moasa.xcdatamodel; sourceTree = "<group>"; };
+		9871F1632855843F0077B058 /* InitSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitSettingView.swift; sourceTree = "<group>"; };
+		9871F1B82855C7310077B058 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		4AEB76102852F32100EC85B9 /* Moasa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moasa.xcdatamodel; sourceTree = "<group>"; };
 		4AEB76182852F39500EC85B9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		DF65DD3D28545FBC00435F9E /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -69,6 +75,7 @@
 		4A69108028530ABF001BD21B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9871F1522855802D0077B058 /* Moasa.xcdatamodeld */,
 				4A69108A285312A7001BD21B /* ConsumedItem+CoreDataClass.swift */,
 				4A69108B285312A7001BD21B /* ConsumedItem+CoreDataProperties.swift */,
 				4A69108C285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift */,
@@ -124,6 +131,10 @@
 		4AEB76032852F32000EC85B9 /* Moasa */ = {
 			isa = PBXGroup;
 			children = (
+				4AEB76042852F32000EC85B9 /* MoasaApp.swift */,
+				9871F1632855843F0077B058 /* InitSettingView.swift */,
+				4AEB76082852F32100EC85B9 /* Assets.xcassets */,
+				9871F1B82855C7310077B058 /* ImagePicker.swift */,
 				4AEB76082852F32100EC85B9 /* Assets.xcassets */,
 				4AEB76042852F32000EC85B9 /* MoasaApp.swift */,
 				4A69108128530AFF001BD21B /* View */,
@@ -234,6 +245,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9871F1B92855C7310077B058 /* ImagePicker.swift in Sources */,
+				9871F15B2855802D0077B058 /* Moasa.xcdatamodeld in Sources */,
+				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
+				9871F1642855843F0077B058 /* InitSettingView.swift in Sources */,
 				4AB8094328557EE800C772D1 /* MainTitleView.swift in Sources */,
 				4A691090285312A7001BD21B /* ConsumedItem+CoreDataClass.swift in Sources */,
 				DF65DD3E28545FBC00435F9E /* SettingView.swift in Sources */,
@@ -454,12 +469,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		4AEB760F2852F32100EC85B9 /* Moasa.xcdatamodeld */ = {
+		9871F1522855802D0077B058 /* Moasa.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				4AEB76102852F32100EC85B9 /* Moasa.xcdatamodel */,
+				9871F1532855802D0077B058 /* Moasa.xcdatamodel */,
 			);
-			currentVersion = 4AEB76102852F32100EC85B9 /* Moasa.xcdatamodel */;
+			currentVersion = 9871F1532855802D0077B058 /* Moasa.xcdatamodel */;
 			path = Moasa.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

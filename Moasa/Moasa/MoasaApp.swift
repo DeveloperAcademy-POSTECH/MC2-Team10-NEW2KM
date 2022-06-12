@@ -13,7 +13,7 @@ struct MoasaApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            InitSettingView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
