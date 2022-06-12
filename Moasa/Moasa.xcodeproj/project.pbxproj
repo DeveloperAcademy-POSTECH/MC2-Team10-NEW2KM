@@ -14,6 +14,7 @@
 		4AEB760E2852F32100EC85B9 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB760D2852F32100EC85B9 /* Persistence.swift */; };
 		4AEB76112852F32100EC85B9 /* Moasa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB760F2852F32100EC85B9 /* Moasa.xcdatamodeld */; };
 		4AEB76192852F39500EC85B9 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB76182852F39500EC85B9 /* .swiftlint.yml */; };
+		9871F14F28557F830077B058 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F14E28557F830077B058 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		4AEB760D2852F32100EC85B9 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4AEB76102852F32100EC85B9 /* Moasa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moasa.xcdatamodel; sourceTree = "<group>"; };
 		4AEB76182852F39500EC85B9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		9871F14E28557F830077B058 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = "../../../../../../../../../../../Downloads/MC2-Team10-NEW2KM-CoreData/Moasa/Moasa/ImagePicker.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +44,7 @@
 			isa = PBXGroup;
 			children = (
 				4AEB760F2852F32100EC85B9 /* Moasa.xcdatamodeld */,
+				4AEB760D2852F32100EC85B9 /* Persistence.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -69,7 +72,7 @@
 				4AEB76042852F32000EC85B9 /* MoasaApp.swift */,
 				4AEB76062852F32000EC85B9 /* ContentView.swift */,
 				4AEB76082852F32100EC85B9 /* Assets.xcassets */,
-				4AEB760D2852F32100EC85B9 /* Persistence.swift */,
+				9871F14E28557F830077B058 /* ImagePicker.swift */,
 				4A69108028530ABF001BD21B /* Model */,
 				4AEB760A2852F32100EC85B9 /* Preview Content */,
 			);
@@ -178,6 +181,7 @@
 			files = (
 				4AEB760E2852F32100EC85B9 /* Persistence.swift in Sources */,
 				4AEB76072852F32000EC85B9 /* ContentView.swift in Sources */,
+				9871F14F28557F830077B058 /* ImagePicker.swift in Sources */,
 				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
 				4AEB76112852F32100EC85B9 /* Moasa.xcdatamodeld in Sources */,
 			);
