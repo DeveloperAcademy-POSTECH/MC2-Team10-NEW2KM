@@ -8,22 +8,23 @@
 import CoreData
 import SwiftUI
 
+
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath:\ConsumedItem.consumedDate, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var items: FetchedResults<ConsumedItem>
 
     var body: some View {
         NavigationView {
             List {
                 ForEach(items) { item in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        Text("Item at \(item.consumedDate ?? Date.now, formatter: itemFormatter)")
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Text(item.consumedDate ?? Date.now, formatter: itemFormatter)
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -44,8 +45,8 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newItem = ConsumedItem(context: viewContext)
+            newItem.consumedDate = Date()
 
             do {
                 try viewContext.save()
