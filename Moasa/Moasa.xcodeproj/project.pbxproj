@@ -8,18 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB76042852F32000EC85B9 /* MoasaApp.swift */; };
-		4AEB76072852F32000EC85B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB76062852F32000EC85B9 /* ContentView.swift */; };
 		4AEB76092852F32100EC85B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB76082852F32100EC85B9 /* Assets.xcassets */; };
 		4AEB760C2852F32100EC85B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB760B2852F32100EC85B9 /* Preview Assets.xcassets */; };
 		4AEB76192852F39500EC85B9 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB76182852F39500EC85B9 /* .swiftlint.yml */; };
-		9871F1592855802D0077B058 /* ConsumedCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1502855802D0077B058 /* ConsumedCategory+CoreDataProperties.swift */; };
-		9871F15A2855802D0077B058 /* TargetItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1512855802D0077B058 /* TargetItem+CoreDataProperties.swift */; };
 		9871F15B2855802D0077B058 /* Moasa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1522855802D0077B058 /* Moasa.xcdatamodeld */; };
-		9871F15C2855802D0077B058 /* ConsumedItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1542855802D0077B058 /* ConsumedItem+CoreDataProperties.swift */; };
-		9871F15D2855802D0077B058 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1552855802D0077B058 /* Persistence.swift */; };
-		9871F15E2855802D0077B058 /* TargetItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1562855802D0077B058 /* TargetItem+CoreDataClass.swift */; };
-		9871F15F2855802D0077B058 /* ConsumedCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1572855802D0077B058 /* ConsumedCategory+CoreDataClass.swift */; };
-		9871F1602855802D0077B058 /* ConsumedItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1582855802D0077B058 /* ConsumedItem+CoreDataClass.swift */; };
 		9871F1642855843F0077B058 /* InitSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1632855843F0077B058 /* InitSettingView.swift */; };
 		9871F1B92855C7310077B058 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1B82855C7310077B058 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
@@ -27,18 +19,10 @@
 /* Begin PBXFileReference section */
 		4AEB76012852F32000EC85B9 /* Moasa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moasa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AEB76042852F32000EC85B9 /* MoasaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoasaApp.swift; sourceTree = "<group>"; };
-		4AEB76062852F32000EC85B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4AEB76082852F32100EC85B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AEB760B2852F32100EC85B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4AEB76182852F39500EC85B9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		9871F1502855802D0077B058 /* ConsumedCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConsumedCategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		9871F1512855802D0077B058 /* TargetItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TargetItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9871F1532855802D0077B058 /* Moasa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moasa.xcdatamodel; sourceTree = "<group>"; };
-		9871F1542855802D0077B058 /* ConsumedItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConsumedItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		9871F1552855802D0077B058 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		9871F1562855802D0077B058 /* TargetItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TargetItem+CoreDataClass.swift"; sourceTree = "<group>"; };
-		9871F1572855802D0077B058 /* ConsumedCategory+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConsumedCategory+CoreDataClass.swift"; sourceTree = "<group>"; };
-		9871F1582855802D0077B058 /* ConsumedItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConsumedItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9871F1632855843F0077B058 /* InitSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitSettingView.swift; sourceTree = "<group>"; };
 		9871F1B82855C7310077B058 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,14 +41,7 @@
 		4A69108028530ABF001BD21B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9871F1572855802D0077B058 /* ConsumedCategory+CoreDataClass.swift */,
-				9871F1502855802D0077B058 /* ConsumedCategory+CoreDataProperties.swift */,
-				9871F1582855802D0077B058 /* ConsumedItem+CoreDataClass.swift */,
-				9871F1542855802D0077B058 /* ConsumedItem+CoreDataProperties.swift */,
 				9871F1522855802D0077B058 /* Moasa.xcdatamodeld */,
-				9871F1552855802D0077B058 /* Persistence.swift */,
-				9871F1562855802D0077B058 /* TargetItem+CoreDataClass.swift */,
-				9871F1512855802D0077B058 /* TargetItem+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -90,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				4AEB76042852F32000EC85B9 /* MoasaApp.swift */,
-				4AEB76062852F32000EC85B9 /* ContentView.swift */,
 				9871F1632855843F0077B058 /* InitSettingView.swift */,
 				4AEB76082852F32100EC85B9 /* Assets.xcassets */,
 				9871F1B82855C7310077B058 /* ImagePicker.swift */,
@@ -201,17 +177,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9871F1B92855C7310077B058 /* ImagePicker.swift in Sources */,
-				9871F1602855802D0077B058 /* ConsumedItem+CoreDataClass.swift in Sources */,
-				4AEB76072852F32000EC85B9 /* ContentView.swift in Sources */,
-				9871F15C2855802D0077B058 /* ConsumedItem+CoreDataProperties.swift in Sources */,
-				9871F15E2855802D0077B058 /* TargetItem+CoreDataClass.swift in Sources */,
 				9871F15B2855802D0077B058 /* Moasa.xcdatamodeld in Sources */,
 				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
-				9871F15A2855802D0077B058 /* TargetItem+CoreDataProperties.swift in Sources */,
-				9871F1592855802D0077B058 /* ConsumedCategory+CoreDataProperties.swift in Sources */,
 				9871F1642855843F0077B058 /* InitSettingView.swift in Sources */,
-				9871F15D2855802D0077B058 /* Persistence.swift in Sources */,
-				9871F15F2855802D0077B058 /* ConsumedCategory+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
