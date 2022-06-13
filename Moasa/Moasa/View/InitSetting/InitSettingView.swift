@@ -58,7 +58,7 @@ struct InitSettingView: View {
                             .frame(width: 360, height: 60)
                             .cornerRadius(13)
                             .foregroundColor(self.image.count != 1 ? .accentColor: .gray)
-//                            .background(.white)
+                            .background(.white)
                             .opacity(self.image.count != 1 ? 1 : 0.2)
                         Text(self.image.count != 1 ? "다음" : "다음에 할게요")
                             .foregroundColor(self.image.count != 1 ? .white: .gray)
