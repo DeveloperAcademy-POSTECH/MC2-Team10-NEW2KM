@@ -15,15 +15,16 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath:\ConsumedItem.consumedDate, ascending: true)],
         animation: .default)
     private var items: FetchedResults<ConsumedItem>
+    @State private var index = 0
 
     var body: some View {
         NavigationView {
             List {
                 ForEach(items) { item in
                     NavigationLink {
-                        Text("Item at \(item.consumedDate ?? Date.now, formatter: itemFormatter)")
+                        Text("Item at \(item.challengeCycle)")
                     } label: {
-                        Text(item.consumedDate ?? Date.now, formatter: itemFormatter)
+                        Text("Item at \(item.challengeCycle)")
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -45,7 +46,14 @@ struct ContentView: View {
     private func addItem() {
         withAnimation {
             let newItem = ConsumedItem(context: viewContext)
+            newItem.challengeCycle = Int64(index)
+            newItem.id = UUID()
+            newItem.consumedMemo = "memo"
+            newItem.consumedName = "name"
+            newItem.consumedCategory = "category"
             newItem.consumedDate = Date()
+            newItem.consumedPrice = 1000
+            index += 1
 
             do {
                 try viewContext.save()
