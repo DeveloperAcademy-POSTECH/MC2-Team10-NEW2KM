@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A3640ED2856B8A40032A90A /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3640EC2856B8A40032A90A /* Color+Extension.swift */; };
 		4A691090285312A7001BD21B /* ConsumedItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A69108A285312A7001BD21B /* ConsumedItem+CoreDataClass.swift */; };
 		4A691091285312A7001BD21B /* ConsumedItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A69108B285312A7001BD21B /* ConsumedItem+CoreDataProperties.swift */; };
 		4A691092285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A69108C285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift */; };
@@ -29,10 +30,11 @@
 		DF65DD4028546AEC00435F9E /* ChangeSettingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */; };
 		DF65DD422854966D00435F9E /* InitiateTargetSettingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD412854966D00435F9E /* InitiateTargetSettingDetailView.swift */; };
 		DF65DD442854A7FB00435F9E /* CategorySettingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD432854A7FB00435F9E /* CategorySettingDetailView.swift */; };
-		DF65DD462854EBA300435F9E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD452854EBA300435F9E /* Persistence.swift */; };
+		DF65DD462854EBA300435F9E /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD452854EBA300435F9E /* PersistenceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A3640EC2856B8A40032A90A /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		4A69108A285312A7001BD21B /* ConsumedItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ConsumedItem+CoreDataClass.swift"; path = "Moasa/Model/ConsumedItem+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		4A69108B285312A7001BD21B /* ConsumedItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ConsumedItem+CoreDataProperties.swift"; path = "Moasa/Model/ConsumedItem+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4A69108C285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ConsumedCategory+CoreDataClass.swift"; path = "Moasa/Model/ConsumedCategory+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -55,7 +57,7 @@
 		DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeSettingDetailView.swift; sourceTree = "<group>"; };
 		DF65DD412854966D00435F9E /* InitiateTargetSettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiateTargetSettingDetailView.swift; sourceTree = "<group>"; };
 		DF65DD432854A7FB00435F9E /* CategorySettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySettingDetailView.swift; sourceTree = "<group>"; };
-		DF65DD452854EBA300435F9E /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		DF65DD452854EBA300435F9E /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A3640EB2856B8940032A90A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4A3640EC2856B8A40032A90A /* Color+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		4A3640EE2856B9E70032A90A /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				9871F1B82855C7310077B058 /* ImagePicker.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		4A3640EF2856B9F30032A90A /* InitSetting */ = {
+			isa = PBXGroup;
+			children = (
+				9871F1632855843F0077B058 /* InitSettingView.swift */,
+			);
+			path = InitSetting;
+			sourceTree = "<group>";
+		};
 		4A69108028530ABF001BD21B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,7 +105,7 @@
 				4A69108D285312A7001BD21B /* ConsumedCategory+CoreDataProperties.swift */,
 				4A69108E285312A7001BD21B /* TargetItem+CoreDataClass.swift */,
 				4A69108F285312A7001BD21B /* TargetItem+CoreDataProperties.swift */,
-				DF65DD452854EBA300435F9E /* Persistence.swift */,
+				DF65DD452854EBA300435F9E /* PersistenceController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -87,7 +113,7 @@
 		4A69108128530AFF001BD21B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9871F1632855843F0077B058 /* InitSettingView.swift */,
+				4A3640EF2856B9F30032A90A /* InitSetting */,
 				4AB809452855E4DD00C772D1 /* Main */,
 				4AB809462855E4F400C772D1 /* Setting */,
 			);
@@ -136,7 +162,8 @@
 		4AEB76032852F32000EC85B9 /* Moasa */ = {
 			isa = PBXGroup;
 			children = (
-				9871F1B82855C7310077B058 /* ImagePicker.swift */,
+				4A3640EB2856B8940032A90A /* Extension */,
+				4A3640EE2856B9E70032A90A /* Utility */,
 				4AEB76082852F32100EC85B9 /* Assets.xcassets */,
 				4AEB76042852F32000EC85B9 /* MoasaApp.swift */,
 				4A69108128530AFF001BD21B /* View */,
@@ -248,6 +275,7 @@
 			files = (
 				9871F1B92855C7310077B058 /* ImagePicker.swift in Sources */,
 				9871F15B2855802D0077B058 /* Moasa.xcdatamodeld in Sources */,
+				4A3640ED2856B8A40032A90A /* Color+Extension.swift in Sources */,
 				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
 				9871F1642855843F0077B058 /* InitSettingView.swift in Sources */,
 				4AB8094A2855E8A200C772D1 /* SettingView.swift in Sources */,
@@ -259,7 +287,7 @@
 				4AB8094028557EE800C772D1 /* BudgetContentView.swift in Sources */,
 				DF65DD442854A7FB00435F9E /* CategorySettingDetailView.swift in Sources */,
 				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
-				DF65DD462854EBA300435F9E /* Persistence.swift in Sources */,
+				DF65DD462854EBA300435F9E /* PersistenceController.swift in Sources */,
 				DF65DD4028546AEC00435F9E /* ChangeSettingDetailView.swift in Sources */,
 				4AEB76112852F32100EC85B9 /* (null) in Sources */,
 				4AEB76112852F32100EC85B9 /* (null) in Sources */,

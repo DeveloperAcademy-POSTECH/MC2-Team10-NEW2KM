@@ -12,7 +12,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath:\ConsumedItem.consumedDate, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \ConsumedItem.consumedDate, ascending: true)],
         animation: .default)
     private var items: FetchedResults<ConsumedItem>
 
