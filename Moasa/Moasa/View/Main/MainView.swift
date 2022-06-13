@@ -20,6 +20,7 @@ import SwiftUI
              }
          }
          .navigationBarHidden(true)
+         .navigationBarBackButtonHidden(true)
      }
  }
 

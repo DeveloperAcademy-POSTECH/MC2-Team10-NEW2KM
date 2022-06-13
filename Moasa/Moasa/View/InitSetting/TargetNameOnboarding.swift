@@ -39,5 +39,6 @@ struct TargetNameOnboarding: View {
                         .font(.system(size: 20, weight: .bold))
                 }
             }.padding(.bottom, 40)
-        }    }
+        }
+    }
 }
