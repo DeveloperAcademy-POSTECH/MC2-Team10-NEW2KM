@@ -18,6 +18,8 @@ struct MoasaApp: App {
                 MainView()
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
+//            ContentView()
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

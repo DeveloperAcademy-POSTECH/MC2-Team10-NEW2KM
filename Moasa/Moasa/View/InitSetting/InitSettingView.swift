@@ -8,47 +8,55 @@
 import SwiftUI
 
 struct InitSettingView: View {
-    
+    @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.presentationMode) var dismiss
+
     @State public var image: Data = .init(count: 1)
     @State public var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State public var show: Bool = false
-    
+
     @State var targetName: String = ""
     @State var targetPrice: String = ""
     @State var fixedSaving: String = ""
     
     var body: some View {
-        TabView {
-            VStack {
-                HStack {
-                    Text("사고 싶은 물건 사진을 넣어주세요.")
-                        .font(.system(size: 25, weight: .semibold))
-                        .padding(.top, 90)
-                    Spacer()
-                }.padding(.leading, 16)
-
-                if self.image.count != 1 {
-                    Button(action: {
-                        self.show.toggle()
-                    }, label: {
-                        Image(uiImage: UIImage(data: self.image)!)
-                            .resizable()
-                            .clipShape(Circle())
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 190, height: 190)
-                            .padding(.top, 50)
-                        })
-                } else {
-                    Button(action: {
-                        self.show.toggle()
-                    }, label: {
-                        Image(systemName: "photo.fill")
-                            .resizable()
-                            .clipShape(Circle())
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 190, height: 190)
-                            .padding(.top, 50)
+        NavigationView {
+            TabView {
+// FirstOnBoarding
+                ImageInputOnboarding(image: $image, sourceType: $sourceType, show: $show)
+                    .sheet(isPresented: self.$show, content: {
+                        ImagePicker(images: self.$image, show: self.$show, sourceType: self.sourceType)
                     })
+// SecondOnBoarding
+                TargetNameOnboarding(targetName: $targetName)
+// ThirdOnBoarding
+                TargetPriceOnboarding(targetPrice: $targetPrice)
+// FourthOnBoarding
+                VStack {
+                    FixedSavingOnboarding(fixedSaving: $fixedSaving)
+                    Spacer()
+                    NavigationLink(destination: MainView()) {
+                        Button(action: {
+//                            let add = TargetItem(context: self.viewContext)
+//                            add.targetImage = self.image
+//
+//                            try? self.viewContext.save()
+//
+//                            self.dismiss.wrappedValue.dismiss()
+//                            self.image.count = 0
+                        }, label: {
+                            ZStack {
+                                Rectangle()
+                                    .frame(width: 360, height: 60)
+                                    .cornerRadius(13)
+                                    .foregroundColor(self.fixedSaving > "" ? .accentColor : .gray)
+                                    .opacity(self.fixedSaving > "" ? 1 : 0.2)
+                                Text(self.fixedSaving > "" ? "입력 완료": "다음에 할게요")
+                                    .foregroundColor(self.fixedSaving > "" ? .white : .gray)
+                                    .font(.system(size: 20, weight: .bold))
+                            }
+                        })
+                    }.padding(.bottom, 40)
                 }
                 Spacer()
                 Button(action: {
@@ -168,8 +176,12 @@ struct InitSettingView: View {
                     }
                 }).padding(.bottom, 40)
             }
-        }.tabViewStyle(PageTabViewStyle())
+            .tabViewStyle(PageTabViewStyle())
             .background(Color.kenCustomOrange)
+            .navigationBarHidden(true)
+        }.onTapGesture {
+            hideKeyboard()
+        }
     }
 }
 
