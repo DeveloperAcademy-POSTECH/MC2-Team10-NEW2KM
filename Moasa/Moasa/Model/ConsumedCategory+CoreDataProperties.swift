@@ -30,8 +30,8 @@ extension ConsumedCategory {
         // 특정 카테고리 별 현재 달 소비 가격: 음수의 경우 saving X -> 0 리턴
     }
     func isSameMonth(date1: Date, date2: Date) -> Bool {
-        let diff = Calendar.current.dateComponents([.month], from: date1, to: date2)
-        if diff.month == 0 {
+        let diff = Calendar.current.dateComponents([.year, .month], from: date1, to: date2)
+        if diff.year == 0 && diff.month == 0 {
             return true
         } else {
             return false
