@@ -31,6 +31,7 @@ extension ConsumedCategory {
     }
     public var validLimit: Double {
         let startDate = Date.distantPast
+        // startDate는 targetItem에 기록되어 있음
         let startOfMonth = startDate.startOfMonth()
         let endOfMonth = startDate.endOfMonth()
         // 도전 시작 일 기록
