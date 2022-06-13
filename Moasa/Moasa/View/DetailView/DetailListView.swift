@@ -30,9 +30,10 @@ struct DetailListView: View {
         .background(Color.white)
     }
 }
-
+/*
 struct DetailListView_Previews: PreviewProvider {
     static var previews: some View {
         DetailListView()
     }
 }
+*/
