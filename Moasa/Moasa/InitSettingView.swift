@@ -7,17 +7,10 @@
 
 import SwiftUI
 
-extension Color {
-    static let accentColor = Color("AccentColor")
-    static let kenCustomOrange = Color("KenCustomOrange")
-}
-
 struct InitSettingView: View {
- 
     @State public var image: Data = .init(count: 1)
     @State public var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    @State public var show: Bool = false
-    
+    @State public var show = false
     @State var targetName: String = ""
     @State var targetPrice: String = ""
     @State var fixedSaving: String = ""
