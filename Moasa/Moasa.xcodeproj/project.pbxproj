@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A040FEF2857593000DA507E /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A040FEE2857593000DA507E /* Date+Extension.swift */; };
 		4A3640ED2856B8A40032A90A /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3640EC2856B8A40032A90A /* Color+Extension.swift */; };
 		4A3641382856E1D90032A90A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3641372856E1D90032A90A /* ContentView.swift */; };
 		4A36413A2856E2200032A90A /* Keyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3641392856E2200032A90A /* Keyboard+Extension.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A040FEE2857593000DA507E /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		4A3640EC2856B8A40032A90A /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		4A3641372856E1D90032A90A /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = Moasa/ContentView.swift; sourceTree = SOURCE_ROOT; };
 		4A3641392856E2200032A90A /* Keyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyboard+Extension.swift"; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				4A3640EC2856B8A40032A90A /* Color+Extension.swift */,
 				4A3641392856E2200032A90A /* Keyboard+Extension.swift */,
 				4A36413B2856E2320032A90A /* Number+Extension.swift */,
+				4A040FEE2857593000DA507E /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				4AB8094328557EE800C772D1 /* MainTitleView.swift in Sources */,
 				4A691090285312A7001BD21B /* ConsumedItem+CoreDataClass.swift in Sources */,
 				9871F1F32856DDF40077B058 /* TargetNameOnboarding.swift in Sources */,
+				4A040FEF2857593000DA507E /* Date+Extension.swift in Sources */,
 				DF65DD422854966D00435F9E /* InitiateTargetSettingDetailView.swift in Sources */,
 				4A691095285312A7001BD21B /* TargetItem+CoreDataProperties.swift in Sources */,
 				4A691091285312A7001BD21B /* ConsumedItem+CoreDataProperties.swift in Sources */,
