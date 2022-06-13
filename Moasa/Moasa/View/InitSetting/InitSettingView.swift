@@ -15,6 +15,9 @@ extension View {
 
 struct InitSettingView: View {
     
+    @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.presentationMode) var dismiss
+    
     @State public var image: Data = .init(count: 1)
     @State public var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State public var show: Bool = false
@@ -24,6 +27,8 @@ struct InitSettingView: View {
     @State var fixedSaving: String = ""
     
     var body: some View {
+        NavigationView {
+
         TabView {
             VStack {
                 HStack {
@@ -57,20 +62,32 @@ struct InitSettingView: View {
                     })
                 }
                 Spacer()
-                Button(action: {
-                }, label: {
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 360, height: 60)
-                            .cornerRadius(13)
-                            .foregroundColor(self.image.count != 1 ? .accentColor: .gray)
-//                            .background(.white)
-                            .opacity(self.image.count != 1 ? 1 : 0.2)
-                        Text(self.image.count != 1 ? "다음" : "다음에 할게요")
-                            .foregroundColor(self.image.count != 1 ? .white: .gray)
-                            .font(.system(size: 20, weight: .bold))
-                    }
-                }).padding(.bottom, 40)
+                if self.image.count != 1 {
+                    NavigationLink(destination: BudgetContentView()) {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 360, height: 60)
+                                .cornerRadius(13)
+                                .foregroundColor(.accentColor)
+                            Text("다음")
+                                .foregroundColor(.white)
+                                .font(.system(size: 20, weight: .bold))
+                        }
+                    }.padding(.bottom, 40)
+                } else {
+                    NavigationLink(destination: BudgetContentView()) {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 360, height: 60)
+                                .cornerRadius(13)
+                                .foregroundColor(.gray)
+                                .opacity(0.2)
+                            Text("다음에 할게요")
+                                .foregroundColor(.gray)
+                                .font(.system(size: 20, weight: .bold))
+                        }
+                    }.padding(.bottom, 40)
+                }
             }.sheet(isPresented: self.$show, content: {
                 ImagePicker(images: self.$image, show: self.$show, sourceType: self.sourceType)
             })
@@ -91,20 +108,18 @@ struct InitSettingView: View {
                     .background(Color.accentColor)
                     .padding(.horizontal, 16)
                 Spacer()
-                Button(action: {
-                }, label: {
+                NavigationLink(destination: BudgetContentView()) {
                     ZStack {
                         Rectangle()
                             .frame(width: 360, height: 60)
                             .cornerRadius(13)
                             .foregroundColor(self.targetName > "" ? .accentColor: .gray)
-//                            .background(.white)
                             .opacity(self.targetName > "" ? 1 : 0.2)
                         Text(self.targetName > "" ? "다음" : "다음에 할게요")
                             .foregroundColor(self.targetName > "" ? .white: .gray)
                             .font(.system(size: 20, weight: .bold))
                     }
-                }).padding(.bottom, 40)
+                }.padding(.bottom, 40)
             }
 
             VStack {
@@ -127,8 +142,7 @@ struct InitSettingView: View {
                     .background(Color.accentColor)
                     .padding(.horizontal, 16)
                 Spacer()
-                Button(action: {
-                }, label: {
+                NavigationLink(destination: BudgetContentView()) {
                     ZStack {
                         Rectangle()
                             .frame(width: 360, height: 60)
@@ -139,7 +153,7 @@ struct InitSettingView: View {
                             .foregroundColor(self.targetPrice > "" ? .white : .gray)
                             .font(.system(size: 20, weight: .bold))
                     }
-                }).padding(.bottom, 40)
+                }.padding(.bottom, 40)
             }
 
             VStack {
@@ -162,24 +176,34 @@ struct InitSettingView: View {
                     .background(Color.accentColor)
                     .padding(.horizontal, 16)
                 Spacer()
-                Button(action: {
-                }, label: {
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 360, height: 60)
-                            .cornerRadius(13)
-                            .foregroundColor(self.fixedSaving > "" ? .accentColor : .gray)
-                            .opacity(self.fixedSaving > "" ? 1 : 0.2)
-                        Text(self.fixedSaving > "" ? "입력 완료": "다음에 할게요")
-                            .foregroundColor(self.fixedSaving > "" ? .white : .gray)
-                            .font(.system(size: 20, weight: .bold))
-                    }
-                }).padding(.bottom, 40)
+                NavigationLink(destination: BudgetContentView()) {
+                    Button(action: {
+                        let add = TargetItem(context: self.viewContext)
+                        add.targetImage = self.image
+
+                        try? self.viewContext.save()
+
+                        self.dismiss.wrappedValue.dismiss()
+                        self.image.count = 0
+                    }, label: {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 360, height: 60)
+                                .cornerRadius(13)
+                                .foregroundColor(self.fixedSaving > "" ? .accentColor : .gray)
+                                .opacity(self.fixedSaving > "" ? 1 : 0.2)
+                            Text(self.fixedSaving > "" ? "입력 완료": "다음에 할게요")
+                                .foregroundColor(self.fixedSaving > "" ? .white : .gray)
+                                .font(.system(size: 20, weight: .bold))
+                        }
+                    })
+                }.padding(.bottom, 40)
             }
         }
         .tabViewStyle(PageTabViewStyle())
         .background(Color.kenCustomOrange)
-        .onTapGesture{
+        .navigationBarHidden(true)
+        }.onTapGesture{
             hideKeyboard()
         }
     }
