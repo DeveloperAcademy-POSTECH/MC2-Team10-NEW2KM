@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4A3640ED2856B8A40032A90A /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3640EC2856B8A40032A90A /* Color+Extension.swift */; };
+		4A3641382856E1D90032A90A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3641372856E1D90032A90A /* ContentView.swift */; };
+		4A36413A2856E2200032A90A /* Keyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3641392856E2200032A90A /* Keyboard+Extension.swift */; };
+		4A36413C2856E2320032A90A /* Number+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A36413B2856E2320032A90A /* Number+Extension.swift */; };
 		4A691090285312A7001BD21B /* ConsumedItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A69108A285312A7001BD21B /* ConsumedItem+CoreDataClass.swift */; };
 		4A691091285312A7001BD21B /* ConsumedItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A69108B285312A7001BD21B /* ConsumedItem+CoreDataProperties.swift */; };
 		4A691092285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A69108C285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift */; };
@@ -39,6 +42,9 @@
 
 /* Begin PBXFileReference section */
 		4A3640EC2856B8A40032A90A /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		4A3641372856E1D90032A90A /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = Moasa/ContentView.swift; sourceTree = SOURCE_ROOT; };
+		4A3641392856E2200032A90A /* Keyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyboard+Extension.swift"; sourceTree = "<group>"; };
+		4A36413B2856E2320032A90A /* Number+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Extension.swift"; sourceTree = "<group>"; };
 		4A69108A285312A7001BD21B /* ConsumedItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ConsumedItem+CoreDataClass.swift"; path = "Moasa/Model/ConsumedItem+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		4A69108B285312A7001BD21B /* ConsumedItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ConsumedItem+CoreDataProperties.swift"; path = "Moasa/Model/ConsumedItem+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4A69108C285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ConsumedCategory+CoreDataClass.swift"; path = "Moasa/Model/ConsumedCategory+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -83,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				4A3640EC2856B8A40032A90A /* Color+Extension.swift */,
+				4A3641392856E2200032A90A /* Keyboard+Extension.swift */,
+				4A36413B2856E2320032A90A /* Number+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -125,6 +133,7 @@
 		4A69108128530AFF001BD21B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4A3641372856E1D90032A90A /* ContentView.swift */,
 				4A3640EF2856B9F30032A90A /* InitSetting */,
 				4AB809452855E4DD00C772D1 /* Main */,
 				4AB809462855E4F400C772D1 /* Setting */,
@@ -287,9 +296,11 @@
 			files = (
 				9871F1F62856DDF40077B058 /* ImageInputOnboarding.swift in Sources */,
 				9871F1F42856DDF40077B058 /* TargetPriceOnboarding.swift in Sources */,
+				4A3641382856E1D90032A90A /* ContentView.swift in Sources */,
 				9871F1B92855C7310077B058 /* ImagePicker.swift in Sources */,
 				9871F15B2855802D0077B058 /* Moasa.xcdatamodeld in Sources */,
 				4A3640ED2856B8A40032A90A /* Color+Extension.swift in Sources */,
+				4A36413C2856E2320032A90A /* Number+Extension.swift in Sources */,
 				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
 				9871F1642855843F0077B058 /* InitSettingView.swift in Sources */,
 				4AB8094A2855E8A200C772D1 /* SettingView.swift in Sources */,
@@ -305,6 +316,7 @@
 				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
 				DF65DD462854EBA300435F9E /* PersistenceController.swift in Sources */,
 				DF65DD4028546AEC00435F9E /* ChangeSettingDetailView.swift in Sources */,
+				4A36413A2856E2200032A90A /* Keyboard+Extension.swift in Sources */,
 				4AEB76112852F32100EC85B9 /* (null) in Sources */,
 				4AEB76112852F32100EC85B9 /* (null) in Sources */,
 				4A691092285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift in Sources */,

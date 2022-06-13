@@ -12,45 +12,44 @@ struct SettingView: View {
     var budgetSettingLabelList: [String] = ["고정 저금액", "처음부터 넣을 금액", "카테고리(항목, 예산)"]
     var targetInitializeLabelList: [String] = ["목표 초기화"]
     var body: some View {
-        NavigationView {
-            VStack {
-                List {
-                    Section(header: Text("목표 설정")) {
-                        ForEach(targetSettingLabelList, id: \.self) { target in
-                            NavigationLink(destination: ChangeSettingDetailView(changeTitle: target)) {
-                                Text(target)
-                            }
+        VStack {
+            List {
+                Section(header: Text("목표 설정")) {
+                    ForEach(targetSettingLabelList, id: \.self) { target in
+                        NavigationLink(destination: ChangeSettingDetailView(changeTitle: target)) {
+                            Text(target)
                         }
                     }
-                    Section(header: Text("예산 설정")) {
-                        ForEach(budgetSettingLabelList, id: \.self) { budget in
-                            if budget == "카테고리(항목, 예산)"{
-                                NavigationLink(destination: CategorySettingDetailView()) {
-                                    Text(budget)
-                                }
-                            } else {
-                                NavigationLink(destination: ChangeSettingDetailView(changeTitle: budget)) {
-                                    Text(budget)
-                                }
+                }
+                Section(header: Text("예산 설정")) {
+                    ForEach(budgetSettingLabelList, id: \.self) { budget in
+                        if budget == "카테고리(항목, 예산)"{
+                            NavigationLink(destination: CategorySettingDetailView()) {
+                                Text(budget)
                             }
-                        }
-                    }
-                    Section(header: Text("목표 초기화")) {
-                        ForEach(targetInitializeLabelList, id: \.self) { target in
-                            NavigationLink(destination: InitiateTargetSettingDetailView()) {
-                                Text(target)
+                        } else {
+                            NavigationLink(destination: ChangeSettingDetailView(changeTitle: budget)) {
+                                Text(budget)
                             }
                         }
                     }
                 }
+                Section(header: Text("목표 초기화")) {
+                    ForEach(targetInitializeLabelList, id: \.self) { target in
+                        NavigationLink(destination: InitiateTargetSettingDetailView()) {
+                            Text(target)
+                        }
+                    }
+                }
             }
-            .navigationBarHidden(true)
         }
     }
 }
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView()
+        NavigationView {
+            SettingView()
+        }
     }
 }

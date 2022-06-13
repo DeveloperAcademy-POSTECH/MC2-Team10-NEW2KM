@@ -21,12 +21,18 @@ struct MainTitleView: View {
                 Text("모으는 중")
                     .font(.system(size: 20))
                 Spacer()
-                Button(action: {}, label: {
+                NavigationLink(destination: SettingView()) {
                     Image(systemName: "gearshape.fill")
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 30))
                         .foregroundColor(.black)
                         .frame(width: 20, height: 20)
-                })
+                }
+//                Button(action: {}, label: {
+//                    Image(systemName: "gearshape.fill")
+//                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 30))
+//                        .foregroundColor(.black)
+//                        .frame(width: 20, height: 20)
+//                })
             }
         }
     }
