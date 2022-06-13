@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
 struct InitSettingView: View {
     
     @State public var image: Data = .init(count: 1)
@@ -168,8 +174,12 @@ struct InitSettingView: View {
                     }
                 }).padding(.bottom, 40)
             }
-        }.tabViewStyle(PageTabViewStyle())
-            .background(Color.kenCustomOrange)
+        }
+        .tabViewStyle(PageTabViewStyle())
+        .background(Color.kenCustomOrange)
+        .onTapGesture{
+            hideKeyboard()
+        }
     }
 }
 
