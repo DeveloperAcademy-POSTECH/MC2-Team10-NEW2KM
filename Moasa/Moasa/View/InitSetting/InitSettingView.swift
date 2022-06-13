@@ -144,12 +144,13 @@ struct InitSettingView: View {
 
             VStack {
                 HStack {
-                    TextField("예시: " + numberFormatter(number: 100000), text: self.$fixedSaving)                        .font(.system(size: 25, weight: .semibold))
+                    Text("월 고정 저금액을 입력해주세요")
+                        .font(.system(size: 25, weight: .semibold))
                         .padding(.top, 90)
                     Spacer()
                 }.padding(.leading, 16)
                 HStack {
-                    TextField("예시: 100,000", text: self.$fixedSaving)
+                    TextField("예시: " + numberFormatter(number: 100000), text: self.$fixedSaving)
                         .padding(.leading, 16)
                         .font(.system(size: 17, weight: .regular))
                         .keyboardType(.decimalPad)
