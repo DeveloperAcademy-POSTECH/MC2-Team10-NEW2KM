@@ -9,13 +9,15 @@ import SwiftUI
 
 @main
 struct MoasaApp: App {
+    @Environment(\.managedObjectContext) private var viewContext
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
             NavigationView {
 //                InitSettingView() //@AppStorage로 값이 입력된 상태라면, if else 구문으로 들어 갈 예정
-                MainView()
+                ContentView()
+//                MainView()
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
 //            ContentView()
