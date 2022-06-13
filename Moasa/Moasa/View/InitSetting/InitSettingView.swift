@@ -115,9 +115,10 @@ struct InitSettingView: View {
                     Spacer()
                 }.padding(.leading, 16)
                 HStack {
-                    TextField("예시: 1,000,000", text: self.$targetPrice)
+                    TextField("예시: " + numberFormatter(number: 1000000), text: self.$targetPrice)
                         .padding(.leading, 16)
                         .font(.system(size: 17, weight: .regular))
+                        .keyboardType(.decimalPad)
                     Text("원")
                         .font(.system(size: 17, weight: .bold))
                         .padding(.trailing, 16)
@@ -143,8 +144,7 @@ struct InitSettingView: View {
 
             VStack {
                 HStack {
-                    Text("월 고정 저금액을 입력해주세요.")
-                        .font(.system(size: 25, weight: .semibold))
+                    TextField("예시: " + numberFormatter(number: 100000), text: self.$fixedSaving)                        .font(.system(size: 25, weight: .semibold))
                         .padding(.top, 90)
                     Spacer()
                 }.padding(.leading, 16)
@@ -152,6 +152,7 @@ struct InitSettingView: View {
                     TextField("예시: 100,000", text: self.$fixedSaving)
                         .padding(.leading, 16)
                         .font(.system(size: 17, weight: .regular))
+                        .keyboardType(.decimalPad)
                     Text("원")
                         .font(.system(size: 17, weight: .bold))
                         .padding(.trailing, 16)
@@ -180,6 +181,12 @@ struct InitSettingView: View {
         .onTapGesture{
             hideKeyboard()
         }
+    }
+    func numberFormatter(number: Int) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+
+        return numberFormatter.string(from: NSNumber(value: number))!
     }
 }
 
