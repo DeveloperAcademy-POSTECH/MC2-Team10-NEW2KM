@@ -33,6 +33,7 @@
 		CF5FF4D72856CC33004FB062 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5FF4D62856CC33004FB062 /* SearchBarView.swift */; };
 		CF5FF4D92856CC3B004FB062 /* CircleWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5FF4D82856CC3B004FB062 /* CircleWaveView.swift */; };
 		CF5FF4DB2856CC4F004FB062 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5FF4DA2856CC4F004FB062 /* DateFormatter.swift */; };
+		CF5FF4DD2856D79E004FB062 /* addDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5FF4DC2856D79E004FB062 /* addDate.swift */; };
 		DF65DD4028546AEC00435F9E /* ChangeSettingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */; };
 		DF65DD422854966D00435F9E /* InitiateTargetSettingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD412854966D00435F9E /* InitiateTargetSettingDetailView.swift */; };
 		DF65DD442854A7FB00435F9E /* CategorySettingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD432854A7FB00435F9E /* CategorySettingDetailView.swift */; };
@@ -66,6 +67,7 @@
 		CF5FF4D62856CC33004FB062 /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		CF5FF4D82856CC3B004FB062 /* CircleWaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleWaveView.swift; sourceTree = "<group>"; };
 		CF5FF4DA2856CC4F004FB062 /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		CF5FF4DC2856D79E004FB062 /* addDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addDate.swift; sourceTree = "<group>"; };
 		DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeSettingDetailView.swift; sourceTree = "<group>"; };
 		DF65DD412854966D00435F9E /* InitiateTargetSettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiateTargetSettingDetailView.swift; sourceTree = "<group>"; };
 		DF65DD432854A7FB00435F9E /* CategorySettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySettingDetailView.swift; sourceTree = "<group>"; };
@@ -87,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				4A3640EC2856B8A40032A90A /* Color+Extension.swift */,
-				CF5FF4DA2856CC4F004FB062 /* DateFormatter.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -96,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				9871F1B82855C7310077B058 /* ImagePicker.swift */,
+				CF5FF4DA2856CC4F004FB062 /* DateFormatter.swift */,
+				CF5FF4DC2856D79E004FB062 /* addDate.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				4AB8094A2855E8A200C772D1 /* SettingView.swift in Sources */,
 				CF5FF4DB2856CC4F004FB062 /* DateFormatter.swift in Sources */,
 				CF5FF4D52856CC2A004FB062 /* DetailView.swift in Sources */,
+				CF5FF4DD2856D79E004FB062 /* addDate.swift in Sources */,
 				4AB8094328557EE800C772D1 /* MainTitleView.swift in Sources */,
 				4A691090285312A7001BD21B /* ConsumedItem+CoreDataClass.swift in Sources */,
 				DF65DD422854966D00435F9E /* InitiateTargetSettingDetailView.swift in Sources */,
