@@ -7,19 +7,6 @@
 
 import SwiftUI
 
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-
-    func numberFormatter(number: Int) -> String {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-
-        return numberFormatter.string(from: NSNumber(value: number))!
-    }
-}
-
 struct InitSettingView: View {
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.presentationMode) var dismiss
