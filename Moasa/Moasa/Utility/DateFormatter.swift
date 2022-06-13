@@ -7,7 +7,7 @@
 
 import Foundation
 
-func dateFormatter(date: Date, format: String = "M월 dd일") -> String{
+func dateFormatter(date: Date, format: String = "M월 dd일") -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = format // Default Value 3월 26일
     return dateFormatter.string(from: date)
@@ -15,7 +15,6 @@ func dateFormatter(date: Date, format: String = "M월 dd일") -> String{
 
 func datetoInteger(date: Date) -> Int {
     let stringBuf: String = dateFormatter(date: date, format: "yyMMDD")
-    
     if let returnValue = Int(stringBuf) {
         return returnValue
     } else {
