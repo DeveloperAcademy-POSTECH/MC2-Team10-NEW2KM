@@ -13,7 +13,8 @@ struct NewInitSettingView: View {
 
     @State var show = false
     @State var image: Data = .init(count: 1)
-    
+    @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
+
     @State var targetName: String = ""
     @State var targetPrice: String = ""
 
@@ -87,7 +88,7 @@ struct NewInitSettingView: View {
                             .foregroundColor(.white)
                             .font(.system(size: 20, weight: .bold))
                     }
-                    .disabled(!self.targetName.isEmpty && !self.targetPrice.isEmpty && self.image.count != 1 ? false : true)
+//                    .disabled(!self.targetName.isEmpty && !self.targetPrice.isEmpty && self.image.count != 1 ? false : true)
                 })
             } else if !targetPrice.isEmpty && !targetName.isEmpty {
                 Button(action: {
@@ -121,5 +122,9 @@ struct NewInitSettingView: View {
                 }).opacity(self.arrayCount < 1 ? 1: 0)
             }
         }
+        .navigationBarHidden(true)
+        .sheet(isPresented: self.$show, content: {
+            ImagePicker(images: self.$image, show: self.$show, sourceType: self.sourceType)
+        })
     }
 }
