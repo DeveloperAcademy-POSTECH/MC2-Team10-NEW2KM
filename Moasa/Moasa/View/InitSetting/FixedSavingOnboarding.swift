@@ -21,7 +21,7 @@ struct FixedSavingOnboarding: View {
                 Spacer()
             }.padding(.leading, 16)
             HStack {
-                TextField("예시: " + numberFormatter(number: 100000), text: self.$fixedSaving)
+                TextField("예시: " + numberFormatter(number: 100_000), text: self.$fixedSaving)
                     .padding(.leading, 16)
                     .font(.system(size: 17, weight: .regular))
                     .keyboardType(.decimalPad)

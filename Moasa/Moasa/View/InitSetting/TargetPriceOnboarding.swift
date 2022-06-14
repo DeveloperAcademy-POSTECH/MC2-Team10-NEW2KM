@@ -19,7 +19,7 @@ struct TargetPriceOnboarding: View {
                 Spacer()
             }.padding(.leading, 16)
             HStack {
-                TextField("예시: " + numberFormatter(number: 1000000), text: self.$targetPrice)
+                TextField("예시: " + numberFormatter(number: 1_000_000), text: self.$targetPrice)
                     .padding(.leading, 16)
                     .font(.system(size: 17, weight: .regular))
                     .keyboardType(.decimalPad)

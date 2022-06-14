@@ -12,7 +12,7 @@ import CoreData
 
 extension ConsumedItem {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ConsumedItem> {
-        return NSFetchRequest<ConsumedItem>(entityName: "ConsumedItem")
+    return NSFetchRequest<ConsumedItem>(entityName: "ConsumedItem")
     }
 
     @NSManaged public var id: UUID
