@@ -25,7 +25,8 @@ struct ImageInputOnboarding: View {
                 Button(action: {
                     self.show.toggle()
                 }, label: {
-                    Image(uiImage: UIImage(data: TargetItem().targetImage ?? self.image)!)
+//                    Image(uiImage: UIImage(data: TargetItem().targetImage ?? self.image)!)
+                    Image(uiImage: UIImage(data: self.image)!)
                         .resizable()
                         .clipShape(Circle())
                         .aspectRatio(contentMode: .fill)
