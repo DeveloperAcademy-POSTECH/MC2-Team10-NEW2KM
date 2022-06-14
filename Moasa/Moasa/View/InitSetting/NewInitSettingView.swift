@@ -78,15 +78,28 @@ struct NewInitSettingView: View {
             Spacer()
 
             if image.count != 1 {
-                NavigationLink(destination: MainView(), label: {
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 360, height: 60)
-                            .cornerRadius(13)
-                            .foregroundColor(.accentColor)
-                        Text("다음")
-                            .foregroundColor(.white)
-                            .font(.system(size: 20, weight: .bold))
+                NavigationLink(destination: ConsumedLimitView(), label: {
+                    ZStack{
+                        Button(action: {
+                            
+                        }, label: {
+                            Rectangle()
+                                .frame(width: 360, height: 60)
+                                .cornerRadius(13)
+                                .foregroundColor(.accentColor)
+                            Text("다음")
+                                .foregroundColor(.white)
+                                .font(.system(size: 20, weight: .bold))
+                        })
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 360, height: 60)
+                                .cornerRadius(13)
+                                .foregroundColor(.accentColor)
+                            Text("다음")
+                                .foregroundColor(.white)
+                                .font(.system(size: 20, weight: .bold))
+                        }
                     }
                 }).disabled(!self.targetName.isEmpty && !self.targetPrice.isEmpty && self.image.count != 1 ? false : true)
             } else if !targetPrice.isEmpty && !targetName.isEmpty {

@@ -7,13 +7,44 @@
 
 import SwiftUI
 
-struct ConsumedLimitView: View {
-    @Environment(\.managedObjectContext) var viewContext
-    @State var consumedCategory: String = ""
-    @State var consumedLimit: Int64 = 0
-    
+struct ConsumedCategories: Hashable {
+    var consumedCategory: String
+    var consumedAmount: Int
+}
+
+struct AmountCategories: View {
+    var consumedCategory: String
+    var consumedAmount: Int
+
     var body: some View {
-        
+        ZStack {
+            Rectangle()
+                .foregroundColor(.white)
+                .background(.white)
+            HStack {
+                Text(consumedCategory)
+                Spacer()
+                Text(String(consumedAmount))
+            }
+            .font(.system(size: 25, weight: .bold))
+            .padding(.vertical, 16)
+            .padding(.horizontal, 16)
+        }
+        .frame(width: 350, height: 100)
+        .cornerRadius(13)
+    }
+}
+
+struct ConsumedLimitOnboarding: View {
+    @Environment(\.managedObjectContext) var viewContext
+
+    var consumedCategories = [ConsumedCategories(consumedCategory: "식비", consumedAmount: 100_000),
+                              ConsumedCategories(consumedCategory: "교통/차량", consumedAmount: 200_000),
+                              ConsumedCategories(consumedCategory: "패션/미용", consumedAmount: 300_000)]
+    var consumedCategory: [String] = ["식비", "교통비", "쇼핑"]
+    var consumedAmount: [Int] = [100_000, 200_000, 300_000]
+
+    var body: some View {
         VStack {
             HStack {
                 Text("예산  항목을 추가해주세요")
@@ -22,79 +53,30 @@ struct ConsumedLimitView: View {
                     .padding(.bottom, 40)
                 Spacer()
             }.padding(.leading, 16)
-            ZStack {
-                Rectangle()
-                    .foregroundColor(.white)
-                    .background(.white)
-                HStack {
-                    VStack {
-                        Text("식비")
-                        Spacer()
-                    }
-                    Spacer()
-                    VStack {
-                        Spacer()
-                        Text("400,000")
-                    }
+
+            Section(header: Text("소비 예산"), content: {
+                ForEach(consumedCategories, id: \.self) { category in
+                    AmountCategories(consumedCategory: category.consumedCategory,
+                                     consumedAmount: category.consumedAmount)
                 }
-                .font(.system(size: 25, weight: .bold))
-                .padding(.vertical, 16)
-                .padding(.horizontal, 16)
-            }.frame(width: 350, height: 100)
-                .cornerRadius(13)
-            ZStack {
-                Rectangle()
-                    .foregroundColor(.white)
-                    .background(.white)
-                HStack {
-                    VStack {
-                        Text("교통비")
-                        Spacer()
-                    }
-                    Spacer()
-                    VStack {
-                        Spacer()
-                        Text("100,000")
-                    }
-                }
-                .font(.system(size: 25, weight: .bold))
-                .padding(.vertical, 16)
-                .padding(.horizontal, 16)
-            }.frame(width: 350, height: 100)
-                .cornerRadius(13)
-            ZStack {
-                Rectangle()
-                    .foregroundColor(.white)
-                    .background(.white)
-                HStack {
-                    VStack {
-                        Text("의류비")
-                        Spacer()
-                    }
-                    Spacer()
-                    VStack {
-                        Spacer()
-                        Text("300,000")
-                    }
-                }
-                .font(.system(size: 25, weight: .bold))
-                .padding(.vertical, 16)
-                .padding(.horizontal, 16)
-            }.frame(width: 350, height: 100)
-                .cornerRadius(13)
-            Button(action: {
-                let add = ConsumedCategory(context: self.viewContext)
-                add.consumedCategory = self.consumedCategory
-                add.consumedLimit = self.consumedLimit
-                try? self.viewContext.save()
+                .frame(width: 350, height: 100)
+                        .cornerRadius(13)
+            })
+        }.background(Color.kenCustomOrange)
+
+        Button(action: {
+//                let add = ConsumedCategory(context: self.viewContext)
+//                add.consumedCategory = self.consumedCategory
+//                add.consumedLimit = self.consumedLimit
+//                try? self.viewContext.save()
 //                self.dismiss.wrappedValue.dismiss()
-            }, label: {
-                ZStack {
-                    Rectangle()
-                        .foregroundColor(.white)
-                        .background(.white)
-                    Image(systemName: "plus")
-                        .font(.system(size: 25, weight: .bold))
+        }, label: {
+            ZStack {
+                Rectangle()
+                    .foregroundColor(.white)
+                    .background(.white)
+                Image(systemName: "plus")
+                    .font(.system(size: 25, weight: .bold))
 //                    HStack {
 //                        VStack {
 //                            TextField("소비항목", text: self.$consumedCategory)
@@ -109,11 +91,10 @@ struct ConsumedLimitView: View {
 //                    .font(.system(size: 25, weight: .bold))
 //                    .padding(.vertical, 16)
 //                    .padding(.horizontal, 16)
-                }.frame(width: 350, height: 100)
-                    .cornerRadius(13)
-            })
-            Spacer()
-        }
+            }.frame(width: 350, height: 100)
+                .cornerRadius(13)
+        })
+        Spacer()
     }
 }
 
