@@ -35,7 +35,7 @@ struct AmountCategories: View {
     }
 }
 
-struct ConsumedLimitOnboarding: View {
+struct ConsumedLimitView: View {
     @Environment(\.managedObjectContext) var viewContext
 
     var consumedCategories = [ConsumedCategories(consumedCategory: "식비", consumedAmount: 100_000),
@@ -62,7 +62,9 @@ struct ConsumedLimitOnboarding: View {
                 .frame(width: 350, height: 100)
                         .cornerRadius(13)
             })
-        }.background(Color.kenCustomOrange)
+        }
+        .background(Color.kenCustomOrange)
+        .navigationBarHidden(true)
 
         Button(action: {
 //                let add = ConsumedCategory(context: self.viewContext)
