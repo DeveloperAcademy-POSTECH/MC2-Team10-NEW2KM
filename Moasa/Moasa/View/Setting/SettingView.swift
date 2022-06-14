@@ -12,7 +12,7 @@ struct SettingView: View {
     var budgetSettingLabelList: [String] = ["고정 저금액", "처음부터 넣을 금액", "카테고리(항목, 예산)"]
     var targetInitializeLabelList: [String] = ["목표 초기화"]
     var body: some View {
-        VStack {
+//        VStack {
             List {
                 Section(header: Text("목표 설정")) {
                     ForEach(targetSettingLabelList, id: \.self) { target in
@@ -42,7 +42,7 @@ struct SettingView: View {
                     }
                 }
             }
-        }
+//        }
     }
 }
 

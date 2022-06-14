@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct DetailView: View {
+    /*
+    // MARK: 여기의 주석은 CoreData연결 이후에 주석을 제거한다. 디테일 뷰를 확인할 수 없음
     var category: ConsumedCategory
     var categorySorted: ConsumedCategory {
         get {
@@ -31,6 +33,7 @@ struct DetailView: View {
         return pointerArray // Array에 있는 값들이 언제 변화하는지 찍혀져있는 Interger Array가 return 됩니다.
     }
     var index: Int = 0
+     */
     var body: some View {
         // Logic >>> sort, filter, etc...
         VStack {
@@ -38,22 +41,24 @@ struct DetailView: View {
             SearchBarView()
             VStack {
                 LazyVStack {
-                    ForEach(0..<categorySorted.consumedItems.count) { idx in
-                        DetailBlockDateView(consumedCategory: category, sPointer: pointerArray[idx], ePointer: pointerArray[idx + 1])
-                        /*
-                        if (i == pointerArray[index]) {
-                            Text("씨발")
-                            index = index + 1
-                        }
-                        ForEach(0..<10) { j in
-                            DetailListView()
-                        }
-                         */
-                    }
+                    // MARK: 여기의 주석은 CoreData연결 이후에 주석을 제거한다. 디테일 뷰를 확인할 수 없음
+//                    ForEach(0..<categorySorted.consumedItems.count) { idx in
+//                        DetailBlockDateView(consumedCategory: category, sPointer: pointerArray[idx], ePointer: pointerArray[idx + 1])
+//                        /*
+//                        if (i == pointerArray[index]) {
+//                            Text("씨발")
+//                            index = index + 1
+//                        }
+//                        ForEach(0..<10) { j in
+//                            DetailListView()
+//                        }
+//                         */
+//                    }
                 }
             }
         }
     }
+}
     /*
     func findPointer() -> [Int] {
         var dateArray: [Date]
@@ -69,7 +74,6 @@ struct DetailView: View {
         return PointerArray
     }
      */
-}
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {

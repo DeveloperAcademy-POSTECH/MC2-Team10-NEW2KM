@@ -31,8 +31,10 @@ struct BudgetContentView: View {
             .padding(.leading)
             LazyVGrid(columns: [GridItem(.flexible(minimum: 80)), GridItem(.flexible(minimum: 80))], spacing: 20) {
                 ForEach(categories, id: \.self) { category in
-                    BudgetItem(icon: category.icon, category: category.category, left: category.left)
-                        .aspectRatio(contentMode: .fit)
+                    NavigationLink(destination: DetailView()) {
+                        BudgetItem(icon: category.icon, category: category.category, left: category.left)
+                            .aspectRatio(contentMode: .fit)
+                    }
                 }
             }.padding(EdgeInsets(top: 0, leading: 15, bottom: 20, trailing: 15))
         }
@@ -47,6 +49,7 @@ struct BudgetItem: View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
                 .fill(.white)
+                .shadow(radius: 2, y: 10)
             VStack {
                 HStack {
                     Image(systemName: icon)
@@ -63,6 +66,7 @@ struct BudgetItem: View {
                         .font(.system(size: 14))
                 }.padding()
             }
+            .foregroundColor(.black)
         }
         .frame(height: 80)
     }
