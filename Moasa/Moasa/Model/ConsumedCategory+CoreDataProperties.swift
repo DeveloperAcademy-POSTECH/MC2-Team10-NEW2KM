@@ -19,16 +19,6 @@ extension ConsumedCategory {
     @NSManaged public var consumedCategory: String
     @NSManaged public var consumedLimit: Int64
     @NSManaged public var challengeCycle: Int64
-    @NSManaged public var consumedItems: [ConsumedItem]
-    public var saving: Int64 {
-        let monthSpent = consumedItems
-            .filter({ isSameMonth(date1: $0.consumedDate, date2: Date.now ) })
-            .map({ $0.consumedPrice })
-            .reduce(0, +)
-        let saving = consumedLimit - monthSpent
-        return max(saving, 0)
-        // 특정 카테고리 별 '현재' (현재 -> isSameMonth로 카운트) 달 소비 가격: 음수의 경우 saving X -> 0 리턴
-    }
     public var validLimit: Double {
         let startDate = Date.distantPast
         // startDate는 targetItem에 기록되어 있음

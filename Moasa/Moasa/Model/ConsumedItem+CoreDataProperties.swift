@@ -24,6 +24,6 @@ extension ConsumedItem {
     @NSManaged public var consumedPrice: Int64
 }
 
-extension ConsumedItem: Identifiable {
+extension ConsumedItem: Identifiable{
 }
 
