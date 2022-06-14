@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchBarView: View {
+    // State Bidning -> startDate, endDate, selectedMethod
     var body: some View {
         HStack {
             Text("서치바")
