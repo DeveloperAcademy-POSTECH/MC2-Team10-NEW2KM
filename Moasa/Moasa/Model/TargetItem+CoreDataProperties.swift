@@ -18,12 +18,14 @@ extension TargetItem {
     @NSManaged public var id: UUID
     @NSManaged public var targetName: String
     @NSManaged public var targetPrice: Int64
+    @NSManaged public var freeSaving: [Int]
     @NSManaged public var fixedSaving: Int64
     @NSManaged public var targetImage: Data?
     @NSManaged public var challengeCycle: Int64
     public var restPrice: Int64 {
         let categorySaving: Int64 = 10_000
         // 도전 주기 끝난 뒤 ConsumedCategory.saving 알림 -> 입력받고 저금할 금액 입력
+        // 저금 금액: 1. 고정저금액 2. 절약한 금액 3. 유동 저금액 (용돈)
         return targetPrice - fixedSaving * challengeCycle - categorySaving
     } // TODO: restPrice에서 categorySaving을 읽어야 하는 문제
     public var restPricePercentage: Int {

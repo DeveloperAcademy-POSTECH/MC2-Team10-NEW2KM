@@ -20,9 +20,10 @@ extension ConsumedItem {
     @NSManaged public var consumedCategory: String
     @NSManaged public var consumedName: String
     @NSManaged public var consumedDate: Date
-    @NSManaged public var consumedMemo: String
+    @NSManaged public var consumedMemo: String?
     @NSManaged public var consumedPrice: Int64
 }
 
 extension ConsumedItem: Identifiable {
 }
+

@@ -11,7 +11,7 @@
         <attribute name="challengeCycle" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="consumedCategory" attributeType="String"/>
         <attribute name="consumedDate" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="consumedMemo" attributeType="String"/>
+        <attribute name="consumedMemo" optional="YES" attributeType="String"/>
         <attribute name="consumedName" attributeType="String"/>
         <attribute name="consumedPrice" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
@@ -19,6 +19,7 @@
     <entity name="TargetItem" representedClassName=".TargetItem" syncable="YES">
         <attribute name="challengeCycle" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="fixedSaving" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="freeSaving" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="startDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="targetImage" optional="YES" attributeType="Binary"/>
@@ -28,6 +29,6 @@
     <elements>
         <element name="ConsumedCategory" positionX="229.33984375" positionY="-2.0625" width="128" height="104"/>
         <element name="ConsumedItem" positionX="67.29296875" positionY="155.5390625" width="128" height="134"/>
-        <element name="TargetItem" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="TargetItem" positionX="-63" positionY="-18" width="128" height="149"/>
     </elements>
 </model>

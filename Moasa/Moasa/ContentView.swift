@@ -11,9 +11,12 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State private var index = 0
-    @FetchRequest(
-        sortDescriptors:
-            [NSSortDescriptor(keyPath: \ConsumedCategory.challengeCycle, ascending: true)], animation: .default)
+    static var getConsumedCategory: NSFetchRequest<ConsumedCategory> {
+        let request: NSFetchRequest<ConsumedCategory> = ConsumedCategory.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \ConsumedCategory.challengeCycle, ascending: true)]
+        return request
+    }
+    @FetchRequest(fetchRequest: getConsumedCategory)
     private var consumedCategory: FetchedResults<ConsumedCategory>
     @FetchRequest(
         sortDescriptors:
@@ -149,6 +152,8 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        let context = PersistenceController.shared.container.viewContext
+        return ContentView().environment(\.managedObjectContext, context)
+        // Preview Context -> shared Context로 변경
     }
 }
