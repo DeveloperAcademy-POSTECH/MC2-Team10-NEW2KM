@@ -77,7 +77,7 @@ struct NewInitSettingView: View {
                 .padding(.horizontal, 16)
             Spacer()
 
-            if image.count != 1 && !targetPrice.isEmpty && !targetName.isEmpty {
+            if image.count != 1 {
                 NavigationLink(destination: MainView(), label: {
                     ZStack {
                         Rectangle()
@@ -88,8 +88,7 @@ struct NewInitSettingView: View {
                             .foregroundColor(.white)
                             .font(.system(size: 20, weight: .bold))
                     }
-//                    .disabled(!self.targetName.isEmpty && !self.targetPrice.isEmpty && self.image.count != 1 ? false : true)
-                })
+                }).disabled(!self.targetName.isEmpty && !self.targetPrice.isEmpty && self.image.count != 1 ? false : true)
             } else if !targetPrice.isEmpty && !targetName.isEmpty {
                 Button(action: {
                     showTargetImg = true
