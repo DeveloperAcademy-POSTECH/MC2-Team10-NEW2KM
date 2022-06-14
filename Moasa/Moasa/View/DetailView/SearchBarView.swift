@@ -13,6 +13,11 @@ struct SearchBarView: View {
             Text("서치바")
                 .font(.title)
             Spacer()
+            Button(action: {
+                //: MODAL -> 기간 선택 [DatePicker] + 정렬 방식 [최신/가격]
+            }, label: {
+                // 예쁘게 해주세요!
+            })
         }
         .padding(.leading)
     }

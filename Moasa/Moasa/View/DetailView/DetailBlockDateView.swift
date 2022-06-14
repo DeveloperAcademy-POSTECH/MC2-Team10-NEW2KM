@@ -7,22 +7,23 @@
 
 import SwiftUI
 
-//struct DetailBlockDateView: View {
-//    var consumedCategory: ConsumedCategory // DetailView에서 이미 filter를 거치고 들어온 데이터여야 합니다.
-//    var sPointer: Int
-//    var ePointer: Int
-//    var body: some View {
-//        VStack {
-//            List { // ForEach 수정 필요 (구조 확정되면...)
-//                Section(header: Text(dateFormatter(date: consumedCategory.consumedItems[sPointer].consumedDate))) {
-//                    ForEach(sPointer..<ePointer) { idx in
-//                        DetailListView(consumedItem: consumedCategory.consumedItems[idx], leftMoney: 5000)
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
+struct DetailBlockDateView: View {
+    var consumedItemsSorted: [ConsumedItem]
+    // 해당 카테고리의 모든 ConsumedItem 정렬된 상태 (값)
+    var sPointer: Int
+    var ePointer: Int
+    var body: some View {
+        VStack {
+            List { // ForEach 수정 필요 (구조 확정되면...)
+                Section(header: Text(dateFormatter(date: consumedCategory.consumedItems[sPointer].consumedDate))) {
+                    ForEach(sPointer..<ePointer) { idx in
+                        DetailListView(consumedItem: consumedCategory.consumedItems[idx], leftMoney: 5000)
+                    }
+                }
+            }
+        }
+    }
+}
 
 /*
 struct DetailBlockDateView_Previews: PreviewProvider {
