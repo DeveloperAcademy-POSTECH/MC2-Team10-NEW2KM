@@ -19,19 +19,15 @@ struct SearchBarView: View {
     @State private var searchText = ""
     var body: some View {
         HStack {
-            Text("서치바")
-                .font(.title)
             VStack {
-                NavigationView {
-                    List {
-                        ForEach(searchResults, id: \.self) { name in
-                            NavigationLink(destination: Text(name)) {
-                                Text(name)
-                            }
+                List {
+                    ForEach(searchResults, id: \.self) { name in
+                        NavigationLink(destination: Text(name)) {
+                            Text(name)
                         }
                     }
-                    .searchable(text: $searchText)
                 }
+                .searchable(text: $searchText)
                 Spacer()
             }
             .padding(.leading)

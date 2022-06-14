@@ -42,7 +42,7 @@ struct InitSettingView: View {
                                 .foregroundColor(self.fixedSaving > "" ? .white : .gray)
                                 .font(.system(size: 20, weight: .bold))
                         }
-                        .onTapGesture {
+//                        .onTapGesture {
                             // 클릭하고나면, coredata 내부로 저장을 해주게 되는 로직
                             //                            let add = TargetItem(context: self.viewContext)
                             //                            add.targetImage = self.image
@@ -51,7 +51,7 @@ struct InitSettingView: View {
                             //
                             //                            self.dismiss.wrappedValue.dismiss()
                             //                            self.image.count = 0
-                        }
+//                        }
                 }
                 .padding(.bottom, 40)
             }
