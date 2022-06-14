@@ -5,6 +5,7 @@
 //  Created by Kelly Chui on 2022/06/13.
 //
 
+import CoreData
 import SwiftUI
 
 struct DetailView: View {
@@ -34,6 +35,18 @@ struct DetailView: View {
     }
     var index: Int = 0
      */
+    @Environment(\.managedObjectContext) private var viewContext
+    static var getConsumedItem: NSFetchRequest<ConsumedItem> {
+        let request: NSFetchRequest<ConsumedItem> = ConsumedItem.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \ConsumedItem.id, ascending: true)]
+        // filtering -> ConsumedItem 체크
+        return request
+    }
+    @FetchRequest(fetchRequest: getConsumedItem)
+    private var consumedItems: FetchedResults<ConsumedItem>
+    var categoryId: UUID
+    var categoryName: String
+    
     var body: some View {
         // Logic >>> sort, filter, etc...
         VStack {
@@ -77,6 +90,6 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView()
+        DetailView(categoryId: UUID(), categoryName: "CATEGORY")
     }
 }
