@@ -19,11 +19,15 @@ import SwiftUI
                  BudgetContentView()
              }
          }
+         .navigationBarHidden(true)
+         .navigationBarBackButtonHidden(true)
      }
  }
 
  struct MainView_Previews: PreviewProvider {
      static var previews: some View {
-         MainView()
+         NavigationView {
+             MainView()
+         }
      }
  }
