@@ -16,7 +16,7 @@ struct MainView: View {
                     .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
                 ScrollView {
                     TargetContentView()
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 39, trailing: 0))
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 39, trailing: 0))
                     BudgetContentView()
                 }
             }
