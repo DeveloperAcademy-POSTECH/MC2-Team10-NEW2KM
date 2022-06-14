@@ -11,6 +11,8 @@ struct NewInitSettingView: View {
     @State private var showText = false
     @State private var showTargetImg = false
 
+    @State var show = false
+    @State var image: Data = .init(count: 1)
     
     @State var targetName: String = ""
     @State var targetPrice: String = ""
@@ -26,6 +28,31 @@ struct NewInitSettingView: View {
                     .padding(.top, 90)
                 Spacer()
             }.padding(.leading, 16)
+            if showTargetImg {
+                if self.image.count != 1 {
+                    Button(action: {
+                        self.show.toggle()
+                    }, label: {
+                        Image(uiImage: UIImage(data: self.image)!)
+                            .resizable()
+                            .clipShape(Circle())
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 190, height: 190)
+                            .padding(.top, 50)
+                    })
+                } else {
+                    Button(action: {
+                        self.show.toggle()
+                    }, label: {
+                        Image(systemName: "photo.fill")
+                            .resizable()
+                            .clipShape(Circle())
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 190, height: 190)
+                            .padding(.top, 50)
+                    })
+                }
+            }
             if showText {
                 HStack {
                     TextField("예시: " + numberFormatter(number: 1_000_000), text: self.$targetPrice)
@@ -49,7 +76,20 @@ struct NewInitSettingView: View {
                 .padding(.horizontal, 16)
             Spacer()
 
-            if !targetPrice.isEmpty && !targetName.isEmpty {
+            if image.count != 1 && !targetPrice.isEmpty && !targetName.isEmpty {
+                NavigationLink(destination: MainView(), label: {
+                    ZStack {
+                        Rectangle()
+                            .frame(width: 360, height: 60)
+                            .cornerRadius(13)
+                            .foregroundColor(.accentColor)
+                        Text("다음")
+                            .foregroundColor(.white)
+                            .font(.system(size: 20, weight: .bold))
+                    }
+                    .disabled(!self.targetName.isEmpty && !self.targetPrice.isEmpty && self.image.count != 1 ? false : true)
+                })
+            } else if !targetPrice.isEmpty && !targetName.isEmpty {
                 Button(action: {
                     showTargetImg = true
                     arrayCount += 1
