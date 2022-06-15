@@ -26,6 +26,7 @@ struct MainView: View {
     }
     @FetchRequest(fetchRequest: getConsumedItem)
     private var consumedItems: FetchedResults<ConsumedItem>
+    
     @FetchRequest(
         sortDescriptors:
             [NSSortDescriptor(keyPath: \TargetItem.id, ascending: true)], animation: .default)
@@ -48,11 +49,3 @@ struct MainView: View {
         .navigationBarBackButtonHidden(true)
     }
 }
-
-//struct MainView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            MainView(targetItem: <#FetchedResults<TargetItem>#>)
-//        }
-//    }
-//}

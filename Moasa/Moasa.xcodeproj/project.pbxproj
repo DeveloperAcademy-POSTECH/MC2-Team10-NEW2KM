@@ -74,10 +74,6 @@
 		9803A34F2858ACD200EE4B0A /* ConsumedLimitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumedLimitView.swift; sourceTree = "<group>"; };
 		9871F1532855802D0077B058 /* Moasa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moasa.xcdatamodel; sourceTree = "<group>"; };
 		9871F1B82855C7310077B058 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		9871F1EF2856DDF40077B058 /* TargetNameOnboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetNameOnboarding.swift; sourceTree = "<group>"; };
-		9871F1F02856DDF40077B058 /* TargetPriceOnboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetPriceOnboarding.swift; sourceTree = "<group>"; };
-		9871F1F12856DDF40077B058 /* FixedSavingOnboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedSavingOnboarding.swift; sourceTree = "<group>"; };
-		9871F1F22856DDF40077B058 /* ImageInputOnboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInputOnboarding.swift; sourceTree = "<group>"; };
 		CF3A011D28575C7B002A2C80 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		CF3A012128576028002A2C80 /* dateSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateSort.swift; sourceTree = "<group>"; };
 		CF5FF4D02856CC18004FB062 /* DetailBlockDateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBlockDateView.swift; sourceTree = "<group>"; };
@@ -86,7 +82,6 @@
 		CF5FF4D82856CC3B004FB062 /* CircleWaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleWaveView.swift; sourceTree = "<group>"; };
 		CF5FF4DA2856CC4F004FB062 /* dateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dateFormatter.swift; sourceTree = "<group>"; };
 		CF5FF4DC2856D79E004FB062 /* addDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addDate.swift; sourceTree = "<group>"; };
-
 		DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeSettingDetailView.swift; sourceTree = "<group>"; };
 		DF65DD412854966D00435F9E /* InitiateTargetSettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiateTargetSettingDetailView.swift; sourceTree = "<group>"; };
 		DF65DD432854A7FB00435F9E /* CategorySettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySettingDetailView.swift; sourceTree = "<group>"; };
@@ -330,23 +325,16 @@
 			files = (
 				CF5FF4D32856CC23004FB062 /* DetailListView.swift in Sources */,
 				4A8C5242285852C4007CE4F1 /* funcPointer.swift in Sources */,
-				9871F1F62856DDF40077B058 /* ImageInputOnboarding.swift in Sources */,
-				9871F1F42856DDF40077B058 /* TargetPriceOnboarding.swift in Sources */,
 				9803A34E2858A7B200EE4B0A /* NewInitSettingView.swift in Sources */,
-
 				CF5FF4D32856CC23004FB062 /* DetailListView.swift in Sources */,
-
 				4A3641382856E1D90032A90A /* ContentView.swift in Sources */,
 				9871F1B92855C7310077B058 /* ImagePicker.swift in Sources */,
 				9871F15B2855802D0077B058 /* Moasa.xcdatamodeld in Sources */,
 				4A3640ED2856B8A40032A90A /* Color+Extension.swift in Sources */,
 				4A36413C2856E2320032A90A /* Number+Extension.swift in Sources */,
 				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
-
 				9803A3502858ACD200EE4B0A /* ConsumedLimitView.swift in Sources */,
-
 				CF3A012228576028002A2C80 /* dateSort.swift in Sources */,
-
 				4AB8094A2855E8A200C772D1 /* SettingView.swift in Sources */,
 				CF5FF4DB2856CC4F004FB062 /* dateFormatter.swift in Sources */,
 				CF5FF4D52856CC2A004FB062 /* DetailView.swift in Sources */,
@@ -354,9 +342,7 @@
 				CF3A011E28575C7B002A2C80 /* SearchBarView.swift in Sources */,
 				4AB8094328557EE800C772D1 /* MainTitleView.swift in Sources */,
 				4A691090285312A7001BD21B /* ConsumedItem+CoreDataClass.swift in Sources */,
-
 				4A040FEF2857593000DA507E /* Date+Extension.swift in Sources */,
-
 				DF65DD422854966D00435F9E /* InitiateTargetSettingDetailView.swift in Sources */,
 				CF5FF4D92856CC3B004FB062 /* CircleWaveView.swift in Sources */,
 				4A691095285312A7001BD21B /* TargetItem+CoreDataProperties.swift in Sources */,
