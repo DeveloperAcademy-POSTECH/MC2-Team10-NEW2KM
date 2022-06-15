@@ -13,6 +13,8 @@ struct TargetContentView: View {
             RoundedRectangle(cornerRadius: 10)
                 .fill(.white)
                 .frame(width: 360, height: 400)
+                .opacity(0.5)
+                .shadow(radius: 4)
             VStack {
                 Text("Apple Watch")
                     .font(.system(size: 18))

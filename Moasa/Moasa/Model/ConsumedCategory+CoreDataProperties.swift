@@ -19,7 +19,6 @@ extension ConsumedCategory {
     @NSManaged public var consumedCategory: String
     @NSManaged public var consumedLimit: Int64
     @NSManaged public var challengeCycle: Int64
-    @NSManaged public var consumedItems: [ConsumedItem]
 }
 
 extension ConsumedCategory: Identifiable {
