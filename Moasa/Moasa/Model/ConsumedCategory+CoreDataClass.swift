@@ -2,7 +2,7 @@
 //  ConsumedCategory+CoreDataClass.swift
 //  Moasa
 //
-//  Created by Junyeong Park on 2022/06/10.
+//  Created by Junyeong Park on 2022/06/15.
 //
 //
 

@@ -32,9 +32,9 @@ struct DetailView: View {
     // 디폴트: start <-> end까지의 소비 기록을 뽑을 커팅 포인트
     var body: some View {
         let consumedItemsFiltered = consumedItems.filter({ $0.consumedCategory == categoryName
-            && $0.consumedDate >= startDate
-            && $0.consumedDate <= endDate })
-        let consumedItemsSorted = consumedItemsFiltered.sorted(by: selectedMethod ? ({ $0.consumedPrice > $1.consumedPrice }) : ({ $0.consumedDate < $1.consumedDate }))
+            && $0.consumedDate! >= startDate
+            && $0.consumedDate! <= endDate })
+        let consumedItemsSorted = consumedItemsFiltered.sorted(by: selectedMethod ? ({ $0.consumedPrice > $1.consumedPrice }) : ({ $0.consumedDate! < $1.consumedDate! }))
         var pointerArray: [Int] = findPointer(consumedItemsSorted: consumedItemsSorted)
         // 기간, 정렬 조건 -> consumedItems 필터링 및 정렬 완료
         // DetailBlockDateView에서 리스트 (+섹션) 그리기
@@ -53,7 +53,7 @@ struct DetailView: View {
                         let ePointer = pointerArray[idx + 1]
                         let consumedItemsResorted = Array(consumedItemsSorted[sPointer..<ePointer])
                         let curDate = consumedItemsResorted[0].consumedDate
-                        DetailBlockDateView(consumedItemsSorted: consumedItemsResorted, date: curDate)
+                        DetailBlockDateView(consumedItemsSorted: consumedItemsResorted, date: curDate!)
                     }
                 }
             }

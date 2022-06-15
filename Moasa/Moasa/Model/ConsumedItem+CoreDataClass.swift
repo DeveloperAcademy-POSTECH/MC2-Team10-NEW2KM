@@ -2,12 +2,13 @@
 //  ConsumedItem+CoreDataClass.swift
 //  Moasa
 //
-//  Created by Junyeong Park on 2022/06/10.
+//  Created by Junyeong Park on 2022/06/15.
 //
 //
 
-import CoreData
 import Foundation
+import CoreData
+
 
 public class ConsumedItem: NSManagedObject {
 

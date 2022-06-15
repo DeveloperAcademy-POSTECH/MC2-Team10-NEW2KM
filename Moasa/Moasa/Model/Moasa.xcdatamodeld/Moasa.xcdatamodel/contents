@@ -2,16 +2,16 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ConsumedCategory" representedClassName=".ConsumedCategory" syncable="YES">
         <attribute name="challengeCycle" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="consumedCategory" attributeType="String"/>
+        <attribute name="consumedCategory" attributeType="String" defaultValueString="Category"/>
         <attribute name="consumedLimit" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int64:Int64]"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
     </entity>
     <entity name="ConsumedItem" representedClassName=".ConsumedItem" syncable="YES">
         <attribute name="challengeCycle" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="consumedCategory" attributeType="String"/>
-        <attribute name="consumedDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="consumedCategory" attributeType="String" defaultValueString=""/>
+        <attribute name="consumedDate" attributeType="Date" defaultDateTimeInterval="676954680" usesScalarValueType="NO"/>
         <attribute name="consumedMemo" optional="YES" attributeType="String"/>
-        <attribute name="consumedName" attributeType="String"/>
+        <attribute name="consumedName" attributeType="String" defaultValueString=""/>
         <attribute name="consumedPrice" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
     </entity>
@@ -19,9 +19,9 @@
         <attribute name="challengeCycle" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="fixedSaving" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="startDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="startDate" attributeType="Date" defaultDateTimeInterval="676954680" usesScalarValueType="NO"/>
         <attribute name="targetImage" optional="YES" attributeType="Binary"/>
-        <attribute name="targetName" attributeType="String"/>
+        <attribute name="targetName" attributeType="String" defaultValueString=""/>
         <attribute name="targetPrice" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="totalSaved" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
