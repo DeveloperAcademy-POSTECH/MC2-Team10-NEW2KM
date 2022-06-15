@@ -20,7 +20,6 @@ struct BudgetContentView: View {
                       CategoryLeft(icon: "ellipsis.circle", category: "기타", left: 5000)]
     @Environment(\.managedObjectContext) private var viewContext
     let persistenceController = PersistenceController.shared
-    
     let categoryID: UUID = UUID()
     // category 해당 UUID
     let categoryName: String = "CATEGORY"
