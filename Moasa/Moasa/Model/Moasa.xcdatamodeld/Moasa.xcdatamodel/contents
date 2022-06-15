@@ -3,7 +3,7 @@
     <entity name="ConsumedCategory" representedClassName=".ConsumedCategory" syncable="YES">
         <attribute name="challengeCycle" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="consumedCategory" attributeType="String"/>
-        <attribute name="consumedLimit" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="consumedLimit" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int64:Int64]"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
     </entity>
     <entity name="ConsumedItem" representedClassName=".ConsumedItem" syncable="YES">
@@ -23,10 +23,11 @@
         <attribute name="targetImage" optional="YES" attributeType="Binary"/>
         <attribute name="targetName" attributeType="String"/>
         <attribute name="targetPrice" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="totalSaved" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="ConsumedCategory" positionX="229.33984375" positionY="-2.0625" width="128" height="89"/>
-        <element name="ConsumedItem" positionX="67.29296875" positionY="155.5390625" width="128" height="134"/>
-        <element name="TargetItem" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="ConsumedCategory" positionX="229.33984375" positionY="-2.0625" width="128" height="103"/>
+        <element name="ConsumedItem" positionX="67.29296875" positionY="155.5390625" width="128" height="148"/>
+        <element name="TargetItem" positionX="-63" positionY="-18" width="128" height="163"/>
     </elements>
 </model>

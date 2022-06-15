@@ -69,7 +69,7 @@ struct ContentView: View {
             newItem.id = UUID()
             newItem.consumedCategory = "CATEGORY"
             newItem.challengeCycle = Int64(index)
-            newItem.consumedLimit = Int64(index * 100)
+            newItem.consumedLimit = [:]
             index += 1
             // TODO: 정보 입력 함수 만들기 (초기 세팅/키보드)
             do {

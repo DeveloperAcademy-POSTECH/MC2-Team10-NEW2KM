@@ -23,7 +23,8 @@ struct BudgetContentView: View {
     let categoryID: UUID = UUID()
     // category 해당 UUID
     let categoryName: String = "CATEGORY"
-    // category 체크 String
+    let consumedLimit: Int = 100000
+    // category 체크 String, 카테고리 별 월별 한계 금액 consumedLimit
 
     var body: some View {
         VStack {
@@ -37,7 +38,7 @@ struct BudgetContentView: View {
             .padding(.leading)
             LazyVGrid(columns: [GridItem(.flexible(minimum: 80)), GridItem(.flexible(minimum: 80))], spacing: 40) {
                 ForEach(categories, id: \.self) { category in
-                    NavigationLink(destination: DetailView(categoryId: categoryID, categoryName: categoryName)) {
+                    NavigationLink(destination: DetailView(categoryId: categoryID, categoryName: categoryName, consumedLimit: consumedLimit)) {
                         BudgetItem(icon: category.icon, category: category.category, left: category.left)
                             .aspectRatio(contentMode: .fit)
                     }
