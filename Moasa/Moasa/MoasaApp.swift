@@ -15,14 +15,11 @@ struct MoasaApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
+
+                NewInitSettingView() //@AppStorage로 값이 입력된 상태라면, if else 구문으로 들어 갈 예정
+                  .environment(\.managedObjectContext, persistenceController.container.viewContext)
 //                InitSettingView() //@AppStorage로 값이 입력된 상태라면, if else 구문으로 들어 갈 예정
-//                ContentView()
-                InitSettingView() //@AppStorage로 값이 입력된 상태라면, if else 구문으로 들어 갈 예정
-//                MainView()
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
-//            ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
