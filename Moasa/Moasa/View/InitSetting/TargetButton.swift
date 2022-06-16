@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TargetButton: View {
-
     @EnvironmentObject var items: Items
 
     @Binding var showText: Bool

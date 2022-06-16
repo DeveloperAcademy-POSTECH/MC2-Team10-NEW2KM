@@ -8,17 +8,14 @@
 import SwiftUI
 
 struct TargetInput: View {
-
     @Binding var showText: Bool
     @Binding var showTargetImg: Bool
+    @Binding var targetPrice: Int
+    @Binding var targetName: String
 
     @Binding var show: Bool
-    
     @Binding var image: Data?
-    @Binding var targetName: String
-    @Binding var targetPrice: Int
 
-    
     var body: some View {
         if showTargetImg {
             if image == nil {
@@ -46,7 +43,6 @@ struct TargetInput: View {
             }
         }
         if showText {
-            
             HStack {
                 TextField("예시: " + numberFormatter(number: 1_000_000),
                           value: $targetPrice, formatter: NumberFormatter())
@@ -69,6 +65,5 @@ struct TargetInput: View {
             .background(Color.accentColor)
             .padding(.horizontal, 16)
         Spacer()
-        
     }
 }

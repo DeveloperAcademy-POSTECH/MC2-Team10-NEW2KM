@@ -27,7 +27,7 @@ struct NewInitSettingView: View {
     @State var btnText = ["확인", "다음"]
 
     var body: some View {
-        NavigationView {
+//        NavigationView {
             VStack {
                 HStack {
                     Text(titleArray[arrayCount])
@@ -36,18 +36,21 @@ struct NewInitSettingView: View {
                     Spacer()
                 }.padding(.leading, 16)
 
-                TargetInput(showText: $showText, showTargetImg: $showTargetImg, show: $show, image: $image, targetName: $targetName, targetPrice: $targetPrice)
+                TargetInput(showText: $showText, showTargetImg: $showTargetImg,
+                            targetPrice: $targetPrice, targetName: $targetName,
+                            show: $show, image: $image)
 // 저장한 뒤에 다음 페이지로 넘어가야 한다.
-                TargetButton(showText: $showText, showTargetImg: $showTargetImg, targetName: $targetName,
-                             targetPrice: $targetPrice, arrayCount: $arrayCount, lastInput: $lastInput, nextView: $nextView, btnText: $btnText)
+                TargetButton(showText: $showText, showTargetImg: $showTargetImg,
+                             targetName: $targetName, targetPrice: $targetPrice,
+                             arrayCount: $arrayCount, lastInput: $lastInput,
+                             nextView: $nextView, btnText: $btnText)
             }
             .background(Color.kenCustomOrange)
+            .navigationBarHidden(true)
             .sheet(isPresented: self.$show, content: {
                 ImagePicker(images: $image, show: self.$show, sourceType: self.sourceType)
             })
-        }
-        .background(Color.kenCustomOrange)
-        .navigationBarHidden(true)
+//        }
         .onTapGesture {
             hideKeyboard()
         }
