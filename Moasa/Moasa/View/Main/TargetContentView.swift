@@ -21,7 +21,7 @@ struct TargetContentView: View {
                     .font(.system(size: 18))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding([.leading, .top])
-                Text("이번 달 예상 추가 금액 \(items.targetItems[0].targetPrice)원")
+                Text("이번 달 예상 추가 금액 \(items.expectedCategoryBalance)원")
                     .font(.system(size: 14))
                     .foregroundColor(.gray)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -31,7 +31,7 @@ struct TargetContentView: View {
                 TargetGauge()
                 GaugeLabel()
                 Spacer()
-                Text("목표까지 249,500원 남았어요!")
+                Text("목표까지 \(items.targetItems.first!.targetPrice - items.targetItems.first!.totalSaved)원 남았어요!")
                     .font(.system(size: 14))
                     .padding(.bottom)
             }
@@ -41,8 +41,9 @@ struct TargetContentView: View {
 }
 
 struct TargetGauge: View {
-    @State var currentProgress: Float = 0.5
-    @State var nextProgress: Float = 0.55
+    @EnvironmentObject var items: Items
+//    @State var currentProgress: Double = items.totalSavedPercent
+//    @State var nextProgress: Double = items.expectedCategoryBalancePercent
     var body: some View {
         ZStack {
             Circle()
@@ -50,13 +51,13 @@ struct TargetGauge: View {
                 .foregroundColor(.kellyCustomGray)
                 .frame(width: 240, height: 240)
             Circle()
-                .trim(from: 0.0, to: CGFloat(min(self.nextProgress, 1.0)))
+                .trim(from: 0.0, to: CGFloat(min(items.expectedCategoryBalancePercent, 1.0)))
                 .stroke(style: StrokeStyle(lineWidth: 10.0, lineCap: .round, lineJoin: .round))
                 .foregroundColor(.kenCustomOrange)
                 .frame(width: 240, height: 240)
                 .rotationEffect(Angle(degrees: -90.0))
             Circle()
-                .trim(from: 0.0, to: CGFloat(min(self.currentProgress, 1.0)))
+                .trim(from: 0.0, to: CGFloat(min(items.totalSavedPercent, 1.0)))
                 .stroke(style: StrokeStyle(lineWidth: 10.0, lineCap: .round, lineJoin: .round))
                 .foregroundColor(.accentColor)
                 .frame(width: 240, height: 240)
@@ -70,18 +71,19 @@ struct TargetGauge: View {
 }
 
 struct GaugeLabel: View {
+    @EnvironmentObject var items: Items
     var body: some View {
         HStack {
             Circle()
                 .fill(Color.accentColor)
                 .frame(width: 10, height: 10)
-            Text("현재 (50%)")
+            Text("현재 (\(getPercentInt(percent: items.totalSavedPercent))%)")
                 .font(.system(size: 14))
                 .foregroundColor(.systemGray)
             Circle()
                 .fill(Color.kenCustomOrange)
                 .frame(width: 10, height: 10)
-            Text("이번 달 추가 (+5%)")
+            Text("이번 달 추가 (+\(getPercentInt(percent: items.expectedCategoryBalancePercent - items.totalSavedPercent))%)")
                 .font(.system(size: 14))
                 .foregroundColor(.systemGray)
         }

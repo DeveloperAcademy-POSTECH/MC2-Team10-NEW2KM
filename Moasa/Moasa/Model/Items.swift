@@ -45,31 +45,32 @@ class Items: Identifiable, ObservableObject {
         return diff! + 1
     }
     var challengeCycle: Int {
-          let cycle = 30
-          return (untilToday - 1) / cycle
-          // 주기 로직은 이후에 하기로 합니다!
-      }
+        let cycle = 30
+        return (untilToday - 1) / cycle
+        // 주기 로직은 이후에 하기로 합니다!
+    }
+    
     struct CategoryLeft: Hashable {
-         var icon: String
-         var category: String
-         var left: Int
-         var limit: [Int:Int]
-     }
-
-     var categoryBalances: [CategoryLeft] {
-         // CategryName, CategoryIcon, CategoryBalance 리턴
-         var categoryBalances = [CategoryLeft]()
-         let categories = consumedCategories.map({ ($0.consumedCategory, $0.consumedLimit )})
-         for category in categories {
-             let balance = categoryBalance(categoryName: category.0)
-             let categoryIcon = getIcon(categoryName: category.0)
-             let limit = category.1
-             categoryBalances.append(CategoryLeft(icon: categoryIcon, category: category.0, left: balance, limit: limit))
- //            categoryBalances.append((category, categoryIcon, balance))
-         }
-         return categoryBalances
-         // 그리드 -> 해당 카테고리 별 잔액 리턴
-     }
+        var icon: String
+        var category: String
+        var left: Int
+        var limit: [Int:Int]
+    }
+    
+    var categoryBalances: [CategoryLeft] {
+        // CategryName, CategoryIcon, CategoryBalance 리턴
+        var categoryBalances = [CategoryLeft]()
+        let categories = consumedCategories.map({ ($0.consumedCategory, $0.consumedLimit )})
+        for category in categories {
+            let balance = categoryBalance(categoryName: category.0)
+            let categoryIcon = getIcon(categoryName: category.0)
+            let limit = category.1
+            categoryBalances.append(CategoryLeft(icon: categoryIcon, category: category.0, left: balance, limit: limit))
+//            categoryBalances.append((category, categoryIcon, balance))
+        }
+        return categoryBalances
+        // 그리드 -> 해당 카테고리 별 잔액 리턴
+    }
     func categoryBalance(categoryName: String) -> Int {
         let consumedItemSpent: Int = consumedItems
             .filter({ $0.consumedCategory == categoryName && $0.challengeCycle == challengeCycle })
@@ -94,10 +95,29 @@ class Items: Identifiable, ObservableObject {
         let percent = Double(expectedCategoryBalance) / Double(targetPrice)
         return totalSavedPercent + percent
     }
+    // MAIN Computed Property
+    // Date -> 해당 Date가 전체 챌린지 사이클 중 어떤 챌린지 사이클의 소비 항목인지 계산해주는 함수
+    func getChallengeCycle(consumedDate: Date) -> Int {
+        let startDate = targetItems[0].startDate
+        let diff = Calendar.current.dateComponents([.day], from: startDate, to: consumedDate).day!
+        let cycle = 30
+        return diff / cycle
+        // TODO: 데이트 피커 -> 타겟 시작 날짜보다 이전으로 가지 않게 한다.
+    }
+    
+    // 먼저 기간 분류(startDate, endDate) -> 정렬 분류 필터링을 $0.consumed
+    
+    func getCategoryItemsFiltered(categoryName: String, startDate: Date, endDate: Date) -> [ConsumedItem] {
+        let itemFiltered = consumedItems.filter({ $0.consumedCategory == categoryName && $0.consumedDate >= startDate && $0.consumedDate <= endDate})
+        return itemFiltered
+        // 카테고리 별 기간 내 소비 아이템 리턴
+    }
+    
+    // DetailView Computed Property
     func load() {
-        targetItemLoad()
-        consumedItemLoad()
         consumedCategoryLoad()
+        targetItemLoad()
+//        consumedItemLoad()
     }
     func targetItemSaved() {
         do {
@@ -127,7 +147,7 @@ class Items: Identifiable, ObservableObject {
                 print("DECODE")
                 // 4. Initial Setting for items (Enviornment)
                 self.targetItems = targetItems
-                print("입력 완료")
+                                print("입력 완료")
             } catch {
                 // Do nothing
             }
@@ -135,13 +155,14 @@ class Items: Identifiable, ObservableObject {
     func consumedItemLoad() {
             do {
                 // 1. Get the notes URL file
-                let url = getDocumentDirectory().appendingPathComponent("consumedCategories")
+                let url = getDocumentDirectory().appendingPathComponent("consumedItems")
                 // 2. Create a new property for the data
                 let data = try Data(contentsOf: url)
                 // 3. Decode the data
                 let consumedItems = try JSONDecoder().decode([ConsumedItem].self, from: data)
                 // 4. Initial Setting for items (Enviornment)
                 self.consumedItems = consumedItems
+//
                 print("입력 완료")
             } catch {
                 // Do nothing
@@ -151,14 +172,21 @@ class Items: Identifiable, ObservableObject {
             do {
                 print("DO CHECK")
                 // 1. Get the notes URL file
-                let url = getDocumentDirectory().appendingPathComponent("consumedItems")
+                let url = getDocumentDirectory().appendingPathComponent("consumedCategories")
+                print("CATEGORY URL")
                 // 2. Create a new property for the data
                 let data = try Data(contentsOf: url)
+                print("CATEGORY DATA")
+
                 // 3. Decode the data
                 let consumedCategories = try JSONDecoder().decode([ConsumedCategory].self, from: data)
+                print("CATEGORY DECODE")
+
                 // 4. Initial Setting for items (Enviornment)
                 self.consumedCategories = consumedCategories
-                print("입력 완료")
+                print("CATEGORY CHECK")
+
+                print("카테고리 입력 완료")
             } catch {
                 // Do nothing
             }
@@ -168,7 +196,7 @@ class Items: Identifiable, ObservableObject {
             // 1. 아이템 -> 디코더
             let data = try JSONEncoder().encode(consumedCategories)
             // 2. url
-            let url = getDocumentDirectory().appendingPathComponent("consumedCategory")
+            let url = getDocumentDirectory().appendingPathComponent("consumedCategories")
             // 3. 데이터 쓰기
             try data.write(to: url)
         } catch {
@@ -180,7 +208,7 @@ class Items: Identifiable, ObservableObject {
             // 1. 아이템 -> 디코더
             let data = try JSONEncoder().encode(consumedItems)
             // 2. url
-            let url = getDocumentDirectory().appendingPathComponent("consumedItem")
+            let url = getDocumentDirectory().appendingPathComponent("consumedItems")
             // 3. 데이터 쓰기
             try data.write(to: url)
         } catch {

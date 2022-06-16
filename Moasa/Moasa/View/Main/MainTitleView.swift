@@ -11,12 +11,12 @@ struct MainTitleView: View {
     @EnvironmentObject var items: Items
     var body: some View {
         VStack {
-            Text("heoo")
+            Text(dateFormatter(date: Date(), format: "M월 dd일"))
                 .font(.system(size: 14))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading)
             HStack {
-                Text("10일 째")
+                Text("\(items.untilToday)일 째")
                     .font(.system(size: 25, weight: .bold))
                     .padding(.leading)
                 Text("모으는 중")
