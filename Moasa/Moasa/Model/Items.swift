@@ -13,12 +13,72 @@ class Items: Identifiable, ObservableObject {
     @Published var consumedCategories: [ConsumedCategory] = []
     @Published var consumedItems: [ConsumedItem] = []
     
+    var budgetAvailableDay: Int {
+        let diff = Calendar.current.dateComponents([.day], from: Date(), to: challengeEndDate).day
+        return diff!
+    }
+    var challengeStartDate: Date {
+        let newStartDate = challengeEndDate
+        let cycle = 30
+        return Calendar.current.date(byAdding: .day, value: -cycle, to: newStartDate)!
+    }
+    var challengeEndDate: Date {
+        let startDate = targetItems[0].startDate
+        let cycle = 30
+        let offset = cycle * challengeCycle
+        return Calendar.current.date(byAdding: .day, value: offset, to: startDate)!
+    }
+    var untilToday: Int {
+        let startDate = targetItems[0].startDate
+        let diff = Calendar.current.dateComponents([.day], from: startDate, to: Date()).day
+        return diff! + 1
+    }
+    var challengeCycle: Int {
+        let cycle = 30
+        return (untilToday - 1) / cycle
+        // 주기 로직은 이후에 하기로 합니다!
+    }
+    var categoryBalances: [(String, String, Int)] {
+        // CategryName, CategoryIcon, CategoryBalance 리턴
+        var categoryBalances = [(String, String, Int)]()
+        let categories = consumedCategories.map({ $0.consumedCategory })
+        for category in categories {
+            let balance = categoryBalance(categoryName: category)
+            let categoryIcon = getIcon(categoryName: category)
+            categoryBalances.append((category, categoryIcon, balance))
+        }
+        return categoryBalances
+        // 그리드 -> 해당 카테고리 별 잔액 리턴
+    }
+    func categoryBalance(categoryName: String) -> Int {
+        let consumedItemSpent: Int = consumedItems
+            .filter({ $0.consumedCategory == categoryName && $0.challengeCycle == challengeCycle })
+            .map({ $0.consumedPrice }).reduce(0, +)
+        let categoryLimit = consumedCategories
+            .filter({ $0.consumedCategory == categoryName })[0]
+            .consumedLimit[challengeCycle]
+        return categoryLimit! - consumedItemSpent
+        // 이번 챌린지 도전 주기의 해당 카테고리 잔액
+    }
+    var totalSavedPercent: Double {
+        let totalSaved = targetItems[0].totalSaved
+        let targetPrice = targetItems[0].targetPrice
+        let percent = Double(totalSaved) / Double(targetPrice)
+        return percent
+    }
+    var expectedCategoryBalance: Int {
+        return categoryBalances.map({ $0.2 }).reduce(0, +)
+    }
+    var expectedCategoryBalancePercent: Double {
+        let targetPrice = targetItems[0].targetPrice
+        let percent = Double(expectedCategoryBalance) / Double(targetPrice)
+        return totalSavedPercent + percent
+    }
     func load() {
         targetItemLoad()
         consumedItemLoad()
         consumedCategoryLoad()
     }
-    
     func targetItemSaved(encodedData: [TargetItem]) {
         do {
             // 1. 아이템 -> 디코더
@@ -33,7 +93,6 @@ class Items: Identifiable, ObservableObject {
             print("Saving targetItem has failed.")
         }
     }
-    
     func targetItemLoad() {
             do {
                 // 1. Get the notes URL file
@@ -41,7 +100,7 @@ class Items: Identifiable, ObservableObject {
                 // 2. Create a new property for the data
                 let data = try Data(contentsOf: url)
                 // 3. Decode the data
-                var targetItems = try JSONDecoder().decode([TargetItem].self, from: data)
+                let targetItems = try JSONDecoder().decode([TargetItem].self, from: data)
                 // 4. Initial Setting for items (Enviornment)
                 self.targetItems = targetItems
                 print("입력 완료")
@@ -49,7 +108,6 @@ class Items: Identifiable, ObservableObject {
                 // Do nothing
             }
     }
-    
     func consumedItemLoad() {
             do {
                 // 1. Get the notes URL file
@@ -65,7 +123,6 @@ class Items: Identifiable, ObservableObject {
                 // Do nothing
             }
     }
-    
     func consumedCategoryLoad() {
             do {
                 print("DO CHECK")
@@ -82,8 +139,6 @@ class Items: Identifiable, ObservableObject {
                 // Do nothing
             }
     }
-    
-    
     func consumedCategorySaved(encodedData: [ConsumedCategory]) {
         do {
             // 1. 아이템 -> 디코더
