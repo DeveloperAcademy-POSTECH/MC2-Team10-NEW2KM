@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct MainTitleView: View {
+    @EnvironmentObject var items: Items
     var body: some View {
         VStack {
-            Text("7월 1일 금요일")
+            Text(items.targetItems[0].targetName)
                 .font(.system(size: 14))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading)
