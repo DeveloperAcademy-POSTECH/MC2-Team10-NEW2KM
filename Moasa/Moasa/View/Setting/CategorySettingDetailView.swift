@@ -27,11 +27,18 @@ struct CategorySettingDetailView: View {
                         NavigationLink(destination: EditCategory(category: category).environmentObject(items)){
                             CategoryItem(icon: category.icon, category: category.category)
                                 .aspectRatio(contentMode: .fit)
+//                            Text(category.category)
                         }
-                    }
+                    }.onDelete(perform: delete)
+                    
                 }.padding(EdgeInsets(top: 0, leading: 15, bottom: 20, trailing: 15))
                 Spacer()
             }
+        }
+    }
+    func delete(offset: IndexSet){
+        withAnimation{
+            items.consumedCategories.remove(atOffsets: offset)
         }
     }
 }
