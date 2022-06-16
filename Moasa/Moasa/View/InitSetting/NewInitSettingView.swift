@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BtnShape: View {
     @Binding var btnText: String
-
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -38,8 +38,9 @@ struct NewInitSettingView: View {
     @State var targetPrice: Int = 0
     var titleArray: [String] = ["사고 싶은 물건을 입력해주세요", "물건 가격을 입력해주세요", "사고싶은 물건 사진을 넣어주세요"]
     @State var arrayCount: Int = 0
-    @State var lastInput: Bool = false
+    @State var lastInput = false
     @State var nextView: Bool? = false
+    @State var btnText = ["확인", "다음"]
 
     var body: some View {
         NavigationView {
@@ -112,15 +113,7 @@ struct NewInitSettingView: View {
                         }
                         nextView = true
                     }, label: {
-                        ZStack {
-                            Rectangle()
-                                .frame(width: 360, height: 60)
-                                .cornerRadius(13)
-                                .foregroundColor(.accentColor)
-                            Text("이미지 저장하기")
-                                .foregroundColor(.white)
-                                .font(.system(size: 20, weight: .bold))
-                        }
+                        BtnShape(btnText: $btnText[1])
                     })
                 } else if !lastInput && self.targetPrice > 0 && !self.targetName.isEmpty {
                     Button(action: {
@@ -128,30 +121,14 @@ struct NewInitSettingView: View {
                         lastInput = true
                         arrayCount += 1
                     }, label: {
-                        ZStack {
-                            Rectangle()
-                                .frame(width: 360, height: 60)
-                                .cornerRadius(13)
-                                .foregroundColor(.accentColor)
-                            Text("확인")
-                                .foregroundColor(.white)
-                                .font(.system(size: 20, weight: .bold))
-                        }
+                        BtnShape(btnText: $btnText[0])
                     }).opacity(self.arrayCount < 2 ? 1: 0)
                 } else if !self.targetName.isEmpty {
                     Button(action: {
                         showText = true
                         arrayCount += 1
                     }, label: {
-                        ZStack {
-                            Rectangle()
-                                .frame(width: 360, height: 60)
-                                .cornerRadius(13)
-                                .foregroundColor(.accentColor)
-                            Text("확인")
-                                .foregroundColor(.white)
-                                .font(.system(size: 20, weight: .bold))
-                        }
+                        BtnShape(btnText: $btnText[0])
                     }).opacity(self.arrayCount < 1 ? 1: 0)
                 }
             }
@@ -159,13 +136,11 @@ struct NewInitSettingView: View {
             .sheet(isPresented: self.$show, content: {
                 ImagePicker(images: $image, show: self.$show, sourceType: self.sourceType)
             })
-            
         }
         .background(Color.kenCustomOrange)
         .navigationBarHidden(true)
-        .onTapGesture{
+        .onTapGesture {
             hideKeyboard()
         }
-            
     }
 }
