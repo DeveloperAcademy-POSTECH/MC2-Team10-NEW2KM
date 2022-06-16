@@ -19,3 +19,4 @@ struct TargetItem: Codable, Identifiable{
         self.totalSaved += freeSaving
     }
 }
+

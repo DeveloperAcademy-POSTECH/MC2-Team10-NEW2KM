@@ -226,4 +226,11 @@ class Items: Identifiable, ObservableObject {
             print("Saving targetItem has failed.")
         }
     }
+    func changeCategoryLimit(categoryName: String, categoryLimit: Int) {
+        for idx in 0..<consumedCategories.count {
+            if consumedCategories[idx].consumedCategory == categoryName {
+                consumedCategories[idx].consumedLimit[challengeCycle] = categoryLimit
+            }
+        }
+    }
 }
