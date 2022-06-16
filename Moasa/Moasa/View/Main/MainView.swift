@@ -34,11 +34,3 @@ struct MainView: View {
         .navigationBarBackButtonHidden(true)
     }
 }
-
-//struct MainView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            MainView(targetItem: <#FetchedResults<TargetItem>#>)
-//        }
-//    }
-//}

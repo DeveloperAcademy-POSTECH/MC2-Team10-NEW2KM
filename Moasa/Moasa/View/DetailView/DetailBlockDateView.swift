@@ -24,11 +24,3 @@ struct DetailBlockDateView: View {
         }
     }
 }
-
-/*
-struct DetailBlockDateView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailBlockDateView()
-    }
-}
-*/

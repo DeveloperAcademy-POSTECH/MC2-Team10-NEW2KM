@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct NewInitSettingView: View {
-//    @Environment(\.managedObjectContext) var viewContext
-    @Environment(\.presentationMode) var dismiss
 
+    @Environment(\.presentationMode) var dismiss
+    @EnvironmentObject var items:Items
+    
     @State private var showText = false
     @State private var showTargetImg = false
-
+    
     @State var show = false
     @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State var image: Data? = nil
-
+    
     @State var targetName: String = ""
     @State var targetPrice: Int64 = 0
     
@@ -26,7 +27,7 @@ struct NewInitSettingView: View {
     
     @State var lastInput: Bool = false
     @State var nextView: Bool? = false
-
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -36,7 +37,6 @@ struct NewInitSettingView: View {
                         .padding(.top, 90)
                     Spacer()
                 }.padding(.leading, 16)
-
                 if showTargetImg {
                     if image == nil {
                         Button(action: {
@@ -64,12 +64,11 @@ struct NewInitSettingView: View {
                 }
                 if showText {
                     HStack {
-//                        TextField("예시: " + numberFormatter(number: 1_000_000), text: String(self.targetPrice))
                         TextField("예시: " + numberFormatter(number: 1_000_000),
                                   value: $targetPrice, formatter: NumberFormatter())
-                            .padding(.leading, 16)
-                            .font(.system(size: 17, weight: .regular))
-                            .keyboardType(.decimalPad)
+                        .padding(.leading, 16)
+                        .font(.system(size: 17, weight: .regular))
+                        .keyboardType(.decimalPad)
                         Text("원")
                             .font(.system(size: 17, weight: .bold))
                             .padding(.trailing, 16)
@@ -86,46 +85,19 @@ struct NewInitSettingView: View {
                     .background(Color.accentColor)
                     .padding(.horizontal, 16)
                 Spacer()
-
                 // 저장한 뒤에 다음 페이지로 넘어가야 한다.
                 if lastInput && self.targetPrice > 0 && !targetName.isEmpty {
                     NavigationLink(destination: MainView(), tag: true, selection: $nextView) {
                         EmptyView()
                     }
                     Button(action: {
-                        
-//                        withAnimation {
-//                            let newItem = TargetItem(context: viewContext)
-//                            newItem.id = UUID()
-//                            newItem.challengeCycle = 0
-//                            newItem.fixedSaving = 100
-//                            newItem.startDate = Date()
-//                            newItem.targetImage = image
-//                            newItem.targetPrice = targetPrice
-//                            newItem.targetName = targetName
-//                            newItem
-//                            // 초기 세팅 -> 정보 입력, TargetItem 생성
-//                            do {
-//                                try viewContext.save()
-//                            } catch {
-//                                let nsError = error as NSError
-//                                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//                            }
-                        nextView = true
+                        withAnimation {
+                            let newItem = TargetItem(targetName: targetName, targetImage: image, targetPrice: Int(targetPrice), totalSaved: 0, startDate: Date(), fixedSaving: 0)
+                            items.targetItemSaved(encodedData: [newItem])
+                            UserDefaults.standard.set(true, forKey: "initSetting")
                         }
-                        
-//                        let add = TargetItem(context: viewContext)
-//                        add.id = UUID()
-//                        add.targetName = targetName
-//                        add.targetPrice = targetPrice
-//                        add.targetImage = image
-//                        add.challengeCycle = 0
-//                        add.fixedSaving = 0
-//                        add.startDate = Date()
-//                        try? self.viewContext.save()
-//                        nextView = true
-//                        print("저장 완료")
-                    , label: {
+                        nextView = true
+                    }, label: {
                         ZStack {
                             Rectangle()
                                 .frame(width: 360, height: 60)
@@ -136,35 +108,6 @@ struct NewInitSettingView: View {
                                 .font(.system(size: 20, weight: .bold))
                         }
                     })
-//                    NavigationLink(destination: Text("destination"), label: {
-//                        ZStack {
-//                            Button(action: {
-//                                let add = TargetItem(context: viewContext)
-//                                add.id = UUID()
-//                                add.targetName = targetName
-//                                add.targetPrice = targetPrice
-//                                add.targetImage = image
-//                                add.challengeCycle = 0
-//                                add.fixedSaving = 0
-//                                add.startDate = Date()
-//
-//                                try? self.viewContext.save()
-//                                print("저장 완료")
-//
-//
-//                            }, label: {
-//                                ZStack {
-//                                    Rectangle()
-//                                        .frame(width: 360, height: 60)
-//                                        .cornerRadius(13)
-//                                        .foregroundColor(.accentColor)
-//                                    Text("이미지 저장하기")
-//                                        .foregroundColor(.white)
-//                                        .font(.system(size: 20, weight: .bold))
-//                                }
-//                            })
-//                        }
-//                    }
                 } else if !lastInput && self.targetPrice > 0 && !self.targetName.isEmpty {
                     Button(action: {
                         showTargetImg = true

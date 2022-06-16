@@ -1,10 +1,17 @@
+////
+////  ConsumedLimitView.swift
+////  Moasa
+////
+////  Created by 지준용 on 2022/06/14.
+////
 //
-//  ConsumedLimitView.swift
-//  Moasa
+//import SwiftUI
 //
-//  Created by 지준용 on 2022/06/14.
+//struct ConsumedCategories: Hashable {
+//    var consumedCategory: String
+//    var consumedAmount: Int
+//}
 //
-
 import SwiftUI
 
 struct BtnShape: View {
