@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct NewInitSettingView: View {
-    @Environment(\.managedObjectContext) var viewContext
     @Environment(\.presentationMode) var dismiss
+    @EnvironmentObject var items:Items
     
     @State private var showText = false
     @State private var showTargetImg = false
@@ -36,7 +36,6 @@ struct NewInitSettingView: View {
                         .padding(.top, 90)
                     Spacer()
                 }.padding(.leading, 16)
-                
                 if showTargetImg {
                     if image == nil {
                         Button(action: {
@@ -85,7 +84,6 @@ struct NewInitSettingView: View {
                     .background(Color.accentColor)
                     .padding(.horizontal, 16)
                 Spacer()
-                
                 // 저장한 뒤에 다음 페이지로 넘어가야 한다.
                 if lastInput && self.targetPrice > 0 && !targetName.isEmpty {
                     NavigationLink(destination: MainView(), tag: true, selection: $nextView) {
@@ -93,22 +91,9 @@ struct NewInitSettingView: View {
                     }
                     Button(action: {
                         withAnimation {
-                            let newItem = TargetItem(context: viewContext)
-                            newItem.id = UUID()
-                            newItem.challengeCycle = 0
-                            newItem.fixedSaving = 100
-                            newItem.startDate = Date()
-                            newItem.targetImage = image
-                            newItem.targetPrice = targetPrice
-                            newItem.targetName = targetName
-                            newItem.totalSaved = 0
-                            // 초기 세팅 -> 정보 입력, TargetItem 생성
-                            do {
-                                try viewContext.save()
-                            } catch {
-                                let nsError = error as NSError
-                                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                            }
+                            let newItem = TargetItem(targetName: targetName, targetImage: image, targetPrice: Int(targetPrice), totalSaved: 0, startDate: Date(), fixedSaving: 0)
+                            items.targetItemSaved(encodedData: [newItem])
+                            UserDefaults.standard.set(true, forKey: "initSetting")
                         }
                         nextView = true
                     }, label: {
