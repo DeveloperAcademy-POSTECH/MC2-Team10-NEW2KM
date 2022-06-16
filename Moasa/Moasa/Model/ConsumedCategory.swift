@@ -8,7 +8,7 @@
 import Foundation
 
 struct ConsumedCategory: Identifiable, Codable {
-    let id = UUID()
+    var id = UUID()
     var consumedCategory: String
-    var fixedSaving: [Int:Int]
+    var consumedLimit: [Int:Int]
 }

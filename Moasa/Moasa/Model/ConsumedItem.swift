@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct ConsumedItem: Codable, Identifiable {
     let id = UUID()
@@ -14,4 +15,5 @@ struct ConsumedItem: Codable, Identifiable {
     var consumedPrice: Int
     var consumedDate: Date
     var consumedMemo: String? = nil
+    var challengeCycle: Int
 }

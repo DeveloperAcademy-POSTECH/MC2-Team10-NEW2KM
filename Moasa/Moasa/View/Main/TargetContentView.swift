@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TargetContentView: View {
+    @EnvironmentObject var items: Items
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
