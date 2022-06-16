@@ -12,12 +12,15 @@ class Items: Identifiable, ObservableObject {
     @Published var targetItems: [TargetItem] = []
     @Published var consumedCategories: [ConsumedCategory] = []
     @Published var consumedItems: [ConsumedItem] = []
-    var challengeCycle: Int {
+    var untilToday: Int {
         let startDate = targetItems[0].startDate
-        // 30일을 한 달 주기로 설정
-        let cycle = 30
         let diff = Calendar.current.dateComponents([.day], from: startDate, to: Date()).day
-        return diff! / cycle
+        return diff! + 1
+    }
+    var challengeCycle: Int {
+        let cycle = 30
+        return (untilToday - 1) / cycle
+        // 주기 로직은 이후에 하기로 합니다!
     }
     var categoryBalances: [(String, Int)] {
         var categoryBalances = [(String, Int)]()
