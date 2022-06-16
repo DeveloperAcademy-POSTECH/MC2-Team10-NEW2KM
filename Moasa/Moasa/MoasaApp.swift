@@ -10,10 +10,12 @@ import SwiftUI
 @main
 struct MoasaApp: App {
     @AppStorage("initSetting") var initSetting: Bool = UserDefaults.standard.bool(forKey: "initSetting")
-    @StateObject var items:Items = Items()
+    @StateObject var items: Items = Items()
     var body: some Scene {
         WindowGroup {
             NavigationView {
+//                NewInitSettingView()
+//                ConsumedLimitView()
                 if initSetting {
                     MainView()
                         .environmentObject(items)

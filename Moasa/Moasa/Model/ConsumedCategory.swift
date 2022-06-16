@@ -12,3 +12,4 @@ struct ConsumedCategory: Identifiable, Codable {
     var consumedCategory: String
     var consumedLimit: [Int:Int]
 }
+

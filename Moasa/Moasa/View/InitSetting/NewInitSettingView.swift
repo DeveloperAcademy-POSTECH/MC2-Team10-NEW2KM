@@ -7,27 +7,43 @@
 
 import SwiftUI
 
-struct NewInitSettingView: View {
 
+struct BtnShape: View {
+    @Binding var btnText: String
+
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .frame(width: 360, height: 60)
+                .cornerRadius(13)
+                .foregroundColor(.accentColor)
+            Text(btnText)
+                .foregroundColor(.white)
+                .font(.system(size: 20, weight: .bold))
+        }
+    }
+}
+
+struct NewInitSettingView: View {
     @Environment(\.presentationMode) var dismiss
-    @EnvironmentObject var items:Items
-    
+    @EnvironmentObject var items: Items
+
     @State private var showText = false
     @State private var showTargetImg = false
-    
+
     @State var show = false
     @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State var image: Data? = nil
-    
+
     @State var targetName: String = ""
     @State var targetPrice: Int64 = 0
-    
+
     var titleArray: [String] = ["사고 싶은 물건을 입력해주세요", "물건 가격을 입력해주세요", "사고싶은 물건 사진을 넣어주세요"]
     @State var arrayCount: Int = 0
-    
+
     @State var lastInput: Bool = false
     @State var nextView: Bool? = false
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -87,7 +103,7 @@ struct NewInitSettingView: View {
                 Spacer()
                 // 저장한 뒤에 다음 페이지로 넘어가야 한다.
                 if lastInput && self.targetPrice > 0 && !targetName.isEmpty {
-                    NavigationLink(destination: MainView(), tag: true, selection: $nextView) {
+                    NavigationLink(destination: ConsumedLimitView(), tag: true, selection: $nextView) {
                         EmptyView()
                     }
                     Button(action: {
@@ -141,10 +157,17 @@ struct NewInitSettingView: View {
                     }).opacity(self.arrayCount < 1 ? 1: 0)
                 }
             }
+            .background(Color.kenCustomOrange)
             .sheet(isPresented: self.$show, content: {
                 ImagePicker(images: $image, show: self.$show, sourceType: self.sourceType)
             })
-        }.background(Color.kenCustomOrange)
-            .navigationBarHidden(true)
+            
+        }
+        .background(Color.kenCustomOrange)
+        .navigationBarHidden(true)
+        .onTapGesture{
+            hideKeyboard()
+        }
+            
     }
 }
