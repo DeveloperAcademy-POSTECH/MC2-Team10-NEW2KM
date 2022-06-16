@@ -9,9 +9,21 @@ import Foundation
 import SwiftUI
 
 class Items: Identifiable, ObservableObject {
-    @Published var targetItems: [TargetItem] = []
-    @Published var consumedCategories: [ConsumedCategory] = []
-    @Published var consumedItems: [ConsumedItem] = []
+    @Published var targetItems: [TargetItem] = [] {
+        didSet {
+            targetItemSaved()
+        }
+    }
+    @Published var consumedCategories: [ConsumedCategory] = [] {
+        didSet {
+            consumedCategorySaved()
+        }
+    }
+    @Published var consumedItems: [ConsumedItem] = [] {
+        didSet {
+            consumedItemSaved()
+        }
+    }
     var budgetAvailableDay: Int {
         let diff = Calendar.current.dateComponents([.day], from: Date(), to: challengeEndDate).day
         return diff!
