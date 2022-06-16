@@ -14,12 +14,11 @@ struct CategoryLeft: Hashable {
 }
 
 struct BudgetContentView: View {
+    @EnvironmentObject var items: Items
     var categories = [CategoryLeft(icon: "fork.knife", category: "식비", left: 89_000),
                       CategoryLeft(icon: "car", category: "교통/차량", left: 30_000),
                       CategoryLeft(icon: "tshirt", category: "패션/미용", left: 66_000),
                       CategoryLeft(icon: "ellipsis.circle", category: "기타", left: 5000)]
-    @Environment(\.managedObjectContext) private var viewContext
-    let persistenceController = PersistenceController.shared
     let categoryID: UUID = UUID()
     // category 해당 UUID
     let categoryName: String = "CATEGORY"
