@@ -8,16 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		4A040FEF2857593000DA507E /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A040FEE2857593000DA507E /* Date+Extension.swift */; };
+		4A0429FC28597FFD00200E29 /* getChallengeDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0429FB28597FFD00200E29 /* getChallengeDate.swift */; };
+		4A0429FE2859804200200E29 /* getChallengeCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0429FD2859804200200E29 /* getChallengeCycle.swift */; };
+		4A25FD7D285A0301004E213C /* getCategorySaved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A25FD7C285A0301004E213C /* getCategorySaved.swift */; };
 		4A3640ED2856B8A40032A90A /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3640EC2856B8A40032A90A /* Color+Extension.swift */; };
-		4A3641382856E1D90032A90A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3641372856E1D90032A90A /* ContentView.swift */; };
 		4A36413A2856E2200032A90A /* Keyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3641392856E2200032A90A /* Keyboard+Extension.swift */; };
 		4A36413C2856E2320032A90A /* Number+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A36413B2856E2320032A90A /* Number+Extension.swift */; };
-		4A691090285312A7001BD21B /* ConsumedItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A69108A285312A7001BD21B /* ConsumedItem+CoreDataClass.swift */; };
-		4A691091285312A7001BD21B /* ConsumedItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A69108B285312A7001BD21B /* ConsumedItem+CoreDataProperties.swift */; };
-		4A691092285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A69108C285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift */; };
-		4A691093285312A7001BD21B /* ConsumedCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A69108D285312A7001BD21B /* ConsumedCategory+CoreDataProperties.swift */; };
-		4A691094285312A7001BD21B /* TargetItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A69108E285312A7001BD21B /* TargetItem+CoreDataClass.swift */; };
-		4A691095285312A7001BD21B /* TargetItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A69108F285312A7001BD21B /* TargetItem+CoreDataProperties.swift */; };
+		4A67A1C2285AB92D00B4F56F /* ConsumedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67A1C1285AB92D00B4F56F /* ConsumedItem.swift */; };
+		4A67A1C4285ABA1500B4F56F /* ConsumedCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67A1C3285ABA1500B4F56F /* ConsumedCategory.swift */; };
+		4A67A1C6285ABAD000B4F56F /* TargetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67A1C5285ABAD000B4F56F /* TargetItem.swift */; };
+		4A67A1CB285ABEF900B4F56F /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67A1CA285ABEF900B4F56F /* Items.swift */; };
+		4A67A1CD285AC06400B4F56F /* getDocumentDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67A1CC285AC06400B4F56F /* getDocumentDirectory.swift */; };
+		4A67A1D4285AD44400B4F56F /* HalfASheet in Frameworks */ = {isa = PBXBuildFile; productRef = 4A67A1D3285AD44400B4F56F /* HalfASheet */; };
+		4A67A1D8285AE20000B4F56F /* getIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67A1D7285AE20000B4F56F /* getIcon.swift */; };
 		4A8C5242285852C4007CE4F1 /* funcPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C5241285852C4007CE4F1 /* funcPointer.swift */; };
 		4AB8094028557EE800C772D1 /* BudgetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8093C28557EE800C772D1 /* BudgetContentView.swift */; };
 		4AB8094128557EE800C772D1 /* TargetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8093D28557EE800C772D1 /* TargetContentView.swift */; };
@@ -29,12 +32,13 @@
 		4AEB760C2852F32100EC85B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB760B2852F32100EC85B9 /* Preview Assets.xcassets */; };
 		4AEB76112852F32100EC85B9 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		4AEB76192852F39500EC85B9 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB76182852F39500EC85B9 /* .swiftlint.yml */; };
+		7B1B206E285AD4ED00262552 /* CycleEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B206D285AD4ED00262552 /* CycleEndView.swift */; };
 		9803A34E2858A7B200EE4B0A /* NewInitSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9803A34D2858A7B200EE4B0A /* NewInitSettingView.swift */; };
 		9803A3502858ACD200EE4B0A /* ConsumedLimitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9803A34F2858ACD200EE4B0A /* ConsumedLimitView.swift */; };
-		9871F15B2855802D0077B058 /* Moasa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1522855802D0077B058 /* Moasa.xcdatamodeld */; };
 		9871F1B92855C7310077B058 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1B82855C7310077B058 /* ImagePicker.swift */; };
 		A762E25B285A07E500DFFCC0 /* InputDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762E259285A07E500DFFCC0 /* InputDetailView.swift */; };
 		A762E25C285A07E500DFFCC0 /* InputCategoryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762E25A285A07E500DFFCC0 /* InputCategoryPicker.swift */; };
+		A7519896285AF7E700B75A3D /* getPercentInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7519895285AF7E700B75A3D /* getPercentInt.swift */; };
 		CF3A011E28575C7B002A2C80 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3A011D28575C7B002A2C80 /* SearchBarView.swift */; };
 		CF3A012228576028002A2C80 /* dateSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3A012128576028002A2C80 /* dateSort.swift */; };
 		CF5FF4D12856CC18004FB062 /* DetailBlockDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5FF4D02856CC18004FB062 /* DetailBlockDateView.swift */; };
@@ -46,21 +50,22 @@
 		DF65DD4028546AEC00435F9E /* ChangeSettingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */; };
 		DF65DD422854966D00435F9E /* InitiateTargetSettingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD412854966D00435F9E /* InitiateTargetSettingDetailView.swift */; };
 		DF65DD442854A7FB00435F9E /* CategorySettingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD432854A7FB00435F9E /* CategorySettingDetailView.swift */; };
-		DF65DD462854EBA300435F9E /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD452854EBA300435F9E /* PersistenceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4A040FEE2857593000DA507E /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		4A0429FB28597FFD00200E29 /* getChallengeDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getChallengeDate.swift; sourceTree = "<group>"; };
+		4A0429FD2859804200200E29 /* getChallengeCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getChallengeCycle.swift; sourceTree = "<group>"; };
+		4A25FD7C285A0301004E213C /* getCategorySaved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getCategorySaved.swift; sourceTree = "<group>"; };
 		4A3640EC2856B8A40032A90A /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
-		4A3641372856E1D90032A90A /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = Moasa/ContentView.swift; sourceTree = SOURCE_ROOT; };
 		4A3641392856E2200032A90A /* Keyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyboard+Extension.swift"; sourceTree = "<group>"; };
 		4A36413B2856E2320032A90A /* Number+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Extension.swift"; sourceTree = "<group>"; };
-		4A69108A285312A7001BD21B /* ConsumedItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ConsumedItem+CoreDataClass.swift"; path = "Moasa/Model/ConsumedItem+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		4A69108B285312A7001BD21B /* ConsumedItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ConsumedItem+CoreDataProperties.swift"; path = "Moasa/Model/ConsumedItem+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		4A69108C285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ConsumedCategory+CoreDataClass.swift"; path = "Moasa/Model/ConsumedCategory+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		4A69108D285312A7001BD21B /* ConsumedCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ConsumedCategory+CoreDataProperties.swift"; path = "Moasa/Model/ConsumedCategory+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		4A69108E285312A7001BD21B /* TargetItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TargetItem+CoreDataClass.swift"; path = "Moasa/Model/TargetItem+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		4A69108F285312A7001BD21B /* TargetItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TargetItem+CoreDataProperties.swift"; path = "Moasa/Model/TargetItem+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4A67A1C1285AB92D00B4F56F /* ConsumedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumedItem.swift; sourceTree = "<group>"; };
+		4A67A1C3285ABA1500B4F56F /* ConsumedCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumedCategory.swift; sourceTree = "<group>"; };
+		4A67A1C5285ABAD000B4F56F /* TargetItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetItem.swift; sourceTree = "<group>"; };
+		4A67A1CA285ABEF900B4F56F /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
+		4A67A1CC285AC06400B4F56F /* getDocumentDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getDocumentDirectory.swift; sourceTree = "<group>"; };
+		4A67A1D7285AE20000B4F56F /* getIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getIcon.swift; sourceTree = "<group>"; };
 		4A8C5241285852C4007CE4F1 /* funcPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = funcPointer.swift; sourceTree = "<group>"; };
 		4AB8093C28557EE800C772D1 /* BudgetContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetContentView.swift; sourceTree = "<group>"; };
 		4AB8093D28557EE800C772D1 /* TargetContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetContentView.swift; sourceTree = "<group>"; };
@@ -72,12 +77,13 @@
 		4AEB76082852F32100EC85B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AEB760B2852F32100EC85B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4AEB76182852F39500EC85B9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		7B1B206D285AD4ED00262552 /* CycleEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleEndView.swift; sourceTree = "<group>"; };
 		9803A34D2858A7B200EE4B0A /* NewInitSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewInitSettingView.swift; sourceTree = "<group>"; };
 		9803A34F2858ACD200EE4B0A /* ConsumedLimitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumedLimitView.swift; sourceTree = "<group>"; };
-		9871F1532855802D0077B058 /* Moasa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moasa.xcdatamodel; sourceTree = "<group>"; };
 		9871F1B82855C7310077B058 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		A762E259285A07E500DFFCC0 /* InputDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputDetailView.swift; sourceTree = "<group>"; };
 		A762E25A285A07E500DFFCC0 /* InputCategoryPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCategoryPicker.swift; sourceTree = "<group>"; };
+		A7519895285AF7E700B75A3D /* getPercentInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getPercentInt.swift; sourceTree = "<group>"; };
 		CF3A011D28575C7B002A2C80 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		CF3A012128576028002A2C80 /* dateSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateSort.swift; sourceTree = "<group>"; };
 		CF5FF4D02856CC18004FB062 /* DetailBlockDateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBlockDateView.swift; sourceTree = "<group>"; };
@@ -89,7 +95,6 @@
 		DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeSettingDetailView.swift; sourceTree = "<group>"; };
 		DF65DD412854966D00435F9E /* InitiateTargetSettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiateTargetSettingDetailView.swift; sourceTree = "<group>"; };
 		DF65DD432854A7FB00435F9E /* CategorySettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySettingDetailView.swift; sourceTree = "<group>"; };
-		DF65DD452854EBA300435F9E /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A67A1D4285AD44400B4F56F /* HalfASheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +128,12 @@
 				CF5FF4DC2856D79E004FB062 /* addDate.swift */,
 				CF3A012128576028002A2C80 /* dateSort.swift */,
 				4A8C5241285852C4007CE4F1 /* funcPointer.swift */,
+				4A0429FB28597FFD00200E29 /* getChallengeDate.swift */,
+				4A0429FD2859804200200E29 /* getChallengeCycle.swift */,
+				4A25FD7C285A0301004E213C /* getCategorySaved.swift */,
+				4A67A1CC285AC06400B4F56F /* getDocumentDirectory.swift */,
+				4A67A1D7285AE20000B4F56F /* getIcon.swift */,
+				A7519895285AF7E700B75A3D /* getPercentInt.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -138,14 +150,10 @@
 		4A69108028530ABF001BD21B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9871F1522855802D0077B058 /* Moasa.xcdatamodeld */,
-				4A69108A285312A7001BD21B /* ConsumedItem+CoreDataClass.swift */,
-				4A69108B285312A7001BD21B /* ConsumedItem+CoreDataProperties.swift */,
-				4A69108C285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift */,
-				4A69108D285312A7001BD21B /* ConsumedCategory+CoreDataProperties.swift */,
-				4A69108E285312A7001BD21B /* TargetItem+CoreDataClass.swift */,
-				4A69108F285312A7001BD21B /* TargetItem+CoreDataProperties.swift */,
-				DF65DD452854EBA300435F9E /* PersistenceController.swift */,
+				4A67A1C1285AB92D00B4F56F /* ConsumedItem.swift */,
+				4A67A1C3285ABA1500B4F56F /* ConsumedCategory.swift */,
+				4A67A1C5285ABAD000B4F56F /* TargetItem.swift */,
+				4A67A1CA285ABEF900B4F56F /* Items.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,10 +163,10 @@
 			children = (
 				A762E258285A07E500DFFCC0 /* InputDetail */,
 				CF5FF4CF2856CBD9004FB062 /* DetailView */,
-				4A3641372856E1D90032A90A /* ContentView.swift */,
 				4A3640EF2856B9F30032A90A /* InitSetting */,
 				4AB809452855E4DD00C772D1 /* Main */,
 				4AB809462855E4F400C772D1 /* Setting */,
+				7B1B206D285AD4ED00262552 /* CycleEndView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -262,6 +270,9 @@
 			dependencies = (
 			);
 			name = Moasa;
+			packageProductDependencies = (
+				4A67A1D3285AD44400B4F56F /* HalfASheet */,
+			);
 			productName = Moasa;
 			productReference = 4AEB76012852F32000EC85B9 /* Moasa.app */;
 			productType = "com.apple.product-type.application";
@@ -290,6 +301,9 @@
 				Base,
 			);
 			mainGroup = 4AEB75F82852F32000EC85B9;
+			packageReferences = (
+				4A67A1D2285AD44400B4F56F /* XCRemoteSwiftPackageReference "HalfASheet" */,
+			);
 			productRefGroup = 4AEB76022852F32000EC85B9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -339,19 +353,23 @@
 			files = (
 				A762E25C285A07E500DFFCC0 /* InputCategoryPicker.swift in Sources */,
 				CF5FF4D32856CC23004FB062 /* DetailListView.swift in Sources */,
+				4A67A1C6285ABAD000B4F56F /* TargetItem.swift in Sources */,
 				4A8C5242285852C4007CE4F1 /* funcPointer.swift in Sources */,
 				9803A34E2858A7B200EE4B0A /* NewInitSettingView.swift in Sources */,
 				CF5FF4D32856CC23004FB062 /* DetailListView.swift in Sources */,
 				4A3641382856E1D90032A90A /* ContentView.swift in Sources */,
+				4A0429FC28597FFD00200E29 /* getChallengeDate.swift in Sources */,
 				9871F1B92855C7310077B058 /* ImagePicker.swift in Sources */,
-				9871F15B2855802D0077B058 /* Moasa.xcdatamodeld in Sources */,
 				4A3640ED2856B8A40032A90A /* Color+Extension.swift in Sources */,
 				4A36413C2856E2320032A90A /* Number+Extension.swift in Sources */,
 				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
+				A7519896285AF7E700B75A3D /* getPercentInt.swift in Sources */,
 				9803A3502858ACD200EE4B0A /* ConsumedLimitView.swift in Sources */,
 				CF3A012228576028002A2C80 /* dateSort.swift in Sources */,
 				4AB8094A2855E8A200C772D1 /* SettingView.swift in Sources */,
+				4A67A1D8285AE20000B4F56F /* getIcon.swift in Sources */,
 				CF5FF4DB2856CC4F004FB062 /* dateFormatter.swift in Sources */,
+				4A67A1C2285AB92D00B4F56F /* ConsumedItem.swift in Sources */,
 				CF5FF4D52856CC2A004FB062 /* DetailView.swift in Sources */,
 				CF5FF4DD2856D79E004FB062 /* addDate.swift in Sources */,
 				CF3A011E28575C7B002A2C80 /* SearchBarView.swift in Sources */,
@@ -360,23 +378,25 @@
 				4A040FEF2857593000DA507E /* Date+Extension.swift in Sources */,
 				DF65DD422854966D00435F9E /* InitiateTargetSettingDetailView.swift in Sources */,
 				CF5FF4D92856CC3B004FB062 /* CircleWaveView.swift in Sources */,
-				4A691095285312A7001BD21B /* TargetItem+CoreDataProperties.swift in Sources */,
-				4A691091285312A7001BD21B /* ConsumedItem+CoreDataProperties.swift in Sources */,
 				4AB8094028557EE800C772D1 /* BudgetContentView.swift in Sources */,
 				DF65DD442854A7FB00435F9E /* CategorySettingDetailView.swift in Sources */,
+				7B1B206E285AD4ED00262552 /* CycleEndView.swift in Sources */,
 				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
-				DF65DD462854EBA300435F9E /* PersistenceController.swift in Sources */,
+				4A25FD7D285A0301004E213C /* getCategorySaved.swift in Sources */,
+				4A67A1C4285ABA1500B4F56F /* ConsumedCategory.swift in Sources */,
+				4A67A1CB285ABEF900B4F56F /* Items.swift in Sources */,
+				4A0429FE2859804200200E29 /* getChallengeCycle.swift in Sources */,
 				DF65DD4028546AEC00435F9E /* ChangeSettingDetailView.swift in Sources */,
 				4A36413A2856E2200032A90A /* Keyboard+Extension.swift in Sources */,
 				4AEB76112852F32100EC85B9 /* (null) in Sources */,
 				4AEB76112852F32100EC85B9 /* (null) in Sources */,
-				4A691092285312A7001BD21B /* ConsumedCategory+CoreDataClass.swift in Sources */,
 				CF5FF4D12856CC18004FB062 /* DetailBlockDateView.swift in Sources */,
 				4AB809482855E88C00C772D1 /* MainView.swift in Sources */,
 				4A691093285312A7001BD21B /* ConsumedCategory+CoreDataProperties.swift in Sources */,
 				A762E25B285A07E500DFFCC0 /* InputDetailView.swift in Sources */,
 				4A691094285312A7001BD21B /* TargetItem+CoreDataClass.swift in Sources */,
 				4AB8094128557EE800C772D1 /* TargetContentView.swift in Sources */,
+				4A67A1CD285AC06400B4F56F /* getDocumentDirectory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,18 +598,24 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCVersionGroup section */
-		9871F1522855802D0077B058 /* Moasa.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				9871F1532855802D0077B058 /* Moasa.xcdatamodel */,
-			);
-			currentVersion = 9871F1532855802D0077B058 /* Moasa.xcdatamodel */;
-			path = Moasa.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
+/* Begin XCRemoteSwiftPackageReference section */
+		4A67A1D2285AD44400B4F56F /* XCRemoteSwiftPackageReference "HalfASheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/franklynw/HalfASheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
 		};
-/* End XCVersionGroup section */
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4A67A1D3285AD44400B4F56F /* HalfASheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A67A1D2285AD44400B4F56F /* XCRemoteSwiftPackageReference "HalfASheet" */;
+			productName = HalfASheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4AEB75F92852F32000EC85B9 /* Project object */;
 }

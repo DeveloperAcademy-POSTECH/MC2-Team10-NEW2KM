@@ -7,38 +7,23 @@
 
 import SwiftUI
 
-struct CategoryLeft: Hashable {
-    var icon: String
-    var category: String
-    var left: Int
-}
-
 struct BudgetContentView: View {
-    var categories = [CategoryLeft(icon: "fork.knife", category: "식비", left: 89_000),
-                      CategoryLeft(icon: "car", category: "교통/차량", left: 30_000),
-                      CategoryLeft(icon: "tshirt", category: "패션/미용", left: 66_000),
-                      CategoryLeft(icon: "ellipsis.circle", category: "기타", left: 5000)]
-    @Environment(\.managedObjectContext) private var viewContext
-    let persistenceController = PersistenceController.shared
-    let categoryID: UUID = UUID()
-    // category 해당 UUID
-    let categoryName: String = "CATEGORY"
-    let consumedLimit: Int = 100000
-    // category 체크 String, 카테고리 별 월별 한계 금액 consumedLimit
+    @EnvironmentObject var items: Items
+    let categoryID = UUID()
 
     var body: some View {
         VStack {
             HStack {
-                Text("12일간 사용 가능한 금액")
+                Text("\(items.budgetAvailableDay)일간 사용 가능한 금액")
                     .font(.system(size: 20, weight: .bold))
-                Text("(6.12 ~ 7.11)")
+                Text("(\(dateFormatter(date: items.challengeStartDate, format: "MM.dd")) ~ \(dateFormatter(date: items.challengeEndDate, format: "MM.dd)"))")
                     .font(.system(size: 14))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading)
             LazyVGrid(columns: [GridItem(.flexible(minimum: 80)), GridItem(.flexible(minimum: 80))], spacing: 40) {
-                ForEach(categories, id: \.self) { category in
-                    NavigationLink(destination: DetailView(categoryId: categoryID, categoryName: categoryName, consumedLimit: consumedLimit)) {
+                ForEach(items.categoryBalances, id: \.self) { category in
+                    NavigationLink(destination: DetailView()) {
                         BudgetItem(icon: category.icon, category: category.category, left: category.left)
                             .aspectRatio(contentMode: .fit)
                     }
