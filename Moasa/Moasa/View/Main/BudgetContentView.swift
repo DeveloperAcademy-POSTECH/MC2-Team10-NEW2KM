@@ -37,7 +37,7 @@ struct BudgetContentView: View {
             .padding(.leading)
             LazyVGrid(columns: [GridItem(.flexible(minimum: 80)), GridItem(.flexible(minimum: 80))], spacing: 40) {
                 ForEach(categories, id: \.self) { category in
-                    NavigationLink(destination: DetailView(categoryId: categoryID, categoryName: categoryName, consumedLimit: consumedLimit)) {
+                    NavigationLink(destination: DetailView()) {
                         BudgetItem(icon: category.icon, category: category.category, left: category.left)
                             .aspectRatio(contentMode: .fit)
                     }
