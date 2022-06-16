@@ -18,7 +18,7 @@ func getIcon(categoryName: String) -> String {
     case "transportation" :
         return "bus"
     default:
-        return "custom.square.grid.2x2"
+        return "square.grid.2x2"
     }
     // categoryName -> icon 리턴
 }
