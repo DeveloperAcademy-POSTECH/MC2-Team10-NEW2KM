@@ -12,6 +12,22 @@ class Items: Identifiable, ObservableObject {
     @Published var targetItems: [TargetItem] = []
     @Published var consumedCategories: [ConsumedCategory] = []
     @Published var consumedItems: [ConsumedItem] = []
+    
+    var budgetAvailableDay: Int {
+        let diff = Calendar.current.dateComponents([.day], from: Date(), to: challengeEndDate).day
+        return diff!
+    }
+    var challengeStartDate: Date {
+        let newStartDate = challengeEndDate
+        let cycle = 30
+        return Calendar.current.date(byAdding: .day, value: -cycle, to: newStartDate)!
+    }
+    var challengeEndDate: Date {
+        let startDate = targetItems[0].startDate
+        let cycle = 30
+        let offset = cycle * challengeCycle
+        return Calendar.current.date(byAdding: .day, value: offset, to: startDate)!
+    }
     var untilToday: Int {
         let startDate = targetItems[0].startDate
         let diff = Calendar.current.dateComponents([.day], from: startDate, to: Date()).day
@@ -41,6 +57,20 @@ class Items: Identifiable, ObservableObject {
             .consumedLimit[challengeCycle]
         return categoryLimit! - consumedItemSpent
         // 이번 챌린지 도전 주기의 해당 카테고리 잔액
+    }
+    var totalSavedPercent: Double {
+        let totalSaved = targetItems[0].totalSaved
+        let targetPrice = targetItems[0].targetPrice
+        let percent = Double(totalSaved) / Double(targetPrice)
+        return percent
+    }
+    var expectedCategoryBalance: Int {
+        return categoryBalances.map({ $0.1 }).reduce(0, +)
+    }
+    var expectedCategoryBalancePercent: Double {
+        let targetPrice = targetItems[0].targetPrice
+        let percent = Double(expectedCategoryBalance) / Double(targetPrice)
+        return totalSavedPercent + percent
     }
     func load() {
         targetItemLoad()
