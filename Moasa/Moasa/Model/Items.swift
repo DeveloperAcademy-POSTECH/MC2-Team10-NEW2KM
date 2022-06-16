@@ -49,29 +49,25 @@ class Items: Identifiable, ObservableObject {
         return (untilToday - 1) / cycle
         // 주기 로직은 이후에 하기로 합니다!
     }
-    
     struct CategoryLeft: Hashable {
         var icon: String
         var category: String
         var left: Int
-        var limit: [Int:Int]
+        var limit: [Int: Int]
     }
-        
     var categoryBalances: [CategoryLeft] {
         // CategryName, CategoryIcon, CategoryBalance 리턴
         var categoryBalances = [CategoryLeft]()
-        let categories = consumedCategories.map({ ($0.consumedCategory, $0.consumedLimit )})
+        let categories = consumedCategories.map({ ($0.consumedCategory, $0.consumedLimit ) })
         for category in categories {
             let balance = categoryBalance(categoryName: category.0)
             let categoryIcon = getIcon(categoryName: category.0)
             let limit = category.1
             categoryBalances.append(CategoryLeft(icon: categoryIcon, category: category.0, left: balance, limit: limit))
-//            categoryBalances.append((category, categoryIcon, balance))
         }
         return categoryBalances
         // 그리드 -> 해당 카테고리 별 잔액 리턴
     }
-    
     func categoryBalance(categoryName: String) -> Int {
         let consumedItemSpent: Int = consumedItems
             .filter({ $0.consumedCategory == categoryName && $0.challengeCycle == challengeCycle })

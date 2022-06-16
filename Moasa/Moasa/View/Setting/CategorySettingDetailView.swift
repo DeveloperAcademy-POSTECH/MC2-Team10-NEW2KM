@@ -19,26 +19,22 @@ struct CategorySettingDetailView: View {
             Color("KellyCustomGray")
                 .ignoresSafeArea()
             VStack {
-//                LazyVGrid(columns: [GridItem(.flexible(minimum: 80)), GridItem(.flexible(minimum: 80))], spacing: 20) {
-                    NavigationLink(destination: CategoryPlusView().environmentObject(items)) {
-                        CategoryPlusRectangle(icon: "plus")
-                    }
-                List{
+                NavigationLink(destination: CategoryPlusView().environmentObject(items)) {
+                    CategoryPlusRectangle(icon: "plus")
+                }
+                List {
                     ForEach(items.categoryBalances, id: \.self) { category in
-                        NavigationLink(destination: EditCategory(category: category).environmentObject(items)){
-//                            CategoryItem(icon: category.icon, category: category.category)
-//                                .aspectRatio(contentMode: .fit)
+                        NavigationLink(destination: EditCategory(category: category).environmentObject(items)) {
                             Text(category.category)
                         }
                     }.onDelete(perform: delete)
                 }
-                }.padding(EdgeInsets(top: 0, leading: 15, bottom: 20, trailing: 15))
-                Spacer()
-//            }
+            }.padding(EdgeInsets(top: 0, leading: 15, bottom: 20, trailing: 15))
+            Spacer()
         }
     }
-    func delete(offset: IndexSet){
-        withAnimation{
+    func delete(offset: IndexSet) {
+        withAnimation {
             items.consumedCategories.remove(atOffsets: offset)
         }
     }
@@ -75,7 +71,8 @@ struct CategoryPlusView: View {
             Button(action: {
                 if !categoryName.isEmpty && categoryLimitMoney != "0" {
                     //                    presentation.wrappedValue.dismiss()
-                    items.consumedCategories.append( ConsumedCategory(consumedCategory: categoryName, consumedLimit: [0: Int(categoryLimitMoney)!]))
+                    items.consumedCategories.append( ConsumedCategory(consumedCategory: categoryName,
+                                                                      consumedLimit: [0: Int(categoryLimitMoney)!]))
                 }
             }, label: {
                 Text("저장하기!")
@@ -121,7 +118,8 @@ struct EditCategory: View {
             }, label: {
                 Text("저장하기!")
             })
-        }.onAppear{
+        }
+        .onAppear {
             categoryName = category.category
             categoryLimitMoney = String(category.limit[items.challengeCycle]!)
         }
