@@ -19,21 +19,22 @@ struct CategorySettingDetailView: View {
             Color("KellyCustomGray")
                 .ignoresSafeArea()
             VStack {
-                LazyVGrid(columns: [GridItem(.flexible(minimum: 80)), GridItem(.flexible(minimum: 80))], spacing: 20) {
+//                LazyVGrid(columns: [GridItem(.flexible(minimum: 80)), GridItem(.flexible(minimum: 80))], spacing: 20) {
                     NavigationLink(destination: CategoryPlusView().environmentObject(items)) {
                         CategoryPlusRectangle(icon: "plus")
                     }
+                List{
                     ForEach(items.categoryBalances, id: \.self) { category in
                         NavigationLink(destination: EditCategory(category: category).environmentObject(items)){
-                            CategoryItem(icon: category.icon, category: category.category)
-                                .aspectRatio(contentMode: .fit)
-//                            Text(category.category)
+//                            CategoryItem(icon: category.icon, category: category.category)
+//                                .aspectRatio(contentMode: .fit)
+                            Text(category.category)
                         }
                     }.onDelete(perform: delete)
-                    
+                }
                 }.padding(EdgeInsets(top: 0, leading: 15, bottom: 20, trailing: 15))
                 Spacer()
-            }
+//            }
         }
     }
     func delete(offset: IndexSet){
