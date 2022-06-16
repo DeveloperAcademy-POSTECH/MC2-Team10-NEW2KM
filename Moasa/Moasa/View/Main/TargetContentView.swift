@@ -61,7 +61,7 @@ struct TargetGauge: View {
                 .foregroundColor(.accentColor)
                 .frame(width: 240, height: 240)
                 .rotationEffect(Angle(degrees: -90.0))
-            Image("targetImage")
+            Image(uiImage: UIImage(systemName: "circle")!)
                 .resizable()
                 .frame(width: 200, height: 200)
                 .clipShape(Circle())
@@ -86,11 +86,5 @@ struct GaugeLabel: View {
                 .foregroundColor(.systemGray)
         }
         .padding()
-    }
-}
-
-struct TargetContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        TargetContentView()
     }
 }

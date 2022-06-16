@@ -16,5 +16,3 @@ struct TargetItem: Codable, Identifiable{
     var startDate: Date = Date()
     var fixedSaving: Int
 }
-
-

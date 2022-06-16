@@ -11,7 +11,7 @@ struct MainTitleView: View {
     @EnvironmentObject var items: Items
     var body: some View {
         VStack {
-            Text(items.targetItems[0].targetName)
+            Text("heoo")
                 .font(.system(size: 14))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading)
