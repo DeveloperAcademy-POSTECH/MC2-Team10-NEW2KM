@@ -12,6 +12,7 @@
 //    var consumedAmount: Int
 //}
 //
+
 import SwiftUI
 
 struct BtnShape: View {

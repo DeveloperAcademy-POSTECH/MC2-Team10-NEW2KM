@@ -8,26 +8,20 @@
 import SwiftUI
 
 struct NewInitSettingView: View {
-
     @Environment(\.presentationMode) var dismiss
     @EnvironmentObject var items:Items
     
     @State private var showText = false
     @State private var showTargetImg = false
-    
     @State var show = false
     @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State var image: Data? = nil
-    
     @State var targetName: String = ""
-    @State var targetPrice: Int64 = 0
-    
+    @State var targetPrice: Int = 0
     var titleArray: [String] = ["사고 싶은 물건을 입력해주세요", "물건 가격을 입력해주세요", "사고싶은 물건 사진을 넣어주세요"]
     @State var arrayCount: Int = 0
-    
     @State var lastInput: Bool = false
     @State var nextView: Bool? = false
-    
     var body: some View {
         NavigationView {
             VStack {
@@ -92,8 +86,9 @@ struct NewInitSettingView: View {
                     }
                     Button(action: {
                         withAnimation {
-                            let newItem = TargetItem(targetName: targetName, targetImage: image, targetPrice: Int(targetPrice), totalSaved: 0, startDate: Date(), fixedSaving: 0)
-                            items.targetItemSaved(encodedData: [newItem])
+                            let newItem = TargetItem(targetName: targetName, targetPrice: targetPrice, fixedSaving: 0)
+                            items.targetItems.append(newItem)
+                            items.targetItemSaved()
                             UserDefaults.standard.set(true, forKey: "initSetting")
                         }
                         nextView = true

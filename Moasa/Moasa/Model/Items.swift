@@ -79,10 +79,10 @@ class Items: Identifiable, ObservableObject {
         consumedItemLoad()
         consumedCategoryLoad()
     }
-    func targetItemSaved(encodedData: [TargetItem]) {
+    func targetItemSaved() {
         do {
             // 1. 아이템 -> 디코더
-            let data = try JSONEncoder().encode(encodedData)
+            let data = try JSONEncoder().encode(targetItems)
             // 2. url
             let url = getDocumentDirectory().appendingPathComponent("targetItems")
             print(url)
@@ -97,10 +97,14 @@ class Items: Identifiable, ObservableObject {
             do {
                 // 1. Get the notes URL file
                 let url = getDocumentDirectory().appendingPathComponent("targetItems")
+                print("URL")
+                print(url)
                 // 2. Create a new property for the data
                 let data = try Data(contentsOf: url)
+                print("DATA")
                 // 3. Decode the data
                 let targetItems = try JSONDecoder().decode([TargetItem].self, from: data)
+                print("DECODE")
                 // 4. Initial Setting for items (Enviornment)
                 self.targetItems = targetItems
                 print("입력 완료")
@@ -139,10 +143,10 @@ class Items: Identifiable, ObservableObject {
                 // Do nothing
             }
     }
-    func consumedCategorySaved(encodedData: [ConsumedCategory]) {
+    func consumedCategorySaved() {
         do {
             // 1. 아이템 -> 디코더
-            let data = try JSONEncoder().encode(encodedData)
+            let data = try JSONEncoder().encode(consumedCategories)
             // 2. url
             let url = getDocumentDirectory().appendingPathComponent("consumedCategory")
             // 3. 데이터 쓰기
@@ -151,10 +155,10 @@ class Items: Identifiable, ObservableObject {
             print("Saving targetItem has failed.")
         }
     }
-    func consumedItemSaved(encodedData: [ConsumedItem]) {
+    func consumedItemSaved() {
         do {
             // 1. 아이템 -> 디코더
-            let data = try JSONEncoder().encode(encodedData)
+            let data = try JSONEncoder().encode(consumedItems)
             // 2. url
             let url = getDocumentDirectory().appendingPathComponent("consumedItem")
             // 3. 데이터 쓰기
