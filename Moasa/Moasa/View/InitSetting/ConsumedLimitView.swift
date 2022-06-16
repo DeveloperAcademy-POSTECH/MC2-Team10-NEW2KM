@@ -7,70 +7,6 @@
 
 import SwiftUI
 
-struct Categories: View {
-    @Binding var consumedCategory: String
-
-    var body: some View {
-        VStack {
-            TextField("기타", text: $consumedCategory)
-            Divider()
-                .background(Color.accentColor)
-        }
-    }
-}
-
-struct Limits: View {
-    @Binding var consumedLimit: Int
-
-    var body: some View {
-        VStack {
-            HStack {
-                TextField("100_000", value: $consumedLimit, formatter: NumberFormatter())
-                    .keyboardType(.decimalPad)
-                Text("원")
-                    .font(.system(size: 17, weight: .regular))
-                    .padding(.trailing, 16)
-            }
-            Divider()
-                .background(Color.accentColor)
-        }
-    }
-}
-
-struct ConsumedCategories: View {
-    @Binding var consumedCategory: String
-    @Binding var consumedLimit: Int
-
-    var body: some View {
-        HStack {
-            VStack {
-                TextField("기타", text: $consumedCategory)
-                    .font(.system(size: 17, weight: .regular))
-                    .lineSpacing(0)
-                Divider()
-                    .background(Color.accentColor)
-            }
-            VStack {
-                HStack {
-                    TextField("100_000", value: $consumedLimit, formatter: NumberFormatter())
-                        .keyboardType(.decimalPad)
-                    Text("원")
-                        .font(.system(size: 17, weight: .regular))
-                }
-                .lineSpacing(0)
-                .padding(.trailing, 16)
-                Divider()
-                    .background(Color.accentColor)
-            }
-        }
-    }
-}
-
-struct TestArray: Hashable {
-    var test1: String
-    var test2: Int
-}
-
 struct ConsumedLimitView: View {
     @Environment(\.managedObjectContext) var viewContext
     @EnvironmentObject var items: Items
@@ -186,8 +122,6 @@ struct ConsumedLimitView: View {
                         .background(Color.accentColor)
                         .padding(.horizontal, 16)
                         .padding(.bottom, 20)
-                
-                
 
                 VStack {
                     if addArray > 2 && showList {
@@ -197,19 +131,19 @@ struct ConsumedLimitView: View {
 
                         Button(action: {
                             withAnimation {
-                                @State var newCategory = consumedCategories
+                                let newCategory: [ConsumedCategory] = consumedCategories
                                 let newCategory2 = ConsumedCategory(consumedCategory: consumedCategory, consumedLimit: [0: consumedLimit])
-    //                            @State consumedCategories: [ConsumedCategory] = ["식비", "교통/차량", "패션/미용"]
+//                            @State consumedCategories: [ConsumedCategory] = ["식비", "교통/차량", "패션/미용"]
 
-    //                            let newCategory = Categories(consumedCategory: self.$consumedCategoryArray)
-    //                            Limits(consumedLimit: self.$consumedLimitArray[idx])
+//                            let newCategory = Categories(consumedCategory: self.$consumedCategoryArray)
+//                            Limits(consumedLimit: self.$consumedLimitArray[idx])
 
-    //                            items.consumedCategories.append(newCategory)
-                                items.consumedCategories = consumedCategories
-                                items.consumedCategories.append(newCategory2)
+//                            items.consumedCategories.append(newCategory)
+                                items.consumedCategories = newCategory
+//                                items.consumedCategories.append(newCategory)
 
                                 items.consumedCategorySaved()
-    //                            items.consumedCategorySaved()
+                            items.consumedCategorySaved()
                                 UserDefaults.standard.set(true, forKey: "initSetting")
                             }
                             nextView = true
@@ -240,5 +174,65 @@ struct ConsumedLimitView: View {
 struct ConsumedLimitView_Previews: PreviewProvider {
     static var previews: some View {
         ConsumedLimitView()
+    }
+}
+
+
+struct Categories: View {
+    @Binding var consumedCategory: String
+
+    var body: some View {
+        VStack {
+            TextField("기타", text: $consumedCategory)
+            Divider()
+                .background(Color.accentColor)
+        }
+    }
+}
+
+struct Limits: View {
+    @Binding var consumedLimit: Int
+
+    var body: some View {
+        VStack {
+            HStack {
+                TextField("100_000", value: $consumedLimit, formatter: NumberFormatter())
+                    .keyboardType(.decimalPad)
+                Text("원")
+                    .font(.system(size: 17, weight: .regular))
+                    .padding(.trailing, 16)
+            }
+            Divider()
+                .background(Color.accentColor)
+        }
+    }
+}
+
+struct ConsumedCategories: View {
+    @Binding var consumedCategory: String
+    @Binding var consumedLimit: Int
+
+    var body: some View {
+        HStack {
+            VStack {
+                TextField("기타", text: $consumedCategory)
+                    .font(.system(size: 17, weight: .regular))
+                    .lineSpacing(0)
+                Divider()
+                    .background(Color.accentColor)
+            }
+            VStack {
+                HStack {
+                    TextField("100_000", value: $consumedLimit, formatter: NumberFormatter())
+                        .keyboardType(.decimalPad)
+                    Text("원")
+                        .font(.system(size: 17, weight: .regular))
+                }
+                .lineSpacing(0)
+                .padding(.trailing, 16)
+                Divider()
+                    .background(Color.accentColor)
+            }
+        }
     }
 }

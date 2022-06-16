@@ -8,22 +8,6 @@
 import SwiftUI
 
 
-struct BtnShape: View {
-    @Binding var btnText: String
-    
-    var body: some View {
-        ZStack {
-            Rectangle()
-                .frame(width: 360, height: 60)
-                .cornerRadius(13)
-                .foregroundColor(.accentColor)
-            Text(btnText)
-                .foregroundColor(.white)
-                .font(.system(size: 20, weight: .bold))
-        }
-    }
-}
-
 struct NewInitSettingView: View {
     @Environment(\.presentationMode) var dismiss
     @EnvironmentObject var items: Items
@@ -51,86 +35,11 @@ struct NewInitSettingView: View {
                         .padding(.top, 90)
                     Spacer()
                 }.padding(.leading, 16)
-                if showTargetImg {
-                    if image == nil {
-                        Button(action: {
-                            self.show.toggle()
-                        }, label: {
-                            Image(systemName: "photo.fill")
-                                .resizable()
-                                .clipShape(Circle())
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 190, height: 190)
-                                .padding(.top, 50)
-                        })
-                    } else {
-                        Button(action: {
-                            self.show.toggle()
-                        }, label: {
-                            Image(uiImage: UIImage(data: self.image!)!)
-                                .resizable()
-                                .clipShape(Circle())
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 190, height: 190)
-                                .padding(.top, 50)
-                        })
-                    }
-                }
-                if showText {
-                    HStack {
-                        TextField("예시: " + numberFormatter(number: 1_000_000),
-                                  value: $targetPrice, formatter: NumberFormatter())
-                        .padding(.leading, 16)
-                        .font(.system(size: 17, weight: .regular))
-                        .keyboardType(.decimalPad)
-                        Text("원")
-                            .font(.system(size: 17, weight: .bold))
-                            .padding(.trailing, 16)
-                    }
-                    Divider()
-                        .background(Color.accentColor)
-                        .padding(.horizontal, 16)
-                        .padding(.bottom, 20)
-                }
-                TextField("예시: Airpods Max", text: self.$targetName)
-                    .padding(.leading, 16)
-                    .font(.system(size: 17, weight: .regular))
-                Divider()
-                    .background(Color.accentColor)
-                    .padding(.horizontal, 16)
-                Spacer()
-                // 저장한 뒤에 다음 페이지로 넘어가야 한다.
-                if lastInput && self.targetPrice > 0 && !targetName.isEmpty {
-                    NavigationLink(destination: ConsumedLimitView(), tag: true, selection: $nextView) {
-                        EmptyView()
-                    }
-                    Button(action: {
-                        withAnimation {
-                            let newItem = TargetItem(targetName: targetName, targetPrice: targetPrice, fixedSaving: 0)
-                            items.targetItems.append(newItem)
-                            items.targetItemSaved()
-                            UserDefaults.standard.set(true, forKey: "initSetting")
-                        }
-                        nextView = true
-                    }, label: {
-                        BtnShape(btnText: $btnText[1])
-                    })
-                } else if !lastInput && self.targetPrice > 0 && !self.targetName.isEmpty {
-                    Button(action: {
-                        showTargetImg = true
-                        lastInput = true
-                        arrayCount += 1
-                    }, label: {
-                        BtnShape(btnText: $btnText[0])
-                    }).opacity(self.arrayCount < 2 ? 1: 0)
-                } else if !self.targetName.isEmpty {
-                    Button(action: {
-                        showText = true
-                        arrayCount += 1
-                    }, label: {
-                        BtnShape(btnText: $btnText[0])
-                    }).opacity(self.arrayCount < 1 ? 1: 0)
-                }
+
+                TargetInput(showText: $showText, showTargetImg: $showTargetImg, show: $show, image: $image, targetName: $targetName, targetPrice: $targetPrice)
+// 저장한 뒤에 다음 페이지로 넘어가야 한다.
+                TargetButton(showText: $showText, showTargetImg: $showTargetImg, targetName: $targetName,
+                             targetPrice: $targetPrice, arrayCount: $arrayCount, lastInput: $lastInput, nextView: $nextView, btnText: $btnText)
             }
             .background(Color.kenCustomOrange)
             .sheet(isPresented: self.$show, content: {
