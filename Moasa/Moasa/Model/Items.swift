@@ -12,7 +12,6 @@ class Items: Identifiable, ObservableObject {
     @Published var targetItems: [TargetItem] = []
     @Published var consumedCategories: [ConsumedCategory] = []
     @Published var consumedItems: [ConsumedItem] = []
-    
     var budgetAvailableDay: Int {
         let diff = Calendar.current.dateComponents([.day], from: Date(), to: challengeEndDate).day
         return diff!
@@ -84,6 +83,25 @@ class Items: Identifiable, ObservableObject {
         let percent = Double(expectedCategoryBalance) / Double(targetPrice)
         return totalSavedPercent + percent
     }
+    // MAIN Computed Property
+    // Date -> 해당 Date가 전체 챌린지 사이클 중 어떤 챌린지 사이클의 소비 항목인지 계산해주는 함수
+    func getChallengeCycle(consumedDate: Date) -> Int {
+        let startDate = targetItems[0].startDate
+        let diff = Calendar.current.dateComponents([.day], from: startDate, to: consumedDate).day!
+        let cycle = 30
+        return diff / cycle
+        // TODO: 데이트 피커 -> 타겟 시작 날짜보다 이전으로 가지 않게 한다.
+    }
+    
+    // 먼저 기간 분류(startDate, endDate) -> 정렬 분류 필터링을 $0.consumed
+    
+    func getCategoryItemsFiltered(categoryName: String, startDate: Date, endDate: Date) -> [ConsumedItem] {
+        let itemFiltered = consumedItems.filter({ $0.consumedCategory == categoryName && $0.consumedDate >= startDate && $0.consumedDate <= endDate})
+        return itemFiltered
+        // 카테고리 별 기간 내 소비 아이템 리턴
+    }
+    
+    // DetailView Computed Property
     func load() {
         consumedCategoryLoad()
         targetItemLoad()
@@ -116,9 +134,8 @@ class Items: Identifiable, ObservableObject {
                 let targetItems = try JSONDecoder().decode([TargetItem].self, from: data)
                 print("DECODE")
                 // 4. Initial Setting for items (Enviornment)
-//                self.targetItems = targetItems
-                self.targetItems = [TargetItem(targetName: "MayTest", targetPrice: 10000000, fixedSaving: 40000)]
-                print("입력 완료")
+                self.targetItems = targetItems
+                                print("입력 완료")
             } catch {
                 // Do nothing
             }
@@ -132,8 +149,7 @@ class Items: Identifiable, ObservableObject {
                 // 3. Decode the data
                 let consumedItems = try JSONDecoder().decode([ConsumedItem].self, from: data)
                 // 4. Initial Setting for items (Enviornment)
-//                self.consumedItems = consumedItems
-                self.consumedItems = [ConsumedItem(consumedCategory: "식비", consumedName: "오감자", consumedPrice: 1000, consumedDate: Date(), challengeCycle: 2)]
+                self.consumedItems = consumedItems
 //
                 print("입력 완료")
             } catch {
@@ -155,8 +171,7 @@ class Items: Identifiable, ObservableObject {
                 print("CATEGORY DECODE")
 
                 // 4. Initial Setting for items (Enviornment)
-//                self.consumedCategories = consumedCategories
-                self.consumedCategories = [ConsumedCategory(consumedCategory: "식비", consumedLimit: [0:50000]), ConsumedCategory(consumedCategory: "교통", consumedLimit: [0:10000])]
+                self.consumedCategories = consumedCategories
                 print("CATEGORY CHECK")
 
                 print("카테고리 입력 완료")
