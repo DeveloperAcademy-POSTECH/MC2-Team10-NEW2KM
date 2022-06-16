@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingView: View {
     @EnvironmentObject var items: Items
     var targetSettingLabelList: [String] = ["목표 이름", "목표 가격", "목표 이미지"]
-    var budgetSettingLabelList: [String] = ["고정 저금액", "처음부터 넣을 금액", "카테고리(항목, 예산)"]
+    var budgetSettingLabelList: [String] = ["고정 저금액", "자유 저금액", "카테고리(항목, 예산)"]
     var targetInitializeLabelList: [String] = ["목표 초기화"]
     var body: some View {
         List {
