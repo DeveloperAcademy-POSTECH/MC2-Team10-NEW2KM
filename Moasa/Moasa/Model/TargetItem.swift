@@ -15,4 +15,7 @@ struct TargetItem: Codable, Identifiable{
     var totalSaved = 0
     var startDate: Date = Date()
     var fixedSaving: Int
+    mutating func totalSavedSet(freeSaving: Int) {
+        self.totalSaved += freeSaving
+    }
 }
