@@ -17,7 +17,7 @@ struct TargetContentView: View {
                 .opacity(0.5)
                 .shadow(radius: 4)
             VStack {
-                Text("Apple Watch")
+                Text(items.targetItems.first!.targetName)
                     .font(.system(size: 18))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding([.leading, .top])

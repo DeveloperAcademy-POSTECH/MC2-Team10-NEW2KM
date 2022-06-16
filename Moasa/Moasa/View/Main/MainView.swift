@@ -15,12 +15,6 @@ struct MainView: View {
         ZStack {
             Color("KellyCustomGray").ignoresSafeArea()
             VStack {
-                Button(action: {
-                    items.targetItemSaved(encodedData: [TargetItem(targetName: "WILL", targetPrice: 10, fixedSaving: 400)])
-//                    items.load()
-                }, label: {
-                    Text("안됩니다!")
-                })
                 MainTitleView()
                     .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
                 ScrollView {

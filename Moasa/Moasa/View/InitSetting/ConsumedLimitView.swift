@@ -77,6 +77,7 @@ struct ConsumedLimitView: View {
     @Environment(\.managedObjectContext) var viewContext
     @EnvironmentObject var items: Items
 
+    
 
     @State var consumedCategories = ["식비", "교통/차량", "패션/미용"]
     @State var consumedLimits = [500_000, 100_000, 200_000]
@@ -136,6 +137,7 @@ struct ConsumedLimitView: View {
                                                consumedLimit: $consumedLimits[1]) // 교통/차량(Default)
                             ConsumedCategories(consumedCategory: $consumedCategories[2],
                                                consumedLimit: $consumedLimits[2]) // 패션/미용(Default)
+                            ConsumedCategory(consumedCategory: "food", consumedLimit: [0:consumedLimit])
                         }
                         .padding(.horizontal, 16)
                         .padding(.bottom, 40)
@@ -178,9 +180,14 @@ struct ConsumedLimitView: View {
 
                     Button(action: {
                         withAnimation {
-                            let newCategory = ConsumedCategory(consumedCategory: consumedCategory, consumedLimit: [consumedLimit: 0])
-
-                            items.consumedCategorySaved(encodedData: [newCategory])
+                            let newCategory = ConsumedCategory(consumedCategory: consumedCategory,
+                                                               consumedLimit: [0: consumedLimit])
+                            @State consumedCategories:[ConsumedCategory] = [식비, 교통비, 의류 등]
+                            
+                            items.consumedCategories = consumedCategories
+                            items.consumedCategorySaved()
+                            items.consumedCategories.append(newCategory)
+                            items.consumedCategorySaved()
                             UserDefaults.standard.set(true, forKey: "initSetting")
                         }
                         nextView = true
@@ -204,4 +211,3 @@ struct ConsumedLimitView_Previews: PreviewProvider {
         ConsumedLimitView()
     }
 }
-//
