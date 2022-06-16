@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct InputDetailView: View {
+    @EnvironmentObject var items: Items
     @State var expense: String = ""
     @State var titleContent: String = ""
     @State var additionalContent: String = ""
+    @Binding var chosenDate: Date
+    @Binding var categories: [String]
+    @Binding var selectedIndex: Int?
     var body: some View {
         VStack {
+            Text("지출 내역 입력")
+                .font(.system(size: 20))
             InputDate()
             InputCategory()
             InputExpense(expense: $expense)
@@ -26,12 +32,16 @@ struct InputDetailView: View {
                 .padding(.horizontal, 30)
             HStack {
                 Button(action: {
-                    
+                    let newConsumedItem = ConsumedItem(consumedCategory: categories[selectedIndex ?? 0],
+                                                       consumedName: titleContent, consumedPrice: Int(expense) ?? 0,
+                                                       consumedDate: chosenDate, consumedMemo: additionalContent, challengeCycle: items.challengeCycle)
+                    items.consumedItems.append(newConsumedItem)
+                    items.consumedItemSaved()
                 }, label: {
                     Text("저장")
                 })
                 Button(action: {
-                    
+                    //navi to DetailView
                 }, label: {
                     Text("취소")
                 })
@@ -41,49 +51,26 @@ struct InputDetailView: View {
 }
 
 struct InputDate: View {
-    @State var date = Date()
+    @State var chosenDate = Date()
     var body: some View {
         HStack {
             Text("날짜").foregroundColor(Color.systemGray)
-            DatePicker("", selection: $date, displayedComponents: [.date])
+            DatePicker("", selection: $chosenDate, displayedComponents: [.date])
                 .padding()
                 .cornerRadius(15)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 100))
         }.padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
-//        Divider()
-//            .padding(.horizontal, 30).padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 0))
     }
-    //    @Binding var date: String
-    //    var body: some View {
-    //        HStack {
-    //            Text("날짜")
-    //                .foregroundColor(Color.systemGray)
-    //            TextField("", text: $date)
-    //                .padding(.horizontal, 30).padding(.top, 20)
-    //        }
-    //        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
-    //        Divider()
-    //            .padding(.horizontal, 30).padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 0))
-    //    }
 }
 
 struct InputCategory: View {
-    var categories = ["식비", "교통/차량", "패션/미용", "기타"]
+    @State var categories = ["식비", "교통/차량", "패션/미용", "기타"]
     @State var lastSelectedIndex: Int?
     var body: some View {
         HStack {
             Text("분류")
                 .foregroundColor(Color.systemGray)
             InputCategoryPicker(data: self.categories, lastSelectedIndex: self.$lastSelectedIndex)
-            //            InputCategoryPicker(data: self.categories,
-            //                                selectionIndex: self.$selectionIndex, text: self.$category)
-            //            Picker("", selection: $selectedCategory) {
-            //                ForEach(categories, id: \.self) {
-            //                    Text($0)
-            //                }
-            //            }
-            //            TextField("", text: $category)
-            //                .padding(.horizontal, 30).padding(.top, 20)
         }
         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
         Divider()
@@ -121,8 +108,8 @@ struct InputTitle: View {
     }
 }
 
-struct InputDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        InputDetailView()
-    }
-}
+//struct InputDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        InputDetailView()
+//    }
+//}
