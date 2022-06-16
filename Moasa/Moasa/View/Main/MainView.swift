@@ -9,27 +9,27 @@ import CoreData
 import SwiftUI
 
 struct MainView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    @State private var index = 0
-    static var getConsumedCategory: NSFetchRequest<ConsumedCategory> {
-        let request: NSFetchRequest<ConsumedCategory> = ConsumedCategory.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \ConsumedCategory.challengeCycle, ascending: true)]
-        return request
-    }
-    @FetchRequest(fetchRequest: getConsumedCategory)
-    private var consumedCategory: FetchedResults<ConsumedCategory>
-
-    static var getConsumedItem: NSFetchRequest<ConsumedItem> {
-        let request: NSFetchRequest<ConsumedItem> = ConsumedItem.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \ConsumedItem.id, ascending: true)]
-        return request
-    }
-    @FetchRequest(fetchRequest: getConsumedItem)
-    private var consumedItems: FetchedResults<ConsumedItem>
-    @FetchRequest(
-        sortDescriptors:
-            [NSSortDescriptor(keyPath: \TargetItem.id, ascending: true)], animation: .default)
-    private var targetItem: FetchedResults<TargetItem>
+//    @Environment(\.managedObjectContext) private var viewContext
+//    @State private var index = 0
+//    static var getConsumedCategory: NSFetchRequest<ConsumedCategory> {
+//        let request: NSFetchRequest<ConsumedCategory> = ConsumedCategory.fetchRequest()
+//        request.sortDescriptors = [NSSortDescriptor(keyPath: \ConsumedCategory.challengeCycle, ascending: true)]
+//        return request
+//    }
+//    @FetchRequest(fetchRequest: getConsumedCategory)
+//    private var consumedCategory: FetchedResults<ConsumedCategory>
+//
+//    static var getConsumedItem: NSFetchRequest<ConsumedItem> {
+//        let request: NSFetchRequest<ConsumedItem> = ConsumedItem.fetchRequest()
+//        request.sortDescriptors = [NSSortDescriptor(keyPath: \ConsumedItem.id, ascending: true)]
+//        return request
+//    }
+//    @FetchRequest(fetchRequest: getConsumedItem)
+//    private var consumedItems: FetchedResults<ConsumedItem>
+//    @FetchRequest(
+//        sortDescriptors:
+//            [NSSortDescriptor(keyPath: \TargetItem.id, ascending: true)], animation: .default)
+//    private var targetItem: FetchedResults<TargetItem>
 
     var body: some View {
         ZStack {

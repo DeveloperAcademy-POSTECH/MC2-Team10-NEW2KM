@@ -9,7 +9,7 @@ import Foundation
 
 func getCategorySaved(consumedItems: [ConsumedItem],
                       consumedCategory: ConsumedCategory,
-                      challengeCycle: Int64) -> Int64 {
+                      challengeCycle: Int) -> Int {
     // 해당 카테고리 별 limit - 해당 카테고리 별 challengeCycle의 사용 금액
     let challengeLimit = consumedCategory.consumedLimit![challengeCycle]!
     let challengeSpent = consumedItems
