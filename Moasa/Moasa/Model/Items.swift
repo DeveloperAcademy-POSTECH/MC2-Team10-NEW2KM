@@ -38,14 +38,24 @@ class Items: Identifiable, ObservableObject {
         return (untilToday - 1) / cycle
         // 주기 로직은 이후에 하기로 합니다!
     }
-    var categoryBalances: [(String, String, Int)] {
+    
+    struct CategoryLeft: Hashable {
+        var icon: String
+        var category: String
+        var left: Int
+        var limit: [Int:Int]
+    }
+    
+    var categoryBalances: [CategoryLeft] {
         // CategryName, CategoryIcon, CategoryBalance 리턴
-        var categoryBalances = [(String, String, Int)]()
-        let categories = consumedCategories.map({ $0.consumedCategory })
+        var categoryBalances = [CategoryLeft]()
+        let categories = consumedCategories.map({ ($0.consumedCategory, $0.consumedLimit )})
         for category in categories {
-            let balance = categoryBalance(categoryName: category)
-            let categoryIcon = getIcon(categoryName: category)
-            categoryBalances.append((category, categoryIcon, balance))
+            let balance = categoryBalance(categoryName: category.0)
+            let categoryIcon = getIcon(categoryName: category.0)
+            let limit = category.1
+            categoryBalances.append(CategoryLeft(icon: categoryIcon, category: category.0, left: balance, limit: limit))
+//            categoryBalances.append((category, categoryIcon, balance))
         }
         return categoryBalances
         // 그리드 -> 해당 카테고리 별 잔액 리턴
@@ -67,7 +77,7 @@ class Items: Identifiable, ObservableObject {
         return percent
     }
     var expectedCategoryBalance: Int {
-        return categoryBalances.map({ $0.2 }).reduce(0, +)
+        return categoryBalances.map({ $0.left }).reduce(0, +)
     }
     var expectedCategoryBalancePercent: Double {
         let targetPrice = targetItems[0].targetPrice
@@ -75,9 +85,9 @@ class Items: Identifiable, ObservableObject {
         return totalSavedPercent + percent
     }
     func load() {
-        targetItemLoad()
-        consumedItemLoad()
         consumedCategoryLoad()
+        targetItemLoad()
+//        consumedItemLoad()
     }
     func targetItemSaved() {
         do {
@@ -106,7 +116,8 @@ class Items: Identifiable, ObservableObject {
                 let targetItems = try JSONDecoder().decode([TargetItem].self, from: data)
                 print("DECODE")
                 // 4. Initial Setting for items (Enviornment)
-                self.targetItems = targetItems
+//                self.targetItems = targetItems
+                self.targetItems = [TargetItem(targetName: "MayTest", targetPrice: 10000000, fixedSaving: 40000)]
                 print("입력 완료")
             } catch {
                 // Do nothing
@@ -115,13 +126,15 @@ class Items: Identifiable, ObservableObject {
     func consumedItemLoad() {
             do {
                 // 1. Get the notes URL file
-                let url = getDocumentDirectory().appendingPathComponent("consumedCategories")
+                let url = getDocumentDirectory().appendingPathComponent("consumedItems")
                 // 2. Create a new property for the data
                 let data = try Data(contentsOf: url)
                 // 3. Decode the data
                 let consumedItems = try JSONDecoder().decode([ConsumedItem].self, from: data)
                 // 4. Initial Setting for items (Enviornment)
-                self.consumedItems = consumedItems
+//                self.consumedItems = consumedItems
+                self.consumedItems = [ConsumedItem(consumedCategory: "식비", consumedName: "오감자", consumedPrice: 1000, consumedDate: Date(), challengeCycle: 2)]
+//
                 print("입력 완료")
             } catch {
                 // Do nothing
@@ -131,14 +144,22 @@ class Items: Identifiable, ObservableObject {
             do {
                 print("DO CHECK")
                 // 1. Get the notes URL file
-                let url = getDocumentDirectory().appendingPathComponent("consumedItems")
+                let url = getDocumentDirectory().appendingPathComponent("consumedCategories")
+                print("CATEGORY URL")
                 // 2. Create a new property for the data
                 let data = try Data(contentsOf: url)
+                print("CATEGORY DATA")
+
                 // 3. Decode the data
                 let consumedCategories = try JSONDecoder().decode([ConsumedCategory].self, from: data)
+                print("CATEGORY DECODE")
+
                 // 4. Initial Setting for items (Enviornment)
-                self.consumedCategories = consumedCategories
-                print("입력 완료")
+//                self.consumedCategories = consumedCategories
+                self.consumedCategories = [ConsumedCategory(consumedCategory: "식비", consumedLimit: [0:50000]), ConsumedCategory(consumedCategory: "교통", consumedLimit: [0:10000])]
+                print("CATEGORY CHECK")
+
+                print("카테고리 입력 완료")
             } catch {
                 // Do nothing
             }
@@ -148,7 +169,7 @@ class Items: Identifiable, ObservableObject {
             // 1. 아이템 -> 디코더
             let data = try JSONEncoder().encode(consumedCategories)
             // 2. url
-            let url = getDocumentDirectory().appendingPathComponent("consumedCategory")
+            let url = getDocumentDirectory().appendingPathComponent("consumedCategories")
             // 3. 데이터 쓰기
             try data.write(to: url)
         } catch {
@@ -160,7 +181,7 @@ class Items: Identifiable, ObservableObject {
             // 1. 아이템 -> 디코더
             let data = try JSONEncoder().encode(consumedItems)
             // 2. url
-            let url = getDocumentDirectory().appendingPathComponent("consumedItem")
+            let url = getDocumentDirectory().appendingPathComponent("consumedItems")
             // 3. 데이터 쓰기
             try data.write(to: url)
         } catch {

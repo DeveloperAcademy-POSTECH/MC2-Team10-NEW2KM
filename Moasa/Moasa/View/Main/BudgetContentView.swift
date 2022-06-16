@@ -7,23 +7,9 @@
 
 import SwiftUI
 
-struct CategoryLeft: Hashable {
-    var icon: String
-    var category: String
-    var left: Int
-}
-
 struct BudgetContentView: View {
     @EnvironmentObject var items: Items
-    var categories = [CategoryLeft(icon: "fork.knife", category: "식비", left: 89_000),
-                      CategoryLeft(icon: "car", category: "교통/차량", left: 30_000),
-                      CategoryLeft(icon: "tshirt", category: "패션/미용", left: 66_000),
-                      CategoryLeft(icon: "ellipsis.circle", category: "기타", left: 5000)]
-    let categoryID: UUID = UUID()
-    // category 해당 UUID
-    let categoryName: String = "CATEGORY"
-    let consumedLimit: Int = 100_000
-    // category 체크 String, 카테고리 별 월별 한계 금액 consumedLimit
+    let categoryID = UUID()
 
     var body: some View {
         VStack {
@@ -36,8 +22,10 @@ struct BudgetContentView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading)
             LazyVGrid(columns: [GridItem(.flexible(minimum: 80)), GridItem(.flexible(minimum: 80))], spacing: 40) {
-                ForEach(categories, id: \.self) { category in
-                    NavigationLink(destination: DetailView(categoryId: categoryID, categoryName: categoryName, consumedLimit: consumedLimit)) {
+                ForEach(items.categoryBalances, id: \.self) { category in
+                    NavigationLink(destination: DetailView(categoryId: categoryID,
+                                                           categoryName: category.category,
+                                                           consumedLimit: category.limit[items.challengeCycle]!)) {
                         BudgetItem(icon: category.icon, category: category.category, left: category.left)
                             .aspectRatio(contentMode: .fit)
                     }

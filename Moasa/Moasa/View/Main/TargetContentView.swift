@@ -83,7 +83,7 @@ struct GaugeLabel: View {
             Circle()
                 .fill(Color.kenCustomOrange)
                 .frame(width: 10, height: 10)
-            Text("이번 달 추가 (+\(getPercentInt(percent:items.expectedCategoryBalancePercent - items.totalSavedPercent))%)")
+            Text("이번 달 추가 (+\(getPercentInt(percent: items.expectedCategoryBalancePercent - items.totalSavedPercent))%)")
                 .font(.system(size: 14))
                 .foregroundColor(.systemGray)
         }
