@@ -9,10 +9,21 @@ import Foundation
 import SwiftUI
 
 class Items: Identifiable, ObservableObject {
-    @Published var targetItems: [TargetItem] = []
-    @Published var consumedCategories: [ConsumedCategory] = []
-    @Published var consumedItems: [ConsumedItem] = []
-    
+    @Published var targetItems: [TargetItem] = [] {
+        didSet {
+            targetItemSaved()
+        }
+    }
+    @Published var consumedCategories: [ConsumedCategory] = [] {
+        didSet {
+            consumedCategorySaved()
+        }
+    }
+    @Published var consumedItems: [ConsumedItem] = [] {
+        didSet {
+            consumedItemSaved()
+        }
+    }
     var budgetAvailableDay: Int {
         let diff = Calendar.current.dateComponents([.day], from: Date(), to: challengeEndDate).day
         return diff!
@@ -34,22 +45,31 @@ class Items: Identifiable, ObservableObject {
         return diff! + 1
     }
     var challengeCycle: Int {
-        let cycle = 30
-        return (untilToday - 1) / cycle
-        // 주기 로직은 이후에 하기로 합니다!
-    }
-    var categoryBalances: [(String, String, Int)] {
-        // CategryName, CategoryIcon, CategoryBalance 리턴
-        var categoryBalances = [(String, String, Int)]()
-        let categories = consumedCategories.map({ $0.consumedCategory })
-        for category in categories {
-            let balance = categoryBalance(categoryName: category)
-            let categoryIcon = getIcon(categoryName: category)
-            categoryBalances.append((category, categoryIcon, balance))
-        }
-        return categoryBalances
-        // 그리드 -> 해당 카테고리 별 잔액 리턴
-    }
+          let cycle = 30
+          return (untilToday - 1) / cycle
+          // 주기 로직은 이후에 하기로 합니다!
+      }
+    struct CategoryLeft: Hashable {
+         var icon: String
+         var category: String
+         var left: Int
+         var limit: [Int:Int]
+     }
+
+     var categoryBalances: [CategoryLeft] {
+         // CategryName, CategoryIcon, CategoryBalance 리턴
+         var categoryBalances = [CategoryLeft]()
+         let categories = consumedCategories.map({ ($0.consumedCategory, $0.consumedLimit )})
+         for category in categories {
+             let balance = categoryBalance(categoryName: category.0)
+             let categoryIcon = getIcon(categoryName: category.0)
+             let limit = category.1
+             categoryBalances.append(CategoryLeft(icon: categoryIcon, category: category.0, left: balance, limit: limit))
+ //            categoryBalances.append((category, categoryIcon, balance))
+         }
+         return categoryBalances
+         // 그리드 -> 해당 카테고리 별 잔액 리턴
+     }
     func categoryBalance(categoryName: String) -> Int {
         let consumedItemSpent: Int = consumedItems
             .filter({ $0.consumedCategory == categoryName && $0.challengeCycle == challengeCycle })
@@ -67,7 +87,7 @@ class Items: Identifiable, ObservableObject {
         return percent
     }
     var expectedCategoryBalance: Int {
-        return categoryBalances.map({ $0.2 }).reduce(0, +)
+        return categoryBalances.map({ $0.left }).reduce(0, +)
     }
     var expectedCategoryBalancePercent: Double {
         let targetPrice = targetItems[0].targetPrice

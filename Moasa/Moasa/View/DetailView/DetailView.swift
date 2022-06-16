@@ -26,7 +26,6 @@ struct DetailView: View {
     }
 }
 
-
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         DetailView(categoryId: UUID(), categoryName: "CATEGORY", consumedLimit: 10000)

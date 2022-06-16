@@ -17,11 +17,11 @@ struct TargetContentView: View {
                 .opacity(0.5)
                 .shadow(radius: 4)
             VStack {
-                Text(items.targetItems.first!.targetName)
+                Text(items.targetItems[0].targetName)
                     .font(.system(size: 18))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding([.leading, .top])
-                Text("이번 달 예상 추가 금액 24,950원")
+                Text("이번 달 예상 추가 금액 \(items.targetItems[0].targetPrice)원")
                     .font(.system(size: 14))
                     .foregroundColor(.gray)
                     .frame(maxWidth: .infinity, alignment: .leading)

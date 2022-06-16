@@ -22,7 +22,7 @@ struct MainTitleView: View {
                 Text("모으는 중")
                     .font(.system(size: 20))
                 Spacer()
-                NavigationLink(destination: SettingView()) {
+                NavigationLink(destination: SettingView().environmentObject(items)) {
                     Image(systemName: "gearshape.fill")
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 30))
                         .foregroundColor(.black)
