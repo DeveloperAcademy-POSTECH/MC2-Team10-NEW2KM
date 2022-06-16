@@ -20,6 +20,7 @@
 		4A67A1C6285ABAD000B4F56F /* TargetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67A1C5285ABAD000B4F56F /* TargetItem.swift */; };
 		4A67A1CB285ABEF900B4F56F /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67A1CA285ABEF900B4F56F /* Items.swift */; };
 		4A67A1CD285AC06400B4F56F /* getDocumentDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67A1CC285AC06400B4F56F /* getDocumentDirectory.swift */; };
+		4A67A1D4285AD44400B4F56F /* HalfASheet in Frameworks */ = {isa = PBXBuildFile; productRef = 4A67A1D3285AD44400B4F56F /* HalfASheet */; };
 		4A8C5242285852C4007CE4F1 /* funcPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C5241285852C4007CE4F1 /* funcPointer.swift */; };
 		4AB8094028557EE800C772D1 /* BudgetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8093C28557EE800C772D1 /* BudgetContentView.swift */; };
 		4AB8094128557EE800C772D1 /* TargetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8093D28557EE800C772D1 /* TargetContentView.swift */; };
@@ -93,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A67A1D4285AD44400B4F56F /* HalfASheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +250,9 @@
 			dependencies = (
 			);
 			name = Moasa;
+			packageProductDependencies = (
+				4A67A1D3285AD44400B4F56F /* HalfASheet */,
+			);
 			productName = Moasa;
 			productReference = 4AEB76012852F32000EC85B9 /* Moasa.app */;
 			productType = "com.apple.product-type.application";
@@ -276,6 +281,9 @@
 				Base,
 			);
 			mainGroup = 4AEB75F82852F32000EC85B9;
+			packageReferences = (
+				4A67A1D2285AD44400B4F56F /* XCRemoteSwiftPackageReference "HalfASheet" */,
+			);
 			productRefGroup = 4AEB76022852F32000EC85B9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -561,6 +569,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4A67A1D2285AD44400B4F56F /* XCRemoteSwiftPackageReference "HalfASheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/franklynw/HalfASheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4A67A1D3285AD44400B4F56F /* HalfASheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A67A1D2285AD44400B4F56F /* XCRemoteSwiftPackageReference "HalfASheet" */;
+			productName = HalfASheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4AEB75F92852F32000EC85B9 /* Project object */;
 }
