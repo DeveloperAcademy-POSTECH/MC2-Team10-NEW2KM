@@ -9,8 +9,6 @@ import CoreData
 import SwiftUI
 
 struct MainView: View {
-    @EnvironmentObject var items: Items
-    let targetItemMock1 = TargetItem(targetName: "Will", targetPrice: 10, fixedSaving: 100)
     var body: some View {
         ZStack {
             Color("KellyCustomGray").ignoresSafeArea()
