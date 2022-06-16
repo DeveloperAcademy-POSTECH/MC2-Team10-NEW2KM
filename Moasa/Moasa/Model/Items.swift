@@ -38,12 +38,14 @@ class Items: Identifiable, ObservableObject {
         return (untilToday - 1) / cycle
         // 주기 로직은 이후에 하기로 합니다!
     }
-    var categoryBalances: [(String, Int)] {
-        var categoryBalances = [(String, Int)]()
+    var categoryBalances: [(String, String, Int)] {
+        // CategryName, CategoryIcon, CategoryBalance 리턴
+        var categoryBalances = [(String, String, Int)]()
         let categories = consumedCategories.map({ $0.consumedCategory })
         for category in categories {
             let balance = categoryBalance(categoryName: category)
-            categoryBalances.append((category, balance))
+            let categoryIcon = getIcon(categoryName: category)
+            categoryBalances.append((category, categoryIcon, balance))
         }
         return categoryBalances
         // 그리드 -> 해당 카테고리 별 잔액 리턴
@@ -65,7 +67,7 @@ class Items: Identifiable, ObservableObject {
         return percent
     }
     var expectedCategoryBalance: Int {
-        return categoryBalances.map({ $0.1 }).reduce(0, +)
+        return categoryBalances.map({ $0.2 }).reduce(0, +)
     }
     var expectedCategoryBalancePercent: Double {
         let targetPrice = targetItems[0].targetPrice
