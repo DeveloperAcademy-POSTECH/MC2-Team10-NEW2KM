@@ -10,7 +10,8 @@ import SwiftUI
 struct TargetInput: View {
     @Binding var showText: Bool
     @Binding var showTargetImg: Bool
-    @Binding var targetPrice: Int
+    @Binding var targetPrice: Int?
+    @State var text: String = ""
     @Binding var targetName: String
 
     @Binding var show: Bool
@@ -44,11 +45,12 @@ struct TargetInput: View {
         }
         if showText {
             HStack {
-                TextField("예시: " + numberFormatter(number: 1_000_000),
-                          value: $targetPrice, formatter: NumberFormatter())
-                .padding(.leading, 16)
-                .font(.system(size: 17, weight: .regular))
-                .keyboardType(.decimalPad)
+                TextField(numberFormatter(number: 1_000_000),
+                          value: $targetPrice, formatter: NumberFormatter(), onCommit: {self.text = "\((self.targetPrice ?? 0)).";})
+                    .padding(.leading, 16)
+                    .font(.system(size: 17, weight: .regular))
+                    .keyboardType(.decimalPad)
+
                 Text("원")
                     .font(.system(size: 17, weight: .bold))
                     .padding(.trailing, 16)

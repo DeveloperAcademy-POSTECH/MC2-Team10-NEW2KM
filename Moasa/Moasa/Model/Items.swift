@@ -63,7 +63,7 @@ class Items: Identifiable, ObservableObject {
     var totalSavedPercent: Double {
         let totalSaved = targetItems[0].totalSaved
         let targetPrice = targetItems[0].targetPrice
-        let percent = Double(totalSaved) / Double(targetPrice)
+        let percent = Double(totalSaved) / Double(targetPrice!)
         return percent
     }
     var expectedCategoryBalance: Int {
@@ -71,7 +71,7 @@ class Items: Identifiable, ObservableObject {
     }
     var expectedCategoryBalancePercent: Double {
         let targetPrice = targetItems[0].targetPrice
-        let percent = Double(expectedCategoryBalance) / Double(targetPrice)
+        let percent = Double(expectedCategoryBalance) / Double(targetPrice!)
         return totalSavedPercent + percent
     }
     func load() {

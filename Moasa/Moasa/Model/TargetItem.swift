@@ -11,7 +11,7 @@ struct TargetItem: Codable, Identifiable{
     let id = UUID()
     var targetName: String
     var targetImage: Data? = nil
-    var targetPrice: Int
+    var targetPrice: Int?
     var totalSaved = 0
     var startDate: Date = Date()
     var fixedSaving: Int
