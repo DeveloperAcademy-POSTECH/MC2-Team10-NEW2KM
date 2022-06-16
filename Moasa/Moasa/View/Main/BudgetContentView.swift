@@ -22,15 +22,15 @@ struct BudgetContentView: View {
     let categoryID: UUID = UUID()
     // category 해당 UUID
     let categoryName: String = "CATEGORY"
-    let consumedLimit: Int = 100000
+    let consumedLimit: Int = 100_000
     // category 체크 String, 카테고리 별 월별 한계 금액 consumedLimit
 
     var body: some View {
         VStack {
             HStack {
-                Text("12일간 사용 가능한 금액")
+                Text("\(items.budgetAvailableDay)일간 사용 가능한 금액")
                     .font(.system(size: 20, weight: .bold))
-                Text("(6.12 ~ 7.11)")
+                Text("(\(dateFormatter(date: items.challengeStartDate, format: "MM.dd")) ~ \(dateFormatter(date: items.challengeEndDate, format: "MM.dd)"))")
                     .font(.system(size: 14))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
