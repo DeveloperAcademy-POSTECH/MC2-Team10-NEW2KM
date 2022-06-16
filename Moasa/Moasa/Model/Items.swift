@@ -12,13 +12,38 @@ class Items: Identifiable, ObservableObject {
     @Published var targetItems: [TargetItem] = []
     @Published var consumedCategories: [ConsumedCategory] = []
     @Published var consumedItems: [ConsumedItem] = []
-    
+    var challengeCycle: Int {
+        let startDate = targetItems[0].startDate
+        // 30일을 한 달 주기로 설정
+        let cycle = 30
+        let diff = Calendar.current.dateComponents([.day], from: startDate, to: Date()).day
+        return diff! / cycle
+    }
+    var categoryBalances: [(String, Int)] {
+        var categoryBalances = [(String, Int)]()
+        let categories = consumedCategories.map({ $0.consumedCategory })
+        for category in categories {
+            let balance = categoryBalance(categoryName: category)
+            categoryBalances.append((category, balance))
+        }
+        return categoryBalances
+        // 그리드 -> 해당 카테고리 별 잔액 리턴
+    }
+    func categoryBalance(categoryName: String) -> Int {
+        let consumedItemSpent: Int = consumedItems
+            .filter({ $0.consumedCategory == categoryName && $0.challengeCycle == challengeCycle })
+            .map({ $0.consumedPrice }).reduce(0, +)
+        let categoryLimit = consumedCategories
+            .filter({ $0.consumedCategory == categoryName })[0]
+            .consumedLimit[challengeCycle]
+        return categoryLimit! - consumedItemSpent
+        // 이번 챌린지 도전 주기의 해당 카테고리 잔액
+    }
     func load() {
         targetItemLoad()
         consumedItemLoad()
         consumedCategoryLoad()
     }
-    
     func targetItemSaved(encodedData: [TargetItem]) {
         do {
             // 1. 아이템 -> 디코더
@@ -33,7 +58,6 @@ class Items: Identifiable, ObservableObject {
             print("Saving targetItem has failed.")
         }
     }
-    
     func targetItemLoad() {
             do {
                 // 1. Get the notes URL file
@@ -41,7 +65,7 @@ class Items: Identifiable, ObservableObject {
                 // 2. Create a new property for the data
                 let data = try Data(contentsOf: url)
                 // 3. Decode the data
-                var targetItems = try JSONDecoder().decode([TargetItem].self, from: data)
+                let targetItems = try JSONDecoder().decode([TargetItem].self, from: data)
                 // 4. Initial Setting for items (Enviornment)
                 self.targetItems = targetItems
                 print("입력 완료")
@@ -49,7 +73,6 @@ class Items: Identifiable, ObservableObject {
                 // Do nothing
             }
     }
-    
     func consumedItemLoad() {
             do {
                 // 1. Get the notes URL file
@@ -65,7 +88,6 @@ class Items: Identifiable, ObservableObject {
                 // Do nothing
             }
     }
-    
     func consumedCategoryLoad() {
             do {
                 print("DO CHECK")
@@ -82,8 +104,6 @@ class Items: Identifiable, ObservableObject {
                 // Do nothing
             }
     }
-    
-    
     func consumedCategorySaved(encodedData: [ConsumedCategory]) {
         do {
             // 1. 아이템 -> 디코더
