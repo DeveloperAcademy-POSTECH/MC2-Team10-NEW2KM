@@ -44,7 +44,7 @@ class Items: Identifiable, ObservableObject {
         var left: Int
         var limit: [Int:Int]
     }
-    
+        
     var categoryBalances: [CategoryLeft] {
         // CategryName, CategoryIcon, CategoryBalance 리턴
         var categoryBalances = [CategoryLeft]()
@@ -59,6 +59,7 @@ class Items: Identifiable, ObservableObject {
         return categoryBalances
         // 그리드 -> 해당 카테고리 별 잔액 리턴
     }
+    
     func categoryBalance(categoryName: String) -> Int {
         let consumedItemSpent: Int = consumedItems
             .filter({ $0.consumedCategory == categoryName && $0.challengeCycle == challengeCycle })
@@ -68,6 +69,15 @@ class Items: Identifiable, ObservableObject {
             .consumedLimit[challengeCycle]
         return categoryLimit! - consumedItemSpent
         // 이번 챌린지 도전 주기의 해당 카테고리 잔액
+    }
+    func balancePercent(categoryName: String) -> Int {
+        let categoryBalance = categoryBalance(categoryName: categoryName)
+        let categoryLimit = consumedCategories
+            .filter({ $0.consumedCategory == categoryName })[0]
+            .consumedLimit[challengeCycle]
+        let percent = (Double(categoryBalance) / Double(categoryLimit!)) * 100.0
+        return Int(percent)
+        // 각 카테고리 별 이번 챌린지 주기 남은 금액의 퍼센트를 리턴
     }
     var totalSavedPercent: Double {
         let totalSaved = targetItems[0].totalSaved
@@ -92,15 +102,16 @@ class Items: Identifiable, ObservableObject {
         return diff / cycle
         // TODO: 데이트 피커 -> 타겟 시작 날짜보다 이전으로 가지 않게 한다.
     }
-    
     // 먼저 기간 분류(startDate, endDate) -> 정렬 분류 필터링을 $0.consumed
-    
     func getCategoryItemsFiltered(categoryName: String, startDate: Date, endDate: Date) -> [ConsumedItem] {
-        let itemFiltered = consumedItems.filter({ $0.consumedCategory == categoryName && $0.consumedDate >= startDate && $0.consumedDate <= endDate})
+        let itemFiltered = consumedItems
+            .filter({
+                $0.consumedCategory == categoryName &&
+                $0.consumedDate >= startDate &&
+                $0.consumedDate <= endDate})
         return itemFiltered
         // 카테고리 별 기간 내 소비 아이템 리턴
     }
-    
     // DetailView Computed Property
     func load() {
         consumedCategoryLoad()
