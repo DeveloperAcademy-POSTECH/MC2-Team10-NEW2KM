@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewInitSettingView: View {
-    @Environment(\.managedObjectContext) var viewContext
+//    @Environment(\.managedObjectContext) var viewContext
     @Environment(\.presentationMode) var dismiss
 
     @State private var showText = false
@@ -94,26 +94,26 @@ struct NewInitSettingView: View {
                     }
                     Button(action: {
                         
-                        withAnimation {
-                            let newItem = TargetItem(context: viewContext)
-                            newItem.id = UUID()
-                            newItem.challengeCycle = 0
-                            newItem.fixedSaving = 100
-                            newItem.startDate = Date()
-                            newItem.targetImage = image
-                            newItem.targetPrice = targetPrice
-                            newItem.targetName = targetName
-                            newItem
-                            // 초기 세팅 -> 정보 입력, TargetItem 생성
-                            do {
-                                try viewContext.save()
-                            } catch {
-                                let nsError = error as NSError
-                                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                            }
-                            
-                        }
+//                        withAnimation {
+//                            let newItem = TargetItem(context: viewContext)
+//                            newItem.id = UUID()
+//                            newItem.challengeCycle = 0
+//                            newItem.fixedSaving = 100
+//                            newItem.startDate = Date()
+//                            newItem.targetImage = image
+//                            newItem.targetPrice = targetPrice
+//                            newItem.targetName = targetName
+//                            newItem
+//                            // 초기 세팅 -> 정보 입력, TargetItem 생성
+//                            do {
+//                                try viewContext.save()
+//                            } catch {
+//                                let nsError = error as NSError
+//                                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+//                            }
                         nextView = true
+                        }
+                        
 //                        let add = TargetItem(context: viewContext)
 //                        add.id = UUID()
 //                        add.targetName = targetName
@@ -125,7 +125,7 @@ struct NewInitSettingView: View {
 //                        try? self.viewContext.save()
 //                        nextView = true
 //                        print("저장 완료")
-                    }, label: {
+                    , label: {
                         ZStack {
                             Rectangle()
                                 .frame(width: 360, height: 60)
