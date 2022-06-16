@@ -23,7 +23,10 @@ struct BudgetContentView: View {
             .padding(.leading)
             LazyVGrid(columns: [GridItem(.flexible(minimum: 80)), GridItem(.flexible(minimum: 80))], spacing: 40) {
                 ForEach(items.categoryBalances, id: \.self) { category in
-                    NavigationLink(destination: DetailView()) {
+                    NavigationLink(destination:
+                                    DetailView(startDate: items.challengeStartDate,
+                                               endDate: items.challengeEndDate,
+                                               category: category)) {
                         BudgetItem(icon: category.icon, category: category.category, left: category.left)
                             .aspectRatio(contentMode: .fit)
                     }
