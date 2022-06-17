@@ -18,6 +18,7 @@ struct TargetContentView: View {
                 .shadow(radius: 4)
             VStack {
                 Text(items.targetItems[0].targetName)
+
                     .font(.system(size: 18))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding([.leading, .top])

@@ -13,3 +13,4 @@ struct ConsumedCategory: Identifiable, Codable {
     var consumedLimit: [Int:Int]
     
 }
+
