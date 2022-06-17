@@ -16,15 +16,13 @@ struct MoasaApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-//                NewInitSettingView()
-                ConsumedLimitView()
-//                if initSetting {
-//                    MainView()
-//                        .environmentObject(items)
-//                } else {
-//                    NewInitSettingView()
-//                        .environmentObject(items)
-//                }
+                if initSetting {
+                    MainView()
+                        .environmentObject(items)
+                } else {
+                    NewInitSettingView()
+                        .environmentObject(items)
+                }
             }.onAppear(perform: items.load)
         }
     }
