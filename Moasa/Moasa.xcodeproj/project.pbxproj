@@ -36,6 +36,8 @@
 		9871F1B92855C7310077B058 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1B82855C7310077B058 /* ImagePicker.swift */; };
 		98E21CBE285B966500BB4640 /* TargetInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E21CBD285B966500BB4640 /* TargetInput.swift */; };
 		98E21CC0285B979E00BB4640 /* TargetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E21CBF285B979E00BB4640 /* TargetButton.swift */; };
+		98E21CC4285D051900BB4640 /* ConsumedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E21CC3285D051900BB4640 /* ConsumedButton.swift */; };
+		98E21CC6285D078A00BB4640 /* ConsumedInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E21CC5285D078A00BB4640 /* ConsumedInput.swift */; };
 		CF3A011E28575C7B002A2C80 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3A011D28575C7B002A2C80 /* SearchBarView.swift */; };
 		CF5FF4D12856CC18004FB062 /* DetailBlockDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5FF4D02856CC18004FB062 /* DetailBlockDateView.swift */; };
 		CF5FF4D32856CC23004FB062 /* DetailListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5FF4D22856CC23004FB062 /* DetailListView.swift */; };
@@ -76,6 +78,8 @@
 		9871F1B82855C7310077B058 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		98E21CBD285B966500BB4640 /* TargetInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetInput.swift; sourceTree = "<group>"; };
 		98E21CBF285B979E00BB4640 /* TargetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetButton.swift; sourceTree = "<group>"; };
+		98E21CC3285D051900BB4640 /* ConsumedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumedButton.swift; sourceTree = "<group>"; };
+		98E21CC5285D078A00BB4640 /* ConsumedInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumedInput.swift; sourceTree = "<group>"; };
 		CF3A011D28575C7B002A2C80 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		CF5FF4D02856CC18004FB062 /* DetailBlockDateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBlockDateView.swift; sourceTree = "<group>"; };
 		CF5FF4D22856CC23004FB062 /* DetailListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListView.swift; sourceTree = "<group>"; };
@@ -130,6 +134,8 @@
 				98E21CBD285B966500BB4640 /* TargetInput.swift */,
 				98E21CBF285B979E00BB4640 /* TargetButton.swift */,
 				9803A34F2858ACD200EE4B0A /* ConsumedLimitView.swift */,
+				98E21CC5285D078A00BB4640 /* ConsumedInput.swift */,
+				98E21CC3285D051900BB4640 /* ConsumedButton.swift */,
 			);
 			path = InitSetting;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 				CF5FF4D32856CC23004FB062 /* DetailListView.swift in Sources */,
 				4A67A1C6285ABAD000B4F56F /* TargetItem.swift in Sources */,
 				4A8C5242285852C4007CE4F1 /* funcPointer.swift in Sources */,
+				98E21CC4285D051900BB4640 /* ConsumedButton.swift in Sources */,
 				9803A34E2858A7B200EE4B0A /* NewInitSettingView.swift in Sources */,
 				CF5FF4D32856CC23004FB062 /* DetailListView.swift in Sources */,
 				4A67A1DA285B0FA500B4F56F /* getPercentInt.swift in Sources */,
@@ -346,6 +353,7 @@
 				4A67A1C2285AB92D00B4F56F /* ConsumedItem.swift in Sources */,
 				CF5FF4D52856CC2A004FB062 /* DetailView.swift in Sources */,
 				CF3A011E28575C7B002A2C80 /* SearchBarView.swift in Sources */,
+				98E21CC6285D078A00BB4640 /* ConsumedInput.swift in Sources */,
 				4AB8094328557EE800C772D1 /* MainTitleView.swift in Sources */,
 				4A040FEF2857593000DA507E /* Date+Extension.swift in Sources */,
 				DF65DD422854966D00435F9E /* InitiateTargetSettingDetailView.swift in Sources */,
