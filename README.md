@@ -36,5 +36,5 @@ swiftUI, SwiftLint, CoreData
 
 ## ✔️ History
 2022.06.09 GIT REPO CREATED
-2022.06.10 ERD(ver1.0), DB -> CoreData
+2022.06.10 ERD(ver1.0)
 
