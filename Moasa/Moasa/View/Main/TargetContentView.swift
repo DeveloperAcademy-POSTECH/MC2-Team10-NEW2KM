@@ -63,7 +63,7 @@ struct TargetGauge: View {
                 .foregroundColor(.accentColor)
                 .frame(width: 240, height: 240)
                 .rotationEffect(Angle(degrees: -90.0))
-            Image(uiImage: UIImage(systemName: "circle")!)
+            Image(uiImage: UIImage(data: items.targetItems[0].targetImage!)!)
                 .resizable()
                 .frame(width: 200, height: 200)
                 .clipShape(Circle())

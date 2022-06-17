@@ -39,11 +39,13 @@ struct NewInitSettingView: View {
                 TargetInput(showText: $showText, showTargetImg: $showTargetImg,
                             targetPrice: $targetPrice, targetName: $targetName,
                             show: $show, image: $image)
+                .environmentObject(items)
 // 저장한 뒤에 다음 페이지로 넘어가야 한다.
                 TargetButton(showText: $showText, showTargetImg: $showTargetImg,
-                             targetName: $targetName, targetPrice: $targetPrice,
+                             image: $image, targetName: $targetName, targetPrice: $targetPrice,
                              arrayCount: $arrayCount, lastInput: $lastInput,
                              nextView: $nextView, btnText: $btnText)
+                .environmentObject(items)
             }
             .background(Color.kenCustomOrange)
             .navigationBarHidden(true)

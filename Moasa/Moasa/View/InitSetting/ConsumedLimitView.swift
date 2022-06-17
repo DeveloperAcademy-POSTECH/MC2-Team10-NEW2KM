@@ -14,7 +14,8 @@ struct ConsumedLimitView: View {
     @State var consumedCategories = [ConsumedCategory(consumedCategory: "식비", consumedLimit: [0: 500_000]),
                                      ConsumedCategory(consumedCategory: "교통/차량", consumedLimit: [0: 100_000]),
                                      ConsumedCategory(consumedCategory: "패션 미용", consumedLimit: [0: 200_000])]
-    // TODO: 식비 -> food로 저장 변환
+    // TODO: 1. consumedLimit 키 값에 대한 한계 비용 바꾸기
+    // TODO: 2 식비 -> food로 저장 변환
 
     @State var consumedCategoryArray = ["식비", "교통/차량", "패션/미용"]
     @State var consumedLimitArray = [0, 0, 0]
@@ -22,7 +23,7 @@ struct ConsumedLimitView: View {
     @State var consumedCategory = ""
     @State var consumedLimit = 0
     @State var addCategory = false
-    @State var addArray: Int = 3
+    @State var addArray: Int = 2
 
     @State var showList = false
     @State var nextView: Bool? = false
@@ -55,7 +56,7 @@ struct ConsumedLimitView: View {
                             ScrollView {
                                 VStack {
                                     if addArray > 0 {
-                                        ForEach(0..<addArray, id: \.self) { idx in
+                                        ForEach(0..<consumedCategories.count, id: \.self) { idx in
                                             HStack {
                                                 ConsumedCategories(consumedCategory: self.$consumedCategories[idx])
                                             }
@@ -91,28 +92,13 @@ struct ConsumedLimitView: View {
 
             VStack {
                 if addArray > 2 && showList {
-                    NavigationLink(destination: MainView(), tag: true, selection: $nextView) {
+                    NavigationLink(destination: MainView().environmentObject(items), tag: true, selection: $nextView) {
                         EmptyView()
                     }
 
                     Button(action: {
                         withAnimation {
                             items.consumedCategories = consumedCategories
-                            
-                            
-//                                let newCategory2: [ConsumedCategory] = consumedLimitArray
-//                                let newCategory2 = ConsumedCategory(consumedCategory: consumedCategory,
-//                                                                    consumedLimit: [0: consumedLimit])
-//                                @State consumedCategories: [ConsumedCategory] = ["식비", "교통/차량", "패션/미용"]
-//
-//                                let newCategory = Categories(consumedCategory: self.$consumedCategoryArray)
-//                                Limits(consumedLimit: self.$consumedLimitArray[idx])
-//
-//                                items.consumedCategories.append(newCategory)
-//                                items.consumedCategories = newCategory1
-//                                items.consumedCategories = newCategory2
-//                                items.consumedCategories.append(newCategory2)
-//                                items.consumedCategorySaved()
                             UserDefaults.standard.set(true, forKey: "initSetting")
                         }
                         nextView = true
@@ -137,8 +123,9 @@ struct ConsumedLimitView: View {
         }
     }
     func addElement() {
-        consumedCategoryArray.insert("", at: 0)
-        consumedLimitArray.insert(0, at: 0)
+//        consumedCategoryArray.insert("", at: 0)
+//        consumedLimitArray.insert(0, at: 0)
+        consumedCategories.append(ConsumedCategory(consumedCategory: "", consumedLimit: [0:100000]))
     }
 }
 struct ConsumedLimitView_Previews: PreviewProvider {
@@ -163,7 +150,7 @@ struct ConsumedCategories: View {
             }
             VStack {
                 HStack {
-                    TextField("100_000", value: $consumedCategory.consumedLimit, formatter: NumberFormatter())
+                    TextField("100_000", value: $consumedCategory.consumedLimit[0], formatter: NumberFormatter())
                         .keyboardType(.decimalPad)
                     Text("원")
                         .font(.system(size: 17, weight: .regular))
