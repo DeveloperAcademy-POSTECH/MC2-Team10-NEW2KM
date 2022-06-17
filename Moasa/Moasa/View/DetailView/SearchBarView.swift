@@ -8,19 +8,30 @@
 import SwiftUI
 
 struct SearchBarView: View {
-    // State Bidning -> startDate, endDate, selectedMethod
+    let sampleData = ["Garak", "투움바 파스타", "양고기"]
+    var searchResults: [String] {
+        if searchText.isEmpty {
+            return sampleData
+        } else {
+            return sampleData.filter { $0.contains(searchText) }
+        }
+    }
+    @State private var searchText = ""
     var body: some View {
         HStack {
-            Text("서치바")
-                .font(.title)
-            Spacer()
-            Button(action: {
-                //: MODAL -> 기간 선택 [DatePicker] + 정렬 방식 [최신/가격]
-            }, label: {
-                // 예쁘게 해주세요!
-            })
+            VStack {
+                List {
+                    ForEach(searchResults, id: \.self) { name in
+                        NavigationLink(destination: Text(name)) {
+                            Text(name)
+                        }
+                    }
+                }
+                .searchable(text: $searchText)
+                Spacer()
+            }
+            .padding(.leading)
         }
-        .padding(.leading)
     }
 }
 

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DetailBlockDateView: View {
+    @EnvironmentObject var items: Items
     var consumedItemsSorted: [ConsumedItem]
     // 해당 카테고리의 모든 ConsumedItem 정렬된 상태 (값)
     var date: Date
@@ -24,11 +25,3 @@ struct DetailBlockDateView: View {
         }
     }
 }
-
-/*
-struct DetailBlockDateView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailBlockDateView()
-    }
-}
-*/
