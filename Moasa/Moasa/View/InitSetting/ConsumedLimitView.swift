@@ -15,7 +15,7 @@ struct ConsumedLimitView: View {
                                      ConsumedCategory(consumedCategory: "교통/차량", consumedLimit: [:]),
                                      ConsumedCategory(consumedCategory: "패션/미용", consumedLimit: [:]),
                                      ConsumedCategory(consumedCategory: "생활용품", consumedLimit: [:])]
-    @State var consumedLimitValues =  [0, 0, 0, 0]
+    @State var consumedLimitValues =  [100000, 1000000, 1000000, 1000000]
     // TODO: 1. consumedLimit 키 값에 대한 한계 비용 바꾸기
     // TODO: 2 식비 -> food로 저장 변환
     @State var consumedCategory = ""
@@ -25,7 +25,8 @@ struct ConsumedLimitView: View {
     @State var showList = false
     @State var nextView: Bool? = false
 
-    @State var fixedSaving = 0
+    @State var fixedSaving: Int = 0
+    @State var text: String = ""
     @State var btnText: [String] = ["확인", "입력 완료"]
 
     var body: some View {
@@ -44,7 +45,8 @@ struct ConsumedLimitView: View {
                         Button(action: {
                             self.addArray += 1
                             addElement()
-                            consumedLimitValues.append(0)
+                            consumedLimitValues.append(1000000)
+                            hideKeyboard()
                         }, label: {
                             Image(systemName: "plus")
                         })
@@ -67,14 +69,15 @@ struct ConsumedLimitView: View {
                                                     HStack {
                                                         TextField("100_000", value: $consumedLimitValues[idx], formatter: NumberFormatter())
                                                             .keyboardType(.decimalPad)
-                                                        Text("원")
-                                                            .font(.system(size: 17, weight: .regular))
+//                                                        Text("원")
+//                                                            .font(.system(size: 17, weight: .regular))
                                                     }
                                                     .lineSpacing(0)
                                                     .padding(.trailing, 16)
                                                     Divider()
                                                         .background(Color.accentColor)
                                                 }
+                                                Text("원")
                                             }
                                         }
                                         .onDelete(perform: delete)
@@ -92,11 +95,17 @@ struct ConsumedLimitView: View {
             }.padding(.leading, 16)
 
             HStack {
-                TextField("예시: " + numberFormatter(number: 100_000),
-                          value: $fixedSaving, formatter: NumberFormatter())
+//                TextField("예시: " + numberFormatter(number: 100_000),
+//                          value: $fixedSaving, formatter: NumberFormatter())
+                TextField("예시: " + numberFormatter(number: 100_000), text: $text)
+                    .onChange(of: text) {
+                        newValue in
+                        fixedSaving = Int(newValue)!
+                    }
                 .padding(.leading, 16)
                 .font(.system(size: 17, weight: .regular))
                 .keyboardType(.decimalPad)
+                
                 Text("원")
                     .font(.system(size: 17, weight: .regular))
                     .padding(.trailing, 16)
@@ -142,6 +151,7 @@ struct ConsumedLimitView: View {
 // 예산항목 추가를 보여주는 버튼
                     Button(action: {
                         showList = true
+                        hideKeyboard()
                     }, label: {
                         BtnShape(btnText: $btnText[0])
                     })

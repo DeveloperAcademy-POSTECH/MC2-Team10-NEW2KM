@@ -357,7 +357,6 @@
 				4A67A1C4285ABA1500B4F56F /* ConsumedCategory.swift in Sources */,
 				4A67A1CB285ABEF900B4F56F /* Items.swift in Sources */,
 				98E21CBE285B966500BB4640 /* TargetInput.swift in Sources */,
-				4A0429FE2859804200200E29 /* getChallengeCycle.swift in Sources */,
 				DF65DD4028546AEC00435F9E /* ChangeSettingDetailView.swift in Sources */,
 				4A36413A2856E2200032A90A /* Keyboard+Extension.swift in Sources */,
 				4AEB76112852F32100EC85B9 /* (null) in Sources */,

@@ -37,13 +37,11 @@ struct TargetButton: View {
             }, label: {
                 BtnShape(btnText: $btnText[1])
             })
-        } else if !lastInput && self.arrayCount == 1 && !self.targetName.isEmpty {
+        } else if !lastInput && self.targetPrice > 0 && !self.targetName.isEmpty {
             Button(action: {
                 showTargetImg = true
                 lastInput = true
                 arrayCount += 1
-                print(targetPrice)
-                print(targetPrice.description)
             }, label: {
                 BtnShape(btnText: $btnText[0])
             }).opacity(self.arrayCount < 2 ? 1: 0)

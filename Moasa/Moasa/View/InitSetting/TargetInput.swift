@@ -47,21 +47,10 @@ struct TargetInput: View {
             HStack {
 //                TextField(numberFormatter(number: targetPrice),
 //                          value: self.$targetPrice, formatter: NumberFormatter())
-                TextField("타겟 아이템 가격", text: self.$text)
+                TextField("타겟 아이템 가격", text: $text)
                     .onChange(of: text) {
                         newValue in
-                        print(newValue)
-                        let digits = "0123456789"
-                        var flag = true
-                        for digit in newValue {
-                            if !digits.contains(digit) {
-                                flag = false
-                                targetPrice = 1
-                            }
-                        }
-                        if flag {
-                            targetPrice = Int(newValue)!
-                        }
+                        targetPrice = Int(newValue)!
                     }
                     .padding(.leading, 16)
                     .font(.system(size: 17, weight: .regular))
