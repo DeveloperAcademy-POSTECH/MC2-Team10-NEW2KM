@@ -90,7 +90,7 @@ class Items: Identifiable, ObservableObject {
     var totalSavedPercent: Double {
         let totalSaved = targetItems[0].totalSaved
         let targetPrice = targetItems[0].targetPrice
-        let percent = Double(totalSaved) / Double(targetPrice) * 100
+        let percent = Double(totalSaved) / Double(targetPrice)
         return percent
     }
     var expectedCategoryBalance: Int {
