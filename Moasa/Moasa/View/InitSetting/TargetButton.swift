@@ -14,7 +14,7 @@ struct TargetButton: View {
     @Binding var showTargetImg: Bool
 
     @Binding var targetName: String
-    @Binding var targetPrice: Int?
+    @Binding var targetPrice: Int
     var titleArray: [String] = ["사고 싶은 물건을 입력해주세요", "물건 가격을 입력해주세요", "사고싶은 물건 사진을 넣어주세요"]
     @Binding var arrayCount: Int
     @Binding var lastInput: Bool
@@ -22,7 +22,7 @@ struct TargetButton: View {
     @Binding var btnText: [String]
 
     var body: some View {
-        if lastInput && self.targetPrice! > 0 && !targetName.isEmpty {
+        if lastInput && self.targetPrice > 0 && !targetName.isEmpty {
             NavigationLink(destination: ConsumedLimitView(), tag: true, selection: $nextView) {
                 EmptyView()
             }
@@ -31,29 +31,27 @@ struct TargetButton: View {
                     let newItem = TargetItem(targetName: targetName, targetPrice: targetPrice, fixedSaving: 0)
                     items.targetItems.append(newItem)
                     items.targetItemSaved()
-                    UserDefaults.standard.set(true, forKey: "initSetting")
+//                    UserDefaults.standard.set(true, forKey: "initSetting")
                 }
                 nextView = true
             }, label: {
                 BtnShape(btnText: $btnText[1])
             })
-        } else if !lastInput && self.targetPrice! > 0 && !self.targetName.isEmpty {
+        } else if !lastInput && self.targetPrice > 0 && !self.targetName.isEmpty {
             Button(action: {
                 showTargetImg = true
                 lastInput = true
                 arrayCount += 1
             }, label: {
                 BtnShape(btnText: $btnText[0])
-            })
-            .opacity(self.arrayCount < 2 ? 1: 0)
+            }).opacity(self.arrayCount < 2 ? 1: 0)
         } else if !self.targetName.isEmpty {
             Button(action: {
                 showText = true
                 arrayCount += 1
             }, label: {
                 BtnShape(btnText: $btnText[0])
-            })
-            .opacity(self.arrayCount < 1 ? 1: 0)
+            }).opacity(self.arrayCount < 1 ? 1: 0)
         }
     }
 }

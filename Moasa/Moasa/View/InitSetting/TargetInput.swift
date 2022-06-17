@@ -10,7 +10,7 @@ import SwiftUI
 struct TargetInput: View {
     @Binding var showText: Bool
     @Binding var showTargetImg: Bool
-    @Binding var targetPrice: Int?
+    @Binding var targetPrice: Int
     @State var text: String = ""
     @Binding var targetName: String
 

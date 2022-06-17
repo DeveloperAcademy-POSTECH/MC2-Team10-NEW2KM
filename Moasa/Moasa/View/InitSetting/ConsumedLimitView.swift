@@ -12,17 +12,9 @@ struct ConsumedLimitView: View {
     @EnvironmentObject var items: Items
 
     @State var consumedCategories = [ConsumedCategory(consumedCategory: "식비", consumedLimit: [0: 500_000]),
-                                     ConsumedCategory(consumedCategory: "교통/차량", consumedLimit: [1: 100_000]),
-                                     ConsumedCategory(consumedCategory: "패션 미용", consumedLimit: [2: 200_000]),
-                                     ConsumedCategory(consumedCategory: "", consumedLimit: [3: 0]),
-                                     ConsumedCategory(consumedCategory: "", consumedLimit: [4: 0]),
-                                     ConsumedCategory(consumedCategory: "", consumedLimit: [5: 0]),
-                                     ConsumedCategory(consumedCategory: "", consumedLimit: [6: 0]),
-                                     ConsumedCategory(consumedCategory: "", consumedLimit: [7: 0]),
-                                     ConsumedCategory(consumedCategory: "", consumedLimit: [8: 0]),
-                                     ConsumedCategory(consumedCategory: "", consumedLimit: [9: 0])]
-//    @State var consumedCategories = ["식비", "교통/차량", "패션/미용"]
-//    @State var consumedLimits: [ConsumedCategory] = [500000, 100000, 200000]
+                                     ConsumedCategory(consumedCategory: "교통/차량", consumedLimit: [0: 100_000]),
+                                     ConsumedCategory(consumedCategory: "패션 미용", consumedLimit: [0: 200_000])]
+    // TODO: 식비 -> food로 저장 변환
 
     @State var consumedCategoryArray = ["식비", "교통/차량", "패션/미용"]
     @State var consumedLimitArray = [0, 0, 0]
@@ -39,7 +31,6 @@ struct ConsumedLimitView: View {
     @State var btnText: [String] = ["확인", "입력 완료"]
 
     var body: some View {
-//        NavigationView {
         VStack {
             HStack {
                 Text("예산을 입력해주세요")
@@ -49,7 +40,6 @@ struct ConsumedLimitView: View {
                 Spacer()
             }.padding(.leading, 16)
             if showList {
-                ScrollView {
                     Section(header: HStack {
                         Text("소비 예산을 설정해주세요")
                         Spacer()
@@ -62,34 +52,20 @@ struct ConsumedLimitView: View {
                     }
                         .font(.system(size: 20, weight: .bold))
                         .padding(.horizontal, 16), content: {
-                            VStack {
-                                if addArray > 0 {
-                                    ForEach(0..<addArray, id: \.self) { idx in
-                                        HStack {
-//                                            ConsumedCategories(consumedCategory: self.$consumedCategoryArray[idx], consumedLimit: self.$consumedLimitArray[idx])
-                                            Categories(consumedCategory: self.$consumedCategoryArray[idx])
-                                            Limits(consumedLimit: self.$consumedLimitArray[idx])
-// 합쳐진 애를 struct로 만들자
-//                                                ConsumedCategories(consumedCategory: $consumedCategories.consumedCategory[idx], consumedLimit: $consumedCategories.consumedLimit[idx])
+                            ScrollView {
+                                VStack {
+                                    if addArray > 0 {
+                                        ForEach(0..<addArray, id: \.self) { idx in
+                                            HStack {
+                                                ConsumedCategories(consumedCategory: self.$consumedCategories[idx])
+                                            }
                                         }
                                     }
-//                                        ForEach($consumedCategories, id: \.self) { category in
-//                                            ConsumedCategories(consumedCategory: category.consumedCategory, consumedLimit: category.consumedLimit)
-//                                        }
                                 }
-//                                ConsumedCategories(consumedCategory: consumedCategories.consumedCategory, consumedLimit: consumedCategories.consumedLimit)
-
-//                                ConsumedCategories(consumedCategory: $consumedCategories[0],
-//                                                   consumedLimit: $consumedLimits[0]) // 식비(Default)
-//                                ConsumedCategories(consumedCategory: $consumedCategories[1],
-//                                                   consumedLimit: $consumedLimits[1]) // 교통/차량(Default)
-//                                ConsumedCategories(consumedCategory: $consumedCategories[2],
-//                                                   consumedLimit: $consumedLimits[2]) // 패션/미용(Default)
+                                .padding(.horizontal, 16)
+                                .padding(.bottom, 40)
                             }
-                            .padding(.horizontal, 16)
-                            .padding(.bottom, 40)
                         })
-                }
             }
             HStack {
                 Text("목표를 위해 매 월 얼마까지 모을 수 있나요?")
@@ -121,7 +97,9 @@ struct ConsumedLimitView: View {
 
                     Button(action: {
                         withAnimation {
-//                                let newCategory1: [ConsumedCategory] = consumedCategoryArray
+                            items.consumedCategories = consumedCategories
+                            
+                            
 //                                let newCategory2: [ConsumedCategory] = consumedLimitArray
 //                                let newCategory2 = ConsumedCategory(consumedCategory: consumedCategory,
 //                                                                    consumedLimit: [0: consumedLimit])
@@ -133,7 +111,7 @@ struct ConsumedLimitView: View {
 //                                items.consumedCategories.append(newCategory)
 //                                items.consumedCategories = newCategory1
 //                                items.consumedCategories = newCategory2
-//                                items.consumedCategories.append(newCategory)
+//                                items.consumedCategories.append(newCategory2)
 //                                items.consumedCategorySaved()
                             UserDefaults.standard.set(true, forKey: "initSetting")
                         }
@@ -169,39 +147,10 @@ struct ConsumedLimitView_Previews: PreviewProvider {
     }
 }
 
-struct Categories: View {
-    @Binding var consumedCategory: String
-
-    var body: some View {
-        VStack {
-            TextField("기타", text: $consumedCategory)
-            Divider()
-                .background(Color.accentColor)
-        }
-    }
-}
-
-struct Limits: View {
-    @Binding var consumedLimit: Int
-
-    var body: some View {
-        VStack {
-            HStack {
-                TextField("100_000", value: $consumedLimit, formatter: NumberFormatter())
-                    .keyboardType(.decimalPad)
-                Text("원")
-                    .font(.system(size: 17, weight: .regular))
-                    .padding(.trailing, 16)
-            }
-            Divider()
-                .background(Color.accentColor)
-        }
-    }
-}
 
 struct ConsumedCategories: View {
     @Binding var consumedCategory: ConsumedCategory
-    @Binding var consumedLimit: ConsumedCategory
+//    @Binding var consumedLimit: ConsumedCategory
 
     var body: some View {
         HStack {
@@ -214,7 +163,7 @@ struct ConsumedCategories: View {
             }
             VStack {
                 HStack {
-                    TextField("100_000", value: $consumedLimit.consumedLimit, formatter: NumberFormatter())
+                    TextField("100_000", value: $consumedCategory.consumedLimit, formatter: NumberFormatter())
                         .keyboardType(.decimalPad)
                     Text("원")
                         .font(.system(size: 17, weight: .regular))
@@ -227,3 +176,34 @@ struct ConsumedCategories: View {
         }
     }
 }
+
+
+//struct Categories: View {
+//    @Binding var consumedCategory: String
+//
+//    var body: some View {
+//        VStack {
+//            TextField("기타", text: $consumedCategory)
+//            Divider()
+//                .background(Color.accentColor)
+//        }
+//    }
+//}
+//
+//struct Limits: View {
+//    @Binding var consumedLimit: Int
+//
+//    var body: some View {
+//        VStack {
+//            HStack {
+//                TextField("100000", value: $consumedLimit, formatter: NumberFormatter())
+//                    .keyboardType(.decimalPad)
+//                Text("원")
+//                    .font(.system(size: 17, weight: .regular))
+//                    .padding(.trailing, 16)
+//            }
+//            Divider()
+//                .background(Color.accentColor)
+//        }
+//    }
+//}
