@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct NewInitSettingView: View {
     @Environment(\.presentationMode) var dismiss
     @EnvironmentObject var items: Items
@@ -27,32 +26,30 @@ struct NewInitSettingView: View {
     @State var btnText = ["확인", "다음"]
 
     var body: some View {
-//        NavigationView {
-            VStack {
-                HStack {
-                    Text(titleArray[arrayCount])
-                        .font(.system(size: 25, weight: .semibold))
-                        .padding(.top, 90)
-                    Spacer()
-                }.padding(.leading, 16)
-
-                TargetInput(showText: $showText, showTargetImg: $showTargetImg,
-                            targetPrice: $targetPrice, targetName: $targetName,
-                            show: $show, image: $image)
-                .environmentObject(items)
-// 저장한 뒤에 다음 페이지로 넘어가야 한다.
-                TargetButton(showText: $showText, showTargetImg: $showTargetImg,
-                             image: $image, targetName: $targetName, targetPrice: $targetPrice,
-                             arrayCount: $arrayCount, lastInput: $lastInput,
-                             nextView: $nextView, btnText: $btnText)
-                .environmentObject(items)
-            }
-            .background(Color.kenCustomOrange)
-            .navigationBarHidden(true)
-            .sheet(isPresented: self.$show, content: {
-                ImagePicker(images: $image, show: self.$show, sourceType: self.sourceType)
-            })
-//        }
+        VStack {
+            HStack {
+                Text(titleArray[arrayCount])
+                    .font(.system(size: 25, weight: .semibold))
+                    .padding(.top, 90)
+                Spacer()
+            }.padding(.leading, 16)
+// Component - 타겟 입력 컴포넌트
+            TargetInput(showText: $showText, showTargetImg: $showTargetImg,
+                        targetPrice: $targetPrice, targetName: $targetName,
+                        show: $show, image: $image)
+            .environmentObject(items)
+// Component - 저장, 네비게이션 버튼
+            TargetButton(showText: $showText, showTargetImg: $showTargetImg,
+                         image: $image, targetName: $targetName, targetPrice: $targetPrice,
+                         arrayCount: $arrayCount, lastInput: $lastInput,
+                         nextView: $nextView, btnText: $btnText)
+            .environmentObject(items)
+        }
+        .background(Color.kenCustomOrange)
+        .navigationBarHidden(true)
+        .sheet(isPresented: self.$show, content: {
+            ImagePicker(images: $image, show: self.$show, sourceType: self.sourceType)
+        })
         .onTapGesture {
             hideKeyboard()
         }

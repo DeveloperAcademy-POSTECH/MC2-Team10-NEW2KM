@@ -10,6 +10,7 @@ import SwiftUI
 struct TargetInput: View {
     @Binding var showText: Bool
     @Binding var showTargetImg: Bool
+
     @Binding var targetPrice: Int
     @State var text: String = ""
     @Binding var targetName: String
@@ -18,6 +19,8 @@ struct TargetInput: View {
     @Binding var image: Data?
 
     var body: some View {
+// 아래부터 역순으로 Component생성
+// 3.이미지 피커
         if showTargetImg {
             if image == nil {
                 Button(action: {
@@ -43,18 +46,16 @@ struct TargetInput: View {
                 })
             }
         }
+// 2.금액입력 TextField
         if showText {
             HStack {
-//                TextField(numberFormatter(number: targetPrice),
-//                          value: self.$targetPrice, formatter: NumberFormatter())
-                TextField("타겟 아이템 가격", text: $text)
-                    .onChange(of: text) {
-                        newValue in
+                TextField("금액을 입력해주세요.", text: $text)
+                    .onChange(of: text) {newValue in
                         targetPrice = Int(newValue)!
                     }
                     .padding(.leading, 16)
                     .font(.system(size: 17, weight: .regular))
-                    .keyboardType(.decimalPad)
+                    .keyboardType(.numberPad)
 
                 Text("원")
                     .font(.system(size: 17, weight: .bold))
@@ -65,6 +66,7 @@ struct TargetInput: View {
                 .padding(.horizontal, 16)
                 .padding(.bottom, 20)
         }
+// 1. 목표물건 명칭 입력 TextField
         TextField("예시: Airpods Max", text: self.$targetName)
             .padding(.leading, 16)
             .font(.system(size: 17, weight: .regular))
