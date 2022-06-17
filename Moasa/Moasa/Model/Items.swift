@@ -124,7 +124,7 @@ class Items: Identifiable, ObservableObject {
     func load() {
         consumedCategoryLoad()
         targetItemLoad()
-//        consumedItemLoad()
+        //        consumedItemLoad()
     }
     func targetItemSaved() {
         do {
@@ -141,62 +141,62 @@ class Items: Identifiable, ObservableObject {
         }
     }
     func targetItemLoad() {
-            do {
-                // 1. Get the notes URL file
-                let url = getDocumentDirectory().appendingPathComponent("targetItems")
-                print("URL")
-                print(url)
-                // 2. Create a new property for the data
-                let data = try Data(contentsOf: url)
-                print("DATA")
-                // 3. Decode the data
-                let targetItems = try JSONDecoder().decode([TargetItem].self, from: data)
-                print("DECODE")
-                // 4. Initial Setting for items (Enviornment)
-                self.targetItems = targetItems
-                                print("입력 완료")
-            } catch {
-                // Do nothing
-            }
+        do {
+            // 1. Get the notes URL file
+            let url = getDocumentDirectory().appendingPathComponent("targetItems")
+            print("URL")
+            print(url)
+            // 2. Create a new property for the data
+            let data = try Data(contentsOf: url)
+            print("DATA")
+            // 3. Decode the data
+            let targetItems = try JSONDecoder().decode([TargetItem].self, from: data)
+            print("DECODE")
+            // 4. Initial Setting for items (Enviornment)
+            self.targetItems = targetItems
+            print("입력 완료")
+        } catch {
+            // Do nothing
+        }
     }
     func consumedItemLoad() {
-            do {
-                // 1. Get the notes URL file
-                let url = getDocumentDirectory().appendingPathComponent("consumedItems")
-                // 2. Create a new property for the data
-                let data = try Data(contentsOf: url)
-                // 3. Decode the data
-                let consumedItems = try JSONDecoder().decode([ConsumedItem].self, from: data)
-                // 4. Initial Setting for items (Enviornment)
-                self.consumedItems = consumedItems
-//
-                print("입력 완료")
-            } catch {
-                // Do nothing
-            }
+        do {
+            // 1. Get the notes URL file
+            let url = getDocumentDirectory().appendingPathComponent("consumedItems")
+            // 2. Create a new property for the data
+            let data = try Data(contentsOf: url)
+            // 3. Decode the data
+            let consumedItems = try JSONDecoder().decode([ConsumedItem].self, from: data)
+            // 4. Initial Setting for items (Enviornment)
+            self.consumedItems = consumedItems
+            //
+            print("입력 완료")
+        } catch {
+            // Do nothing
+        }
     }
     func consumedCategoryLoad() {
-            do {
-                print("DO CHECK")
-                // 1. Get the notes URL file
-                let url = getDocumentDirectory().appendingPathComponent("consumedCategories")
-                print("CATEGORY URL")
-                // 2. Create a new property for the data
-                let data = try Data(contentsOf: url)
-                print("CATEGORY DATA")
-
-                // 3. Decode the data
-                let consumedCategories = try JSONDecoder().decode([ConsumedCategory].self, from: data)
-                print("CATEGORY DECODE")
-
-                // 4. Initial Setting for items (Enviornment)
-                self.consumedCategories = consumedCategories
-                print("CATEGORY CHECK")
-
-                print("카테고리 입력 완료")
-            } catch {
-                // Do nothing
-            }
+        do {
+            print("DO CHECK")
+            // 1. Get the notes URL file
+            let url = getDocumentDirectory().appendingPathComponent("consumedCategories")
+            print("CATEGORY URL")
+            // 2. Create a new property for the data
+            let data = try Data(contentsOf: url)
+            print("CATEGORY DATA")
+            
+            // 3. Decode the data
+            let consumedCategories = try JSONDecoder().decode([ConsumedCategory].self, from: data)
+            print("CATEGORY DECODE")
+            
+            // 4. Initial Setting for items (Enviornment)
+            self.consumedCategories = consumedCategories
+            print("CATEGORY CHECK")
+            
+            print("카테고리 입력 완료")
+        } catch {
+            // Do nothing
+        }
     }
     func consumedCategorySaved() {
         do {
@@ -230,12 +230,15 @@ class Items: Identifiable, ObservableObject {
         }
     }
     func sortbyDate(categoryName: String, startDate: Date, endDate: Date) -> [ConsumedItem] {
-        let itemSortedbyDate = getCategoryItemsFiltered(categoryName: categoryName, startDate: startDate, endDate: endDate).sorted(by: { $0.consumedDate > $1.consumedDate })
+        let itemSortedbyDate = getCategoryItemsFiltered(categoryName: categoryName,
+                                                        startDate: startDate, endDate: endDate)
+            .sorted(by: { $0.consumedDate > $1.consumedDate })
         return itemSortedbyDate
     }
-    
     func sortbyPrice(categoryName: String, startDate: Date, endDate: Date) -> [ConsumedItem] {
-        let itemSortedbyPrice = getCategoryItemsFiltered(categoryName: categoryName, startDate: startDate, endDate: endDate).sorted(by: { $0.consumedPrice > $1.consumedPrice })
+        let itemSortedbyPrice = getCategoryItemsFiltered(categoryName: categoryName,
+                                                         startDate: startDate, endDate: endDate)
+            .sorted(by: { $0.consumedPrice > $1.consumedPrice })
         return itemSortedbyPrice
     }
 }

@@ -10,7 +10,6 @@ import HalfASheet
 import SwiftUI
 
 struct DetailView: View {
-    // MARK: 여기의 주석은 CoreData연결 이후에 주석을 제거한다. 디테일 뷰를 확인할 수 없음
     @EnvironmentObject var items: Items
     @State var selectedMethod = false // false => 기간순, true => 가격순
     @State var startDate: Date = addDate(date: Date(), days: -30)
@@ -26,19 +25,20 @@ struct DetailView: View {
                 CircleWaveView(percent: items.balancePercent(categoryName: category.category))
                 SearchBarView(isShowing: $isShowing)
                 if selectedMethod { // 가격순 정렬
-                    let filtereditems = items.sortbyPrice(categoryName: category.category, startDate: startDate, endDate: endDate)
+                    let filtereditems = items.sortbyPrice(categoryName: category.category,
+                                                          startDate: startDate, endDate: endDate)
                     ForEach(filtereditems) { block in
-                        DetailListView(consumedItem: block, leftMoney: 5000)
+                        DetailPriceListView(consumedItem: block, leftMoney: 5000)
                     }
                 } else { // 기간순 정렬
-                    let filtereditems = items.sortbyDate(categoryName: category.category, startDate: startDate, endDate: endDate)
+                    let filtereditems = items.sortbyDate(categoryName: category.category,
+                                                         startDate: startDate, endDate: endDate)
                     let pointers = findPointer(consumedItemsSorted: filtereditems)
                     ForEach(0..<pointers.count) { block in
                         DetailBlockDateView(consumedItemsSorted: filtereditems, date: filtereditems[block].consumedDate)
                     }
                 }
             }
-            
             HalfASheet(isPresented: $isShowing) {
                 VStack {
                     VStack {
@@ -85,9 +85,9 @@ struct DetailView: View {
     }
 }
 /*
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView(startDate: <#T##Date#>, endDate: <#T##Date#>, category: <#T##Items.CategoryLeft#>)
-    }
-}
-*/
+ struct DetailView_Previews: PreviewProvider {
+ static var previews: some View {
+ DetailView(startDate: <#T##Date#>, endDate: <#T##Date#>, category: <#T##Items.CategoryLeft#>)
+ }
+ }
+ */
