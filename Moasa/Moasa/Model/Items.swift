@@ -229,4 +229,13 @@ class Items: Identifiable, ObservableObject {
             }
         }
     }
+    func sortbyDate(categoryName: String, startDate: Date, endDate: Date) -> [ConsumedItem] {
+        let itemSortedbyDate = getCategoryItemsFiltered(categoryName: categoryName, startDate: startDate, endDate: endDate).sorted(by: { $0.consumedDate > $1.consumedDate })
+        return itemSortedbyDate
+    }
+    
+    func sortbyPrice(categoryName: String, startDate: Date, endDate: Date) -> [ConsumedItem] {
+        let itemSortedbyPrice = getCategoryItemsFiltered(categoryName: categoryName, startDate: startDate, endDate: endDate).sorted(by: { $0.consumedPrice > $1.consumedPrice })
+        return itemSortedbyPrice
+    }
 }
