@@ -11,5 +11,6 @@ struct ConsumedCategory: Identifiable, Codable {
     var id = UUID()
     var consumedCategory: String
     var consumedLimit: [Int:Int]
+    
 }
 

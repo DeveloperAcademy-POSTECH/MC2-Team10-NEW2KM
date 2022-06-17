@@ -13,26 +13,19 @@ struct Category: Hashable {
 }
 
 struct CategorySettingDetailView: View {
-    var categories = [Category(icon: "plus", category: "식비"),
-                      Category(icon: "fork.knife", category: "식비"),
-                      Category(icon: "car", category: "교통/차량"),
-                      Category(icon: "tshirt", category: "패션/미용"),
-                      Category(icon: "ellipsis.circle", category: "기타")]
+    @EnvironmentObject var items: Items
     var body: some View {
         ZStack {
             Color("KellyCustomGray")
                 .ignoresSafeArea()
             VStack {
                 LazyVGrid(columns: [GridItem(.flexible(minimum: 80)), GridItem(.flexible(minimum: 80))], spacing: 20) {
-                    ForEach(categories, id: \.self) { category in
-                        if category.icon == "plus" {
-                            NavigationLink(destination: CategoryPlusView()) {
-                                CategoryPlusRectangle(icon: category.icon)
-                            }
-                        } else {
-                            CategoryItem(icon: category.icon, category: category.category)
-                                .aspectRatio(contentMode: .fit)
-                        }
+                    NavigationLink(destination: CategoryPlusView().environmentObject(items)) {
+                        CategoryPlusRectangle(icon: "plus")
+                    }
+                    ForEach(items.categoryBalances, id: \.self) { category in
+                        CategoryItem(icon: category.icon, category: category.category)
+                            .aspectRatio(contentMode: .fit)
                     }
                 }.padding(EdgeInsets(top: 0, leading: 15, bottom: 20, trailing: 15))
                 Spacer()
@@ -61,8 +54,24 @@ struct CategoryPlusRectangle: View {
 }
 
 struct CategoryPlusView: View {
+    @EnvironmentObject var items: Items
+    @Environment(\.presentationMode) var presentation
+    @State var categoryName: String = ""
+    @State var categoryLimitMoney: String = "0"
     var body: some View {
-        Text("카테고리를 추가하세요!")
+        VStack {
+            TextField("카테고리명을 입력하세요", text: $categoryName)
+            TextField("카테고리의 제한 금액은?", text: $categoryLimitMoney)
+            Button(action: {
+                if !categoryName.isEmpty && categoryLimitMoney != "0" {
+//                    presentation.wrappedValue.dismiss()
+                    items.consumedCategories.append( ConsumedCategory(consumedCategory: categoryName,
+                                                                      consumedLimit: [0: Int(categoryLimitMoney)!]))
+                }
+            }, label: {
+                Text("저장하기!")
+            })
+        }
     }
 }
 
@@ -91,6 +100,7 @@ struct CategorySettingDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             CategorySettingDetailView()
+                .environmentObject(Items())
         }
     }
 }
