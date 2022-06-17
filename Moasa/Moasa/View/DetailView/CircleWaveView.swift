@@ -16,9 +16,9 @@ struct Wave: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         let lowfudge = 0.02
-        let highfudge = 0.98
+        let highfudge = 0.5
         let newpercent = lowfudge + (highfudge - lowfudge) * percent
-        let waveHeight = 0.02 * rect.height
+        let waveHeight = 0.012 * rect.height
         let yoffset = CGFloat(1 - newpercent) * (rect.height - 4 * waveHeight) + 2 * waveHeight
         let startAngle = offset
         let endAngle = offset + Angle(degrees: 360)
@@ -57,7 +57,7 @@ struct CircleWaveView: View {
     }
 }
 
-struct WaveView_Previews: PreviewProvider {
+struct CircleWaveView_Previews: PreviewProvider {
     static var previews: some View {
         CircleWaveView(percent: 100)
     }

@@ -184,15 +184,12 @@ class Items: Identifiable, ObservableObject {
             // 2. Create a new property for the data
             let data = try Data(contentsOf: url)
             print("CATEGORY DATA")
-            
             // 3. Decode the data
             let consumedCategories = try JSONDecoder().decode([ConsumedCategory].self, from: data)
             print("CATEGORY DECODE")
-            
             // 4. Initial Setting for items (Enviornment)
             self.consumedCategories = consumedCategories
             print("CATEGORY CHECK")
-            
             print("카테고리 입력 완료")
         } catch {
             // Do nothing
