@@ -41,6 +41,8 @@ struct ChangeSettingDetailView: View {
                         changeValue = saveTargetPrice(changeTitle: changeTargetName)
                     } else if changeTitle == "고정 저금액" {
                         changeValue = saveTargetFixed(changeTitle: changeTargetName)
+                    } else if changeTitle == "자유 저금액" {
+                        changeValue = saveTargetFree(changeTitle: changeTargetName)
                     }
                     items.targetItems[0] = changeValue!
                     presentation.wrappedValue.dismiss()
@@ -64,8 +66,19 @@ struct ChangeSettingDetailView: View {
     }
     func saveTargetFixed(changeTitle: String) -> TargetItem {
         return TargetItem(targetName: items.targetItems.first!.targetName,
+                          targetImage: nil,
                           targetPrice: items.targetItems.first!.targetPrice,
+                          totalSaved: items.targetItems.first!.totalSaved,
+                          startDate: items.targetItems.first!.startDate,
                           fixedSaving: Int(changeTitle)!)
+    }
+    func saveTargetFree(changeTitle: String) -> TargetItem {
+        return TargetItem(targetName: items.targetItems.first!.targetName,
+                          targetImage: nil,
+                          targetPrice: items.targetItems.first!.targetPrice,
+                          totalSaved: items.targetItems.first!.totalSaved + Int(changeTitle)!,
+                          startDate: items.targetItems.first!.startDate,
+                          fixedSaving: items.targetItems.first!.fixedSaving)
     }
 }
 
