@@ -9,13 +9,13 @@ import Foundation
 
 func getIcon(categoryName: String) -> String {
     switch categoryName {
-    case "food" :
+    case "식비" :
         return "fork.knife"
-    case "cloth" :
+    case "패션/미용" :
         return "tshirt"
-    case "daily" :
+    case "생활용품" :
         return "bag"
-    case "transportation" :
+    case "교통/차량" :
         return "bus"
     default:
         return "square.grid.2x2"

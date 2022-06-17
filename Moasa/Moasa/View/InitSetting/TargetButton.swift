@@ -22,7 +22,7 @@ struct TargetButton: View {
     @Binding var btnText: [String]
 
     var body: some View {
-        if lastInput && self.targetPrice > 0 && !targetName.isEmpty {
+        if lastInput && self.arrayCount == 2 && !targetName.isEmpty {
             NavigationLink(destination: ConsumedLimitView().environmentObject(items), tag: true, selection: $nextView) {
                 EmptyView()
             }
@@ -37,11 +37,13 @@ struct TargetButton: View {
             }, label: {
                 BtnShape(btnText: $btnText[1])
             })
-        } else if !lastInput && self.targetPrice > 0 && !self.targetName.isEmpty {
+        } else if !lastInput && self.arrayCount == 1 && !self.targetName.isEmpty {
             Button(action: {
                 showTargetImg = true
                 lastInput = true
                 arrayCount += 1
+                print(targetPrice)
+                print(targetPrice.description)
             }, label: {
                 BtnShape(btnText: $btnText[0])
             }).opacity(self.arrayCount < 2 ? 1: 0)

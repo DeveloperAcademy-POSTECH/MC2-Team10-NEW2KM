@@ -11,20 +11,17 @@ struct ConsumedLimitView: View {
     @Environment(\.managedObjectContext) var viewContext
     @EnvironmentObject var items: Items
 
-    @State var consumedCategories = [ConsumedCategory(consumedCategory: "식비", consumedLimit: [0: 500_000]),
-                                     ConsumedCategory(consumedCategory: "교통/차량", consumedLimit: [0: 100_000]),
-                                     ConsumedCategory(consumedCategory: "패션 미용", consumedLimit: [0: 200_000])]
+    @State var consumedCategories = [ConsumedCategory(consumedCategory: "식비", consumedLimit: [:]),
+                                     ConsumedCategory(consumedCategory: "교통/차량", consumedLimit: [:]),
+                                     ConsumedCategory(consumedCategory: "패션/미용", consumedLimit: [:]),
+                                     ConsumedCategory(consumedCategory: "생활용품", consumedLimit: [:])]
+    @State var consumedLimitValues =  [0, 0, 0, 0]
     // TODO: 1. consumedLimit 키 값에 대한 한계 비용 바꾸기
     // TODO: 2 식비 -> food로 저장 변환
-
-    @State var consumedCategoryArray = ["식비", "교통/차량", "패션/미용"]
-    @State var consumedLimitArray = [0, 0, 0]
-
     @State var consumedCategory = ""
     @State var consumedLimit = 0
     @State var addCategory = false
-    @State var addArray: Int = 2
-
+    @State var addArray: Int = 3
     @State var showList = false
     @State var nextView: Bool? = false
 
@@ -47,6 +44,7 @@ struct ConsumedLimitView: View {
                         Button(action: {
                             self.addArray += 1
                             addElement()
+                            consumedLimitValues.append(0)
                         }, label: {
                             Image(systemName: "plus")
                         })
@@ -58,9 +56,28 @@ struct ConsumedLimitView: View {
                                     if addArray > 0 {
                                         ForEach(0..<consumedCategories.count, id: \.self) { idx in
                                             HStack {
-                                                ConsumedCategories(consumedCategory: self.$consumedCategories[idx])
+                                                VStack {
+                                                    TextField("기타", text: $consumedCategories[idx].consumedCategory)
+                                                        .font(.system(size: 17, weight: .regular))
+                                                        .lineSpacing(0)
+                                                    Divider()
+                                                        .background(Color.accentColor)
+                                                }
+                                                VStack {
+                                                    HStack {
+                                                        TextField("100_000", value: $consumedLimitValues[idx], formatter: NumberFormatter())
+                                                            .keyboardType(.decimalPad)
+                                                        Text("원")
+                                                            .font(.system(size: 17, weight: .regular))
+                                                    }
+                                                    .lineSpacing(0)
+                                                    .padding(.trailing, 16)
+                                                    Divider()
+                                                        .background(Color.accentColor)
+                                                }
                                             }
                                         }
+                                        .onDelete(perform: delete)
                                     }
                                 }
                                 .padding(.horizontal, 16)
@@ -97,11 +114,27 @@ struct ConsumedLimitView: View {
                     }
 
                     Button(action: {
-                        withAnimation {
-                            items.consumedCategories = consumedCategories
-                            UserDefaults.standard.set(true, forKey: "initSetting")
+                        
+                        // 1. 입력된 카텓고리의 모든 이름이 빈 문자열이 아니다.
+                        // 2. 입력된 카테고리의 모든 가격이 0 초과다.
+                        
+                        let categoryNameCheck = consumedCategories.filter{$0.consumedCategory.isEmpty}
+                        let consumedLimitCheck = consumedLimitValues.filter{$0 <= 0}
+                        
+                        if categoryNameCheck.isEmpty && consumedLimitCheck.isEmpty {
+                            withAnimation {
+                                for idx in 0..<consumedCategories.count {
+                                    consumedCategories[idx].consumedLimit[0] = consumedLimitValues[idx]
+                                }
+                                items.consumedCategories = consumedCategories
+                                print(consumedCategories[0].consumedLimit)
+                                print(consumedCategories[1].consumedLimit)
+                                UserDefaults.standard.set(true, forKey: "initSetting")
+                            }
+                            nextView = true
+                        } else {
+                            // ALERT "이상한 정보입니다."
                         }
-                        nextView = true
                     }, label: {
                         BtnShape(btnText: $btnText[1])
                     })
@@ -125,7 +158,13 @@ struct ConsumedLimitView: View {
     func addElement() {
 //        consumedCategoryArray.insert("", at: 0)
 //        consumedLimitArray.insert(0, at: 0)
-        consumedCategories.append(ConsumedCategory(consumedCategory: "", consumedLimit: [0:100000]))
+        consumedCategories.append(ConsumedCategory(consumedCategory: "", consumedLimit: [:]))
+    }
+    func delete(offset: IndexSet) {
+        withAnimation {
+            consumedCategories.remove(atOffsets: offset)
+            consumedLimitValues.remove(atOffsets: offset)
+        }
     }
 }
 struct ConsumedLimitView_Previews: PreviewProvider {
