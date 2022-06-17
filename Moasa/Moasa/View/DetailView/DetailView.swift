@@ -11,34 +11,46 @@ import SwiftUI
 
 struct DetailView: View {
     // MARK: 여기의 주석은 CoreData연결 이후에 주석을 제거한다. 디테일 뷰를 확인할 수 없음
-    var index: Int = 0
-    var categoryId: UUID
-    var categoryName: String
-    var consumedLimit: Int
-    @State private var startDate: Date = Date().startOfMonth()
-    @State private var endDate: Date = Date()
-    @State private var selectedMethod: Bool = false
-    @State public var isShowing: Bool = false
+    @EnvironmentObject var items: Items
+    @State var selectedMethod = false // false => 기간순, true => 가격순
+    @State var startDate: Date = addDate(date: Date(), days: -30)
+    @State var endDate = Date() // Default Value 주고 나중에 DatePicker로 값 변경했을때 값 바꾸는게 좋을듯 싶습니다. ㅇㅈㅇㅈ
+    @State var isShowing = false
+    var category: Items.CategoryLeft
     // false -> 최신 (자동) true -> 가격
     // Date (연, 월, 일) -> (일 단위 기준)
     // 디폴트: start <-> end까지의 소비 기록을 뽑을 커팅 포인트
     var body: some View {
         ZStack {
             VStack {
-                CircleWaveView(percent: 50)
-                SearchBarView(isShowing: isShowing)
+                CircleWaveView(percent: items.balancePercent(categoryName: category.category))
+                SearchBarView(isShowing: $isShowing)
+                if selectedMethod { // 가격순 정렬
+                    let filtereditems = items.sortbyPrice(categoryName: category.category, startDate: startDate, endDate: endDate)
+                    ForEach(filtereditems) { block in
+                        DetailListView(consumedItem: block, leftMoney: 5000)
+                    }
+                } else { // 기간순 정렬
+                    let filtereditems = items.sortbyDate(categoryName: category.category, startDate: startDate, endDate: endDate)
+                    let pointers = findPointer(consumedItemsSorted: filtereditems)
+                    ForEach(0..<pointers.count) { block in
+                        DetailBlockDateView(consumedItemsSorted: filtereditems, date: filtereditems[block].consumedDate)
+                    }
+                }
             }
+            
             HalfASheet(isPresented: $isShowing) {
                 VStack {
                     VStack {
                         Text("소비내역정렬")
                         Spacer()
                         HStack {
-                            Picker(selection: $selectedMethod, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
+                            Picker(selection: $selectedMethod,
+                                   label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
                                 Text("기간순").tag(1)
                                 Text("가격순").tag(2)
                             }
-                            .pickerStyle(SegmentedPickerStyle())
+                                   .pickerStyle(SegmentedPickerStyle())
                         }
                         Spacer()
                     }
@@ -48,17 +60,19 @@ struct DetailView: View {
                         Spacer()
                         HStack {
                             Spacer()
-                            DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, displayedComponents: .date, label: {})
-                                .labelsHidden()
+                            DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/,
+                                       displayedComponents: .date, label: {})
+                            .labelsHidden()
                             Text("~")
-                            DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, displayedComponents: .date, label: {})
-                                .labelsHidden()
+                            DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/,
+                                       displayedComponents: .date, label: {})
+                            .labelsHidden()
                             Spacer()
                         }
                         Spacer()
                         Button("확인") {
-                            if Self.isShowing {
-                                Self.isShowing.toggle()
+                            if isShowing {
+                                isShowing.toggle()
                             }
                         }
                     }
@@ -70,10 +84,10 @@ struct DetailView: View {
         }
     }
 }
-
-
+/*
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(categoryId: UUID(), categoryName: "CATEGORY", consumedLimit: 10000)
+        DetailView(startDate: <#T##Date#>, endDate: <#T##Date#>, category: <#T##Items.CategoryLeft#>)
     }
 }
+*/

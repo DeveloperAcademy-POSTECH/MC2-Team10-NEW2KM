@@ -5,12 +5,11 @@
 //  Created by Kelly Chui on 2022/06/13.
 //
 
-import HalfASheet
 import SwiftUI
 
 struct SearchBarView: View {
     @State var sortMethod = false
-    @State var isShowing: Bool = false
+    @Binding var isShowing: Bool
     // State Bidning -> startDate, endDate, selectedMethod
     var body: some View {
         HStack {
@@ -18,18 +17,15 @@ struct SearchBarView: View {
                 .font(.title)
             Spacer()
             Button("터치미") {
-                isShowing = toggleMethod(isShowing: isShowing)
+                isShowing.toggle()
             }
         }
     }
-    func toggleMethod (isShowing: Bool) -> Bool {
-        var returnValue: Bool = isShowing.toggle()
-        return isShowing.toggle()
-    }
 }
-
+/*
 struct SearchBarView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBarView()
+        SearchBarView(isShowing: <#T##Binding<Bool>#>)
     }
 }
+ */
