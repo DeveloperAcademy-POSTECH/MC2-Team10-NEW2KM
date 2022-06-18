@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct ConsumedInput: View {
     @Binding var consumedCategories: [ConsumedCategory]
     @Binding var consumedLimitValues: [Int]
@@ -36,15 +37,13 @@ struct ConsumedInput: View {
             }
                 .font(.system(size: 20, weight: .bold))
                 .padding(.horizontal, 16), content: {
-                    ScrollView {
-                        VStack {
-                            if addArray > 0 {
+                        if addArray > 0 {
+                            List {
                                 ForEach(0..<consumedCategories.count, id: \.self) { idx in
                                     HStack {
                                         VStack {
                                             TextField("기타", text: $consumedCategories[idx].consumedCategory)
                                                 .font(.system(size: 17, weight: .regular))
-                                                .lineSpacing(0)
                                             Divider()
                                                 .background(Color.accentColor)
                                         }
@@ -54,7 +53,7 @@ struct ConsumedInput: View {
                                                     consumedLimitValues[idx] = Int(newValue)!
                                                 }
                                                 .keyboardType(.numberPad)
-                                                .padding(.trailing, 16)
+//                                            .padding(.trailing, 16)
 
 //                                                TextField("100000", value: $consumedLimitValues[idx],
 //                                                          formatter: NumberFormatter())
@@ -68,10 +67,14 @@ struct ConsumedInput: View {
                                     }
                                 }
                                 .onDelete(perform: delete)
+                                .listRowBackground(Color.kenCustomOrange)
+                                .listRowInsets(EdgeInsets())
+                                .listRowSeparator(.hidden)
+                                .background(Color.kenCustomOrange)
                             }
+                            .onAppear() {
+                                UITableView.appearance().backgroundColor = UIColor.clear
                         }
-                        .padding(.horizontal, 16)
-                        .padding(.bottom, 40)
                     }
                 })
         }
@@ -83,22 +86,26 @@ struct ConsumedInput: View {
             Spacer()
         }.padding(.leading, 16)
 
-        HStack {
-            TextField("월 저축액을 입력해주세요.", text: $text)
-                .onChange(of: text) {newValue in
-                    fixedSaving = Int(newValue)!
-                }
-                .padding(.leading, 16)
-                .font(.system(size: 17, weight: .regular))
-                .keyboardType(.numberPad)
-            Text("원")
-                .font(.system(size: 17, weight: .regular))
-                .padding(.trailing, 16)
+        VStack {
+            HStack {
+                TextField("월 저축액을 입력해주세요.", text: $text)
+                    .onChange(of: text) {newValue in
+                        fixedSaving = Int(newValue)!
+                    }
+                    .padding(.leading, 16)
+                    .font(.system(size: 17, weight: .regular))
+                    .keyboardType(.numberPad)
+                Text("원")
+                    .font(.system(size: 17, weight: .regular))
+                    .padding(.trailing, 16)
+            }
+            Divider()
+                .background(Color.accentColor)
+                .padding(.horizontal, 16)
+                .padding(.trailing, 20)
+                .padding(.bottom, 20)
+
         }
-        Divider()
-            .background(Color.accentColor)
-            .padding(.horizontal, 16)
-            .padding(.bottom, 20)
         Spacer()
     }
     func addElement() {

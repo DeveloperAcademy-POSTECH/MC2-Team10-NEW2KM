@@ -58,12 +58,13 @@ struct TargetInput: View {
                     .keyboardType(.numberPad)
 
                 Text("원")
-                    .font(.system(size: 17, weight: .bold))
+                    .font(.system(size: 17, weight: .regular))
                     .padding(.trailing, 16)
             }
             Divider()
                 .background(Color.accentColor)
                 .padding(.horizontal, 16)
+                .padding(.trailing, 20)
                 .padding(.bottom, 20)
         }
 // 1. 목표물건 명칭 입력 TextField
