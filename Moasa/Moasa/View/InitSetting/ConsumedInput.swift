@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct ConsumedInput: View {
     @Binding var consumedCategories: [ConsumedCategory]
     @Binding var consumedLimitValues: [Int]
@@ -73,9 +72,7 @@ struct ConsumedInput: View {
                                 .listRowSeparator(.hidden)
                                 .background(Color.kenCustomOrange)
                             }
-                            .onAppear() {
-                                UITableView.appearance().backgroundColor = UIColor.clear
-                        }
+                            .onAppear { UITableView.appearance().backgroundColor = UIColor.clear }
                     }
                 })
         }
@@ -105,7 +102,6 @@ struct ConsumedInput: View {
                 .padding(.horizontal, 16)
                 .padding(.trailing, 20)
                 .padding(.bottom, 20)
-
         }
         Spacer()
     }

@@ -16,7 +16,7 @@ struct NewInitSettingView: View {
 
     @State var show = false
     @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    @State var image: Data? = nil
+    @State var image: Data?
     @State var targetName: String = ""
     @State var targetPrice: Int = 0
     var titleArray: [String] = ["사고 싶은 물건을 입력해주세요", "물건 가격을 입력해주세요", "사고싶은 물건 사진을 넣어주세요"]
