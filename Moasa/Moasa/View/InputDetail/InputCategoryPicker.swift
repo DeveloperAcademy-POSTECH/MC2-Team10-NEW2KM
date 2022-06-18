@@ -14,7 +14,6 @@ struct InputCategoryPicker: UIViewRepresentable {
     private let textField = UITextField()
     private let pikcerView = UIPickerView()
     private let helper = Helper()
-    
     func makeCoordinator() -> Coordinator {
         return Coordinator(data: self.data) { (index) in
             self.lastSelectedIndex = index
