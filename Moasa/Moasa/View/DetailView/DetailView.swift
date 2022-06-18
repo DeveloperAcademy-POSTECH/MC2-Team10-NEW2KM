@@ -30,7 +30,7 @@ struct DetailView: View {
                 }
                 SearchBarView(isShowing: $isShowing)
                 if items.consumedItems.isEmpty {
-                    Text("No Items!!")
+                    DetailNothing()
                 } else {
                     if items.getCategoryItemsFiltered(categoryName: category.category,
                                                       startDate: startDate, endDate: endDate).isEmpty { // 가격순 정렬
@@ -92,6 +92,13 @@ struct DetailView: View {
             .backgroundColor(.white)
             .height(.proportional(0.5))
             .closeButtonColor(.orange)
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: InputDetailView()) {
+                }
+                .buttonStyle(ButtonStyle3D(background: Color.yellow))
+            }
         }
     }
 }
