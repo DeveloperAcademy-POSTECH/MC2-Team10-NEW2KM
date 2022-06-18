@@ -43,7 +43,7 @@ struct CycleEndView: View {
                 TextField("이 중에서 물건에 보탤 금액은..", value: $investMoney, formatter: NumberFormatter())
                      .padding(.leading, 16)
                      .font(.system(size: 17, weight: .regular))
-                     .keyboardType(.decimalPad)
+                     .keyboardType(.numberPad)
                 Text("원")
                     .font(.system(size: 17, weight: .bold))
                     .padding(.trailing, 16)
