@@ -5,7 +5,6 @@
 //  Created by Kelly Chui on 2022/06/13.
 //
 
-import CoreData
 import SwiftUI
 
 struct DetailView: View {
