@@ -58,6 +58,7 @@ class Items: Identifiable, ObservableObject {
         }
         return categoryBalances
         // 그리드 -> 해당 카테고리 별 잔액 리턴
+        // consumedItem 입력 창의 "현재 입력된 모든 카테고리를 뽑기" -> categoryBalances.map{$0.category} return
     }
     func categoryBalance(categoryName: String) -> Int {
         let consumedItemSpent: Int = consumedItems
@@ -86,15 +87,16 @@ class Items: Identifiable, ObservableObject {
     // MAIN Computed Property
     // Date -> 해당 Date가 전체 챌린지 사이클 중 어떤 챌린지 사이클의 소비 항목인지 계산해주는 함수
     func getChallengeCycle(consumedDate: Date) -> Int {
+        guard consumedDate > Date() else { return getChallengeCycle(consumedDate: Date()) }
+        // 오늘 날짜보다 들어온 날짜가 이후 -> 자동으로 오늘 날짜로 맞추기
         let startDate = targetItems[0].startDate
         let diff = Calendar.current.dateComponents([.day], from: startDate, to: consumedDate).day!
+        guard diff < 0 else { return 0 }
+        // startDate보다 이전이면 자동으로 0에 기록
         let cycle = 30
         return diff / cycle
-        // TODO: 데이트 피커 -> 타겟 시작 날짜보다 이전으로 가지 않게 한다.
     }
-    
     // 먼저 기간 분류(startDate, endDate) -> 정렬 분류 필터링을 $0.consumed
-    
     func getCategoryItemsFiltered(categoryName: String, startDate: Date, endDate: Date) -> [ConsumedItem] {
         let itemFiltered = consumedItems.filter({ $0.consumedCategory == categoryName && $0.consumedDate >= startDate && $0.consumedDate <= endDate})
         return itemFiltered

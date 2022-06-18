@@ -33,10 +33,16 @@ struct InputDetailView: View {
             HStack {
                 Button(action: {
                     let newConsumedItem = ConsumedItem(consumedCategory: categories[selectedIndex ?? 0],
-                                                       consumedName: titleContent, consumedPrice: Int(expense) ?? 0,
-                                                       consumedDate: chosenDate, consumedMemo: additionalContent, challengeCycle: items.challengeCycle)
+                                                       consumedName: titleContent,
+                                                       consumedPrice: Int(expense) ?? 0,
+                                                       consumedDate: chosenDate,
+                                                       // chosenDate가 challenge 시작 날짜 ~ 오늘 날짜 중이어야 할 것 같습니다!
+                                                       consumedMemo: additionalContent,
+                                                       challengeCycle: items.challengeCycle)
+                    // challengeCycle: items의 getChallengeCycle 함수에 Date Picker로 뽑은 날짜 넣어야 합니다!
                     items.consumedItems.append(newConsumedItem)
                     items.consumedItemSaved()
+                    // didSet이기 때문에 중복 저장으로 알고 있습니다!
                 }, label: {
                     Text("저장")
                 })
