@@ -93,13 +93,12 @@ struct DetailView: View {
             .height(.proportional(0.5))
             .closeButtonColor(.orange)
         }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: InputDetailView()) {
-                }
-                .buttonStyle(ButtonStyle3D(background: Color.yellow))
-            }
-        }
+        .navigationBarTitle("카테고리 이름", displayMode: .inline)
+        .navigationBarTitle("Events")
+        .navigationBarItems(trailing:
+                                NavigationLink(destination: DetailInputView(consumCategory: "Guitar", consumName: "기타", consumPrice: 999_999_999)){
+            Image(systemName: "plus")
+        })
     }
 }
 /*
