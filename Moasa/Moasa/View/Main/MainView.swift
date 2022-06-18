@@ -28,5 +28,6 @@ struct MainView: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
