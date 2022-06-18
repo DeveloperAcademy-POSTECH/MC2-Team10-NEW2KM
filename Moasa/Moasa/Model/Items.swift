@@ -68,6 +68,14 @@ class Items: Identifiable, ObservableObject {
         return categoryBalances
         // 그리드 -> 해당 카테고리 별 잔액 리턴
     }
+    var categoryList: [String] {
+        var tempList: [String] = []
+        for category in consumedCategories {
+            tempList.append(category.consumedCategory)
+        }
+        let tempSet: Set = Set(tempList)
+        return Array(tempSet)
+    }
     func categoryBalance(categoryName: String) -> Int {
         let consumedItemSpent: Int = consumedItems
             .filter({ $0.consumedCategory == categoryName && $0.challengeCycle == challengeCycle })
@@ -124,7 +132,7 @@ class Items: Identifiable, ObservableObject {
     func load() {
         consumedCategoryLoad()
         targetItemLoad()
-        //        consumedItemLoad()
+        consumedItemLoad()
     }
     func targetItemSaved() {
         do {

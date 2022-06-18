@@ -15,6 +15,7 @@ struct DetailView: View {
     @State var startDate: Date = addDate(date: Date(), days: -30)
     @State var endDate = Date() // Default Value 주고 나중에 DatePicker로 값 변경했을때 값 바꾸는게 좋을듯 싶습니다. ㅇㅈㅇㅈ
     @State var isShowing = false
+    @State private var showModal = false
     var category: Items.CategoryLeft
     // false -> 최신 (자동) true -> 가격
     // Date (연, 월, 일) -> (일 단위 기준)
@@ -95,10 +96,10 @@ struct DetailView: View {
         }
         .navigationBarTitle("카테고리 이름", displayMode: .inline)
         .navigationBarTitle("Events")
-        .navigationBarItems(trailing:
-                                NavigationLink(destination: DetailInputView(consumCategory: "Guitar", consumName: "기타", consumPrice: 999_999_999)){
-            Image(systemName: "plus")
-        })
+        .navigationBarItems(trailing: Button("Add", action: { self.showModal.toggle() }))
+        .sheet(isPresented: self.$showModal) {
+            DetailInputView(consumCategory: "기타", consumName: "음", consumPrice: 999_999_999)
+        }
     }
 }
 /*
