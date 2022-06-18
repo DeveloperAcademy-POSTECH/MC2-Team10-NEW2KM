@@ -71,6 +71,7 @@ struct TargetInput: View {
         TextField("예시: Airpods Max", text: self.$targetName)
             .padding(.leading, 16)
             .font(.system(size: 17, weight: .regular))
+            .disableAutocorrection(true)
         Divider()
             .background(Color.accentColor)
             .padding(.horizontal, 16)

@@ -44,6 +44,7 @@ struct ConsumedInput: View {
                                         VStack {
                                             TextField("기타", text: $consumedCategories[idx].consumedCategory)
                                                 .font(.system(size: 17, weight: .regular))
+                                                .disableAutocorrection(true)
                                             Divider()
                                                 .background(Color.accentColor)
                                         }
