@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct TargetItem: Codable, Identifiable{
+struct TargetItem: Codable, Identifiable {
     let id = UUID()
     var targetName: String
-    var targetImage: Data? = nil
+    var targetImage: Data?
     var targetPrice: Int
     var totalSaved = 0
     var startDate: Date = Date()
@@ -19,4 +19,3 @@ struct TargetItem: Codable, Identifiable{
         self.totalSaved += freeSaving
     }
 }
-

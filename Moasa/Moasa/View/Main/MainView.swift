@@ -5,7 +5,6 @@
 //  Created by 김원희 on 2022/06/11.
 //
 
-import CoreData
 import SwiftUI
 
 struct MainView: View {
@@ -29,5 +28,6 @@ struct MainView: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }

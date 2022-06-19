@@ -14,6 +14,6 @@ struct ConsumedItem: Codable, Identifiable {
     var consumedName: String
     var consumedPrice: Int
     var consumedDate: Date
-    var consumedMemo: String? = nil
+    var consumedMemo: String?
     var challengeCycle: Int
 }
