@@ -58,7 +58,7 @@ class Items: Identifiable, ObservableObject {
     var categoryBalances: [CategoryLeft] {
         // CategryName, CategoryIcon, CategoryBalance 리턴
         var categoryBalances = [CategoryLeft]()
-        let categories = consumedCategories.map({ ($0.consumedCategory, $0.consumedLimit ) })
+        let categories = consumedCategories.map({ ( $0.consumedCategory, $0.consumedLimit ) })
         for category in categories {
             let balance = categoryBalance(categoryName: category.0)
             let categoryIcon = getIcon(categoryName: category.0)
@@ -84,6 +84,7 @@ class Items: Identifiable, ObservableObject {
             .filter({ $0.consumedCategory == categoryName })[0]
             .consumedLimit[challengeCycle]
         return categoryLimit! - consumedItemSpent
+        // TODO: 0원이 되어 있을 때 디폴트 값 설정하기 (guard let)
         // 이번 챌린지 도전 주기의 해당 카테고리 잔액
     }
     func balancePercent(categoryName: String) -> Double {

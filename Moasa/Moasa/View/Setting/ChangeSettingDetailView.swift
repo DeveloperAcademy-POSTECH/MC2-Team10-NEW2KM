@@ -34,17 +34,22 @@ struct ChangeSettingDetailView: View {
             HStack {
                 TextField(changeTitle, text: $changeTargetName)
                 Button(action: {
-                    var changeValue: TargetItem?
+//                    var changeValue: TargetItem?
                     if changeTitle == "목표 이름" {
-                        changeValue = saveTargetName(changeTitle: changeTargetName)
+                        items.targetItems[0].targetName = changeTargetName
+//                        changeValue = saveTargetName(changeTitle: changeTargetName)
                     } else if changeTitle == "목표 가격" {
-                        changeValue = saveTargetPrice(changeTitle: changeTargetName)
+                        items.targetItems[0].targetPrice = Int(changeTargetName)!
+//                        changeValue = saveTargetPrice(changeTitle: changeTargetName)
                     } else if changeTitle == "고정 저금액" {
-                        changeValue = saveTargetFixed(changeTitle: changeTargetName)
+                        items.targetItems[0].fixedSaving = Int(changeTargetName)!
+//                        changeValue = saveTargetFixed(changeTitle: changeTargetName)
                     } else if changeTitle == "자유 저금액" {
-                        changeValue = saveTargetFree(changeTitle: changeTargetName)
+                        items.targetItems[0].totalSavedSet(freeSaving: Int(changeTargetName)!)
+                        // 자유 저금액 자동 반영
+                        // TODO: 입력 문자열 -> 금액은 정수로 조건화해야 함
                     }
-                    items.targetItems[0] = changeValue!
+//                    items.targetItems[0] = changeValue!
                     presentation.wrappedValue.dismiss()
                 }, label: {
                     Text("저장하기")

@@ -33,9 +33,9 @@ struct MainTitleView: View {
     }
 }
 
-//struct MainTitleView_Previews: PreviewProvider {
+// struct MainTitleView_Previews: PreviewProvider {
 //    var newItem = Items()
 //    static var previews: some View {
 //        MainTitleView(items: newItem)
 //    }
-//}
+// }

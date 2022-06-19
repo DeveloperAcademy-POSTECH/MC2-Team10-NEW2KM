@@ -5,7 +5,6 @@
 //  Created by Kelly Chui on 2022/06/13.
 //
 
-import CoreData
 import HalfASheet
 import SwiftUI
 
@@ -103,10 +102,3 @@ struct DetailView: View {
         }
     }
 }
-/*
- struct DetailView_Previews: PreviewProvider {
- static var previews: some View {
- DetailView(startDate: <#T##Date#>, endDate: <#T##Date#>, category: <#T##Items.CategoryLeft#>)
- }
- }
- */

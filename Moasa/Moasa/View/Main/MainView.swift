@@ -5,7 +5,6 @@
 //  Created by 김원희 on 2022/06/11.
 //
 
-import CoreData
 import SwiftUI
 
 struct MainView: View {
@@ -17,14 +16,18 @@ struct MainView: View {
             VStack {
                 MainTitleView()
                     .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
+                    .environmentObject(items)
                 ScrollView {
                     TargetContentView()
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 39, trailing: 0))
+                            .environmentObject(items)
                     BudgetContentView()
+                        .environmentObject(items)
                 }
             }
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }

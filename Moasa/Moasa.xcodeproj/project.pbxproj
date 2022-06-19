@@ -34,6 +34,10 @@
 		9803A34E2858A7B200EE4B0A /* NewInitSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9803A34D2858A7B200EE4B0A /* NewInitSettingView.swift */; };
 		9803A3502858ACD200EE4B0A /* ConsumedLimitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9803A34F2858ACD200EE4B0A /* ConsumedLimitView.swift */; };
 		9871F1B92855C7310077B058 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871F1B82855C7310077B058 /* ImagePicker.swift */; };
+		98E21CBE285B966500BB4640 /* TargetInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E21CBD285B966500BB4640 /* TargetInput.swift */; };
+		98E21CC0285B979E00BB4640 /* TargetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E21CBF285B979E00BB4640 /* TargetButton.swift */; };
+		98E21CC4285D051900BB4640 /* ConsumedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E21CC3285D051900BB4640 /* ConsumedButton.swift */; };
+		98E21CC6285D078A00BB4640 /* ConsumedInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E21CC5285D078A00BB4640 /* ConsumedInput.swift */; };
 		CF3A011E28575C7B002A2C80 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3A011D28575C7B002A2C80 /* SearchBarView.swift */; };
 		CF4697B8285C47C100E297CE /* addDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4697B7285C47C100E297CE /* addDate.swift */; };
 		CF4697BA285C4BBD00E297CE /* DetailPriceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4697B9285C4BBD00E297CE /* DetailPriceListView.swift */; };
@@ -79,6 +83,10 @@
 		9803A34D2858A7B200EE4B0A /* NewInitSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewInitSettingView.swift; sourceTree = "<group>"; };
 		9803A34F2858ACD200EE4B0A /* ConsumedLimitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumedLimitView.swift; sourceTree = "<group>"; };
 		9871F1B82855C7310077B058 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		98E21CBD285B966500BB4640 /* TargetInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetInput.swift; sourceTree = "<group>"; };
+		98E21CBF285B979E00BB4640 /* TargetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetButton.swift; sourceTree = "<group>"; };
+		98E21CC3285D051900BB4640 /* ConsumedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumedButton.swift; sourceTree = "<group>"; };
+		98E21CC5285D078A00BB4640 /* ConsumedInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumedInput.swift; sourceTree = "<group>"; };
 		CF3A011D28575C7B002A2C80 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		CF4697B7285C47C100E297CE /* addDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addDate.swift; sourceTree = "<group>"; };
 		CF4697B9285C4BBD00E297CE /* DetailPriceListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPriceListView.swift; sourceTree = "<group>"; };
@@ -138,7 +146,11 @@
 			isa = PBXGroup;
 			children = (
 				9803A34D2858A7B200EE4B0A /* NewInitSettingView.swift */,
+				98E21CBD285B966500BB4640 /* TargetInput.swift */,
+				98E21CBF285B979E00BB4640 /* TargetButton.swift */,
 				9803A34F2858ACD200EE4B0A /* ConsumedLimitView.swift */,
+				98E21CC5285D078A00BB4640 /* ConsumedInput.swift */,
+				98E21CC3285D051900BB4640 /* ConsumedButton.swift */,
 			);
 			path = InitSetting;
 			sourceTree = "<group>";
@@ -356,12 +368,14 @@
 				4A67A1C6285ABAD000B4F56F /* TargetItem.swift in Sources */,
 				4A8C5242285852C4007CE4F1 /* funcPointer.swift in Sources */,
 				CF4697B8285C47C100E297CE /* addDate.swift in Sources */,
+				98E21CC4285D051900BB4640 /* ConsumedButton.swift in Sources */,
 				9803A34E2858A7B200EE4B0A /* NewInitSettingView.swift in Sources */,
 				CF5FF4D32856CC23004FB062 /* DetailListView.swift in Sources */,
 				CF4697BA285C4BBD00E297CE /* DetailPriceListView.swift in Sources */,
 				4A67A1DA285B0FA500B4F56F /* getPercentInt.swift in Sources */,
 				9871F1B92855C7310077B058 /* ImagePicker.swift in Sources */,
 				4A3640ED2856B8A40032A90A /* Color+Extension.swift in Sources */,
+				98E21CC0285B979E00BB4640 /* TargetButton.swift in Sources */,
 				4A36413C2856E2320032A90A /* Number+Extension.swift in Sources */,
 				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
 				9803A3502858ACD200EE4B0A /* ConsumedLimitView.swift in Sources */,
@@ -371,6 +385,7 @@
 				4A67A1C2285AB92D00B4F56F /* ConsumedItem.swift in Sources */,
 				CF5FF4D52856CC2A004FB062 /* DetailView.swift in Sources */,
 				CF3A011E28575C7B002A2C80 /* SearchBarView.swift in Sources */,
+				98E21CC6285D078A00BB4640 /* ConsumedInput.swift in Sources */,
 				4AB8094328557EE800C772D1 /* MainTitleView.swift in Sources */,
 				4A040FEF2857593000DA507E /* Date+Extension.swift in Sources */,
 				DF65DD422854966D00435F9E /* InitiateTargetSettingDetailView.swift in Sources */,
@@ -381,6 +396,7 @@
 				4AEB76052852F32000EC85B9 /* MoasaApp.swift in Sources */,
 				4A67A1C4285ABA1500B4F56F /* ConsumedCategory.swift in Sources */,
 				4A67A1CB285ABEF900B4F56F /* Items.swift in Sources */,
+				98E21CBE285B966500BB4640 /* TargetInput.swift in Sources */,
 				DF65DD4028546AEC00435F9E /* ChangeSettingDetailView.swift in Sources */,
 				4A36413A2856E2200032A90A /* Keyboard+Extension.swift in Sources */,
 				CF53EB02285DE23400EBB907 /* DetailInputView.swift in Sources */,
@@ -521,6 +537,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Moasa/Preview Content\"";
+				DEVELOPMENT_TEAM = N6LML762WM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -550,6 +567,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Moasa/Preview Content\"";
+				DEVELOPMENT_TEAM = N6LML762WM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
