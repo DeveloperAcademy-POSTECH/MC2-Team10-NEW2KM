@@ -13,13 +13,13 @@ struct SearchBarView: View {
     // State Bidning -> startDate, endDate, selectedMethod
     var body: some View {
         HStack {
-            Text("서치바")
-                .font(.title)
+            Image(systemName: "magnifyingglass")
             Spacer()
             Button("터치미") {
                 isShowing.toggle()
             }
         }
+        .padding(.horizontal)
     }
 }
 /*

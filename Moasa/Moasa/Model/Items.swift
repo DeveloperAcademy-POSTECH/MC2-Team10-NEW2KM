@@ -86,13 +86,13 @@ class Items: Identifiable, ObservableObject {
         return categoryLimit! - consumedItemSpent
         // 이번 챌린지 도전 주기의 해당 카테고리 잔액
     }
-    func balancePercent(categoryName: String) -> Int {
+    func balancePercent(categoryName: String) -> Double {
         let categoryBalance = categoryBalance(categoryName: categoryName)
         let categoryLimit = consumedCategories
             .filter({ $0.consumedCategory == categoryName })[0]
             .consumedLimit[challengeCycle]
-        let percent = (Double(categoryBalance) / Double(categoryLimit!)) * 100.0
-        return Int(percent)
+        let percent = (Double(categoryBalance) / Double(categoryLimit!))
+        return percent
         // 각 카테고리 별 이번 챌린지 주기 남은 금액의 퍼센트를 리턴
     }
     var totalSavedPercent: Double {

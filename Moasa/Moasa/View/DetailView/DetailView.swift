@@ -11,7 +11,7 @@ import SwiftUI
 
 struct DetailView: View {
     @EnvironmentObject var items: Items
-    @State var selectedMethod = false // false => 기간순, true => 가격순
+    @State var selectedMethod = true // false => 기간순, true => 가격순
     @State var startDate: Date = addDate(date: Date(), days: -30)
     @State var endDate = Date() // Default Value 주고 나중에 DatePicker로 값 변경했을때 값 바꾸는게 좋을듯 싶습니다. ㅇㅈㅇㅈ
     @State var isShowing = false
@@ -22,19 +22,18 @@ struct DetailView: View {
     // 디폴트: start <-> end까지의 소비 기록을 뽑을 커팅 포인트
     var body: some View {
         ZStack {
-            VStack {
+            VStack(alignment: .center) {
                 if items.getCategoryItemsFiltered(categoryName: category.category,
                                                   startDate: startDate, endDate: endDate).isEmpty {
-                    CircleWaveView(percent: 100)
+                    WaveView(progress: 1)
                 } else {
-                    CircleWaveView(percent: items.balancePercent(categoryName: category.category))
+                    WaveView(progress: items.balancePercent(categoryName: category.category))
                 }
                 SearchBarView(isShowing: $isShowing)
                 if items.consumedItems.isEmpty {
                     DetailNothing()
                 } else {
-                    if items.getCategoryItemsFiltered(categoryName: category.category,
-                                                      startDate: startDate, endDate: endDate).isEmpty { // 가격순 정렬
+                    if selectedMethod { // 가격순 정렬
                         let filtereditems = items.sortbyPrice(categoryName: category.category,
                                                               startDate: startDate, endDate: endDate)
                         ForEach(filtereditems) { block in
@@ -43,6 +42,7 @@ struct DetailView: View {
                     } else { // 기간순 정렬
                         let filtereditems = items.sortbyDate(categoryName: category.category,
                                                              startDate: startDate, endDate: endDate)
+                        // print(category.category)
                         let pointers = findPointer(consumedItemsSorted: filtereditems)
                         ForEach(0..<pointers.count) { block in
                             DetailBlockDateView(consumedItemsSorted: filtereditems,
@@ -50,6 +50,7 @@ struct DetailView: View {
                         }
                     }
                 }
+                Spacer()
             }
             HalfASheet(isPresented: $isShowing) {
                 VStack {
