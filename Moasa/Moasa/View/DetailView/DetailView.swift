@@ -5,7 +5,6 @@
 //  Created by Kelly Chui on 2022/06/13.
 //
 
-import CoreData
 import SwiftUI
 
 struct DetailView: View {
@@ -23,8 +22,8 @@ struct DetailView: View {
     }
 }
 
-//struct DetailView_Previews: PreviewProvider {
+// struct DetailView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        DetailView(
 //    }
-//}
+// }

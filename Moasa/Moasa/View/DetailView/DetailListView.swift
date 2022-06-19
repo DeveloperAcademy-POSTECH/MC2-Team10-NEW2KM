@@ -11,7 +11,7 @@ struct DetailListView: View {
     // 아직 Padding 삽입 전 입니다...
     var consumedItem: ConsumedItem
     var leftMoney: Int // 잔액(DetailBlockDateView에서 받아옴) -> Computed Property로 쓸 필요가 있음...
-    @EnvironmentObject var items:Items
+    @EnvironmentObject var items: Items
     var body: some View {
         HStack {
             if let name = consumedItem.consumedName {

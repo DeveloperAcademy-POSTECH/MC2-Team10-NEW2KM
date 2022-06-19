@@ -43,9 +43,9 @@ struct SettingView: View {
                 }
             }
         }
-        .onAppear(perform: {
-            UITableView.appearance().contentInset.top = -70
-        })
+//        .onAppear(perform: {
+//            UITableView.appearance().contentInset.top = -70
+//        })
     }
 }
 

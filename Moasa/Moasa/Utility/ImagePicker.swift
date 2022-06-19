@@ -35,7 +35,6 @@ struct ImagePicker: UIViewControllerRepresentable {
         init(img1: ImagePicker) {
             img0 = img1
         }
-        
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             self.img0.show.toggle()
         }

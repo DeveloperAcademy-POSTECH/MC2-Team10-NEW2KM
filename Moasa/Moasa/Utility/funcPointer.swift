@@ -8,7 +8,7 @@
 import Foundation
 
 func findPointer(consumedItemsSorted: [ConsumedItem]) -> [Int] {
-    var dateArray = consumedItemsSorted.map{$0.consumedDate}
+    var dateArray = consumedItemsSorted.map { $0.consumedDate }
     // a
     var pointerArray: [Int] = [0]
 //    for item in consumedItemsSorted {
@@ -16,7 +16,7 @@ func findPointer(consumedItemsSorted: [ConsumedItem]) -> [Int] {
 //        // sort된 상태로 추가하므로 sort 필요 없음
 //    }
     for idx in 1..<dateArray.count {
-        if(dateFormatter(date: dateArray[idx], format: "yyMMdd") != dateFormatter(date: dateArray[idx - 1], format: "yyMMdd")) {
+        if dateFormatter(date: dateArray[idx], format: "yyMMdd") != dateFormatter(date: dateArray[idx - 1], format: "yyMMdd") {
             pointerArray.append(idx + 1)
         }
     }
