@@ -47,7 +47,7 @@ struct DetailInputView: View {
         }
     }
     func saveItem() {
-        items.consumedItems.append(ConsumedItem(consumedCategory:                                          consumCategory,
+        items.consumedItems.append(ConsumedItem(consumedCategory: consumCategory,
                                                 consumedName: consumName,
                                                 consumedPrice: consumPrice,
                                                 consumedDate: consumDate,
