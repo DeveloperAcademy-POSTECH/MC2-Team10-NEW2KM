@@ -15,9 +15,12 @@ struct SearchBarView: View {
         HStack {
             Image(systemName: "magnifyingglass")
             Spacer()
-            Button("터치미") {
+            Button("정렬·기간 설정") {
                 isShowing.toggle()
             }
+            Image(systemName: "arrowtriangle.down.fill")
+                .frame(width: 5, height: 5)
+                .foregroundColor(Color.accentColor)
         }
         .padding(.horizontal)
     }

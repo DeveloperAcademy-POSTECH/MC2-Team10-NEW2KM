@@ -36,7 +36,7 @@ struct DetailView: View {
                         let filtereditems = items.sortbyPrice(categoryName: category.category,
                                                               startDate: startDate, endDate: endDate)
                         ForEach(filtereditems) { block in
-                            Text("\(block.consumedName)")
+                            //Text("\(block.consumedName)")
                             DetailPriceListView(consumedItem: block, leftMoney: 5000).environmentObject(items)
                         }
                     } else { // 기간순 정렬
@@ -72,11 +72,11 @@ struct DetailView: View {
                         Spacer()
                         HStack {
                             Spacer()
-                            DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/,
+                            DatePicker(selection: $startDate,
                                        displayedComponents: .date, label: {})
                             .labelsHidden()
                             Text("~")
-                            DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/,
+                            DatePicker(selection: $endDate,
                                        displayedComponents: .date, label: {})
                             .labelsHidden()
                             Spacer()

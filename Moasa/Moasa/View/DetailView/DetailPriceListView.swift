@@ -13,15 +13,10 @@ struct DetailPriceListView: View {
     var leftMoney: Int
     var body: some View {
         HStack {
-            Text(dateFormatter(date: consumedItem.consumedDate, format:"MM월 dd일"))
-            if let name = consumedItem.consumedName {
-                Text(name)
-                Text(items.targetItems[0].targetName)
-            } else {
-                Text("")
-            }
+            Text(dateFormatter(date: consumedItem.consumedDate, format: "MM월 dd일"))
+            Text(consumedItem.consumedName)
             Spacer()
-            VStack {
+            VStack(alignment: .trailing, spacing: 10) {
                 Text("\(consumedItem.consumedPrice)원")
                     .font(.title3)
                     .foregroundColor(Color("AccentColor"))
@@ -29,7 +24,7 @@ struct DetailPriceListView: View {
                     .foregroundColor(Color.gray)
             }
         }
+        .padding(.horizontal)
         .background(Color.white)
     }
 }
-
