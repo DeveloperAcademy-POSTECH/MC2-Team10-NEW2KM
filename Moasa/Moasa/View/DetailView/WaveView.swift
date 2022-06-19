@@ -17,9 +17,9 @@ struct WaveView: View {
             WaterWave(progress: progress, phase: phase)
                 .fill(Color.accentColor)
                 .frame(width: 390, height: 200)
-                .animation(Animation.linear(duration: 2).repeatForever(autoreverses: false),) {
-                    self.phase = .pi * 2
-                }
+//                .animation(Animation.linear(duration: 2).repeatForever(autoreverses: false), value: isAni) {
+//                    self.phase = .pi * 2
+//                }
                 .onAppear() {
                     withAnimation(Animation.linear(duration: 2).repeatForever(autoreverses: true)) {
                         self.phase = .pi * 2

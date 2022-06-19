@@ -29,21 +29,20 @@ struct DetailInputView: View {
                        displayedComponents: .date, label: {})
             .labelsHidden()
             // TextField("Placeholder", text: $consumMemo)
-            Picker(selection: $consumCategory,
-                   label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
-                ForEach(items.categoryList, id: \.self) { list in
+            Picker("이름", selection: $consumCategory, content: {
+                ForEach(items.categoryList, id: \.self, content: { list in
                     Text(list)
+                })
+            })
+            Button(action: {
+                saveItem()
+                presentation.wrappedValue.dismiss()
+                for idx in items.consumedItems {
+                    print(idx.consumedName)
                 }
+            }) {
+                Text("확인")
             }
-        }
-        Button(action: {
-            saveItem()
-            presentation.wrappedValue.dismiss()
-            for idx in items.consumedItems {
-                print(idx.consumedName)
-            }
-        }) {
-            Text("확인")
         }
     }
     func saveItem() {

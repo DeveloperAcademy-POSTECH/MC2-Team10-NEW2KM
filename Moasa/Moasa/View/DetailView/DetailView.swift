@@ -23,12 +23,12 @@ struct DetailView: View {
     var body: some View {
         ZStack {
             VStack(alignment: .center) {
-                if items.getCategoryItemsFiltered(categoryName: category.category,
-                                                  startDate: startDate, endDate: endDate).isEmpty {
-                    WaveView(progress: 1)
-                } else {
-                    WaveView(progress: items.balancePercent(categoryName: category.category))
-                }
+//                if items.getCategoryItemsFiltered(categoryName: category.category,
+//                                                  startDate: startDate, endDate: endDate).isEmpty {
+//                    WaveView(progress: 1)
+//                } else {
+//                    WaveView(progress: items.balancePercent(categoryName: category.category))
+//                }
                 SearchBarView(isShowing: $isShowing)
                 if items.consumedItems.isEmpty {
                     DetailNothing()
@@ -37,6 +37,7 @@ struct DetailView: View {
                         let filtereditems = items.sortbyPrice(categoryName: category.category,
                                                               startDate: startDate, endDate: endDate)
                         ForEach(filtereditems) { block in
+                            Text("\(block.consumedName)")
                             DetailPriceListView(consumedItem: block, leftMoney: 5000).environmentObject(items)
                         }
                     } else { // 기간순 정렬
@@ -50,7 +51,6 @@ struct DetailView: View {
                         }
                     }
                 }
-                Spacer()
             }
             HalfASheet(isPresented: $isShowing) {
                 VStack {
@@ -99,7 +99,7 @@ struct DetailView: View {
         .navigationBarTitle("Events")
         .navigationBarItems(trailing: Button("Add", action: { self.showModal.toggle() }))
         .sheet(isPresented: self.$showModal) {
-            DetailInputView(consumCategory: "기타", consumName: "음", consumPrice: 999_999_999)
+            DetailInputView(consumCategory: category.category, consumName: "음", consumPrice: 999_999_999)
         }
     }
 }

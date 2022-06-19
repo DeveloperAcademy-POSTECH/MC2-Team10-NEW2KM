@@ -120,11 +120,21 @@ class Items: Identifiable, ObservableObject {
     }
     // 먼저 기간 분류(startDate, endDate) -> 정렬 분류 필터링을 $0.consumed
     func getCategoryItemsFiltered(categoryName: String, startDate: Date, endDate: Date) -> [ConsumedItem] {
+//         1: 모든 아이템 확인
+        print(consumedItems.last!.consumedName)
+//         2. 카테고리 이름 확인
+        print(consumedItems.filter{$0.consumedCategory == categoryName}[0])
+//         3. 카테고리 날짜 확인
+        print("\(consumedItems.last!.consumedDate)")
+//         4. 들어온 날짜 확인
+        print("\(startDate)")
+        print("\(endDate)")
         let itemFiltered = consumedItems
             .filter({
                 $0.consumedCategory == categoryName &&
-                $0.consumedDate >= startDate &&
-                $0.consumedDate <= endDate})
+                Calendar.current.dateComponents([.day], from: startDate, to: $0.consumedDate).day! >= 0 &&
+                Calendar.current.dateComponents([.day], from: $0.consumedDate, to: Date()).day! <= 0
+            })
         return itemFiltered
         // 카테고리 별 기간 내 소비 아이템 리턴
     }
@@ -238,12 +248,14 @@ class Items: Identifiable, ObservableObject {
         let itemSortedbyDate = getCategoryItemsFiltered(categoryName: categoryName,
                                                         startDate: startDate, endDate: endDate)
             .sorted(by: { $0.consumedDate > $1.consumedDate })
+        print(itemSortedbyDate)
         return itemSortedbyDate
     }
     func sortbyPrice(categoryName: String, startDate: Date, endDate: Date) -> [ConsumedItem] {
         let itemSortedbyPrice = getCategoryItemsFiltered(categoryName: categoryName,
                                                          startDate: startDate, endDate: endDate)
             .sorted(by: { $0.consumedPrice > $1.consumedPrice })
+        print(itemSortedbyPrice)
         return itemSortedbyPrice
     }
 }
