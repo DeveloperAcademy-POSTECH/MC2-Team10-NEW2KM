@@ -126,7 +126,7 @@ class Items: Identifiable, ObservableObject {
     func load() {
         consumedCategoryLoad()
         targetItemLoad()
-//        consumedItemLoad()
+        consumedItemLoad()
     }
     func targetItemSaved() {
         do {
