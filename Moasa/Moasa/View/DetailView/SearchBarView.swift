@@ -8,35 +8,24 @@
 import SwiftUI
 
 struct SearchBarView: View {
-    let sampleData = ["Garak", "투움바 파스타", "양고기"]
-    var searchResults: [String] {
-        if searchText.isEmpty {
-            return sampleData
-        } else {
-            return sampleData.filter { $0.contains(searchText) }
-        }
-    }
-    @State private var searchText = ""
+    @State var sortMethod = false
+    @Binding var isShowing: Bool
+    // State Bidning -> startDate, endDate, selectedMethod
     var body: some View {
         HStack {
-            VStack {
-                List {
-                    ForEach(searchResults, id: \.self) { name in
-                        NavigationLink(destination: Text(name)) {
-                            Text(name)
-                        }
-                    }
-                }
-                .searchable(text: $searchText)
-                Spacer()
+            Image(systemName: "magnifyingglass")
+            Spacer()
+            Button("터치미") {
+                isShowing.toggle()
             }
-            .padding(.leading)
         }
+        .padding(.horizontal)
     }
 }
-
+/*
 struct SearchBarView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBarView()
+        SearchBarView(isShowing: <#T##Binding<Bool>#>)
     }
 }
+ */

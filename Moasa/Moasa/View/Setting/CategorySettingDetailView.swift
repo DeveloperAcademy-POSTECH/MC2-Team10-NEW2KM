@@ -19,17 +19,23 @@ struct CategorySettingDetailView: View {
             Color("KellyCustomGray")
                 .ignoresSafeArea()
             VStack {
-                LazyVGrid(columns: [GridItem(.flexible(minimum: 80)), GridItem(.flexible(minimum: 80))], spacing: 20) {
-                    NavigationLink(destination: CategoryPlusView().environmentObject(items)) {
-                        CategoryPlusRectangle(icon: "plus")
-                    }
+                NavigationLink(destination: CategoryPlusView().environmentObject(items)) {
+                    CategoryPlusRectangle(icon: "plus")
+                }
+                List {
                     ForEach(items.categoryBalances, id: \.self) { category in
-                        CategoryItem(icon: category.icon, category: category.category)
-                            .aspectRatio(contentMode: .fit)
-                    }
-                }.padding(EdgeInsets(top: 0, leading: 15, bottom: 20, trailing: 15))
-                Spacer()
-            }
+                        NavigationLink(destination: EditCategory(category: category).environmentObject(items)) {
+                            Text(category.category)
+                        }
+                    }.onDelete(perform: delete)
+                }
+            }.padding(EdgeInsets(top: 0, leading: 15, bottom: 20, trailing: 15))
+            Spacer()
+        }
+    }
+    func delete(offset: IndexSet) {
+        withAnimation {
+            items.consumedCategories.remove(atOffsets: offset)
         }
     }
 }
@@ -64,7 +70,7 @@ struct CategoryPlusView: View {
             TextField("카테고리의 제한 금액은?", text: $categoryLimitMoney)
             Button(action: {
                 if !categoryName.isEmpty && categoryLimitMoney != "0" {
-//                    presentation.wrappedValue.dismiss()
+                    //                    presentation.wrappedValue.dismiss()
                     items.consumedCategories.append( ConsumedCategory(consumedCategory: categoryName,
                                                                       consumedLimit: [0: Int(categoryLimitMoney)!]))
                 }
@@ -93,6 +99,30 @@ struct CategoryItem: View {
             }
         }
         .frame(height: 80)
+    }
+}
+
+struct EditCategory: View {
+    @EnvironmentObject var items: Items
+    var category: Items.CategoryLeft
+    @State var categoryName: String = ""
+    @State var categoryLimitMoney: String = "0"
+    var body: some View {
+        VStack {
+            TextField("카테고리명을 입력하세요", text: $categoryName)
+            TextField("카테고리의 제한 금액은?", text: $categoryLimitMoney)
+            Button(action: {
+                if !categoryName.isEmpty && categoryLimitMoney != "0" {
+                    items.changeCategoryLimit(categoryName: categoryName, categoryLimit: Int(categoryLimitMoney)!)
+                }
+            }, label: {
+                Text("저장하기!")
+            })
+        }
+        .onAppear {
+            categoryName = category.category
+            categoryLimitMoney = String(category.limit[items.challengeCycle]!)
+        }
     }
 }
 

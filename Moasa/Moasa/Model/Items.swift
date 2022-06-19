@@ -64,10 +64,17 @@ class Items: Identifiable, ObservableObject {
             let categoryIcon = getIcon(categoryName: category.0)
             let limit = category.1
             categoryBalances.append(CategoryLeft(icon: categoryIcon, category: category.0, left: balance, limit: limit))
-//            categoryBalances.append((category, categoryIcon, balance))
         }
         return categoryBalances
         // 그리드 -> 해당 카테고리 별 잔액 리턴
+    }
+    var categoryList: [String] {
+        var tempList: [String] = []
+        for category in consumedCategories {
+            tempList.append(category.consumedCategory)
+        }
+        let tempSet: Set = Set(tempList)
+        return Array(tempSet)
     }
     func categoryBalance(categoryName: String) -> Int {
         let consumedItemSpent: Int = consumedItems
@@ -80,13 +87,13 @@ class Items: Identifiable, ObservableObject {
         // TODO: 0원이 되어 있을 때 디폴트 값 설정하기 (guard let)
         // 이번 챌린지 도전 주기의 해당 카테고리 잔액
     }
-    func balancePercent(categoryName: String) -> Int {
+    func balancePercent(categoryName: String) -> Double {
         let categoryBalance = categoryBalance(categoryName: categoryName)
         let categoryLimit = consumedCategories
             .filter({ $0.consumedCategory == categoryName })[0]
             .consumedLimit[challengeCycle]
-        let percent = (Double(categoryBalance) / Double(categoryLimit!)) * 100.0
-        return Int(percent)
+        let percent = (Double(categoryBalance) / Double(categoryLimit!))
+        return percent
         // 각 카테고리 별 이번 챌린지 주기 남은 금액의 퍼센트를 리턴
     }
     var totalSavedPercent: Double {
@@ -114,11 +121,21 @@ class Items: Identifiable, ObservableObject {
     }
     // 먼저 기간 분류(startDate, endDate) -> 정렬 분류 필터링을 $0.consumed
     func getCategoryItemsFiltered(categoryName: String, startDate: Date, endDate: Date) -> [ConsumedItem] {
+//         1: 모든 아이템 확인
+        print(consumedItems.last!.consumedName)
+//         2. 카테고리 이름 확인
+        print(consumedItems.filter{$0.consumedCategory == categoryName}[0])
+//         3. 카테고리 날짜 확인
+        print("\(consumedItems.last!.consumedDate)")
+//         4. 들어온 날짜 확인
+        print("\(startDate)")
+        print("\(endDate)")
         let itemFiltered = consumedItems
             .filter({
                 $0.consumedCategory == categoryName &&
-                $0.consumedDate >= startDate &&
-                $0.consumedDate <= endDate})
+                Calendar.current.dateComponents([.day], from: startDate, to: $0.consumedDate).day! >= 0 &&
+                Calendar.current.dateComponents([.day], from: $0.consumedDate, to: Date()).day! <= 0
+            })
         return itemFiltered
         // 카테고리 별 기간 내 소비 아이템 리턴
     }
@@ -143,62 +160,59 @@ class Items: Identifiable, ObservableObject {
         }
     }
     func targetItemLoad() {
-            do {
-                // 1. Get the notes URL file
-                let url = getDocumentDirectory().appendingPathComponent("targetItems")
-                print("URL")
-                print(url)
-                // 2. Create a new property for the data
-                let data = try Data(contentsOf: url)
-                print("DATA")
-                // 3. Decode the data
-                let targetItems = try JSONDecoder().decode([TargetItem].self, from: data)
-                print("DECODE")
-                // 4. Initial Setting for items (Enviornment)
-                self.targetItems = targetItems
-                                print("입력 완료")
-            } catch {
-                // Do nothing
-            }
+        do {
+            // 1. Get the notes URL file
+            let url = getDocumentDirectory().appendingPathComponent("targetItems")
+            print("URL")
+            print(url)
+            // 2. Create a new property for the data
+            let data = try Data(contentsOf: url)
+            print("DATA")
+            // 3. Decode the data
+            let targetItems = try JSONDecoder().decode([TargetItem].self, from: data)
+            print("DECODE")
+            // 4. Initial Setting for items (Enviornment)
+            self.targetItems = targetItems
+            print("입력 완료")
+        } catch {
+            // Do nothing
+        }
     }
     func consumedItemLoad() {
-            do {
-                // 1. Get the notes URL file
-                let url = getDocumentDirectory().appendingPathComponent("consumedItems")
-                // 2. Create a new property for the data
-                let data = try Data(contentsOf: url)
-                // 3. Decode the data
-                let consumedItems = try JSONDecoder().decode([ConsumedItem].self, from: data)
-                // 4. Initial Setting for items (Enviornment)
-                self.consumedItems = consumedItems
-//
-                print("입력 완료")
-            } catch {
-                // Do nothing
-            }
+        do {
+            // 1. Get the notes URL file
+            let url = getDocumentDirectory().appendingPathComponent("consumedItems")
+            // 2. Create a new property for the data
+            let data = try Data(contentsOf: url)
+            // 3. Decode the data
+            let consumedItems = try JSONDecoder().decode([ConsumedItem].self, from: data)
+            // 4. Initial Setting for items (Enviornment)
+            self.consumedItems = consumedItems
+            //
+            print("입력 완료")
+        } catch {
+            // Do nothing
+        }
     }
     func consumedCategoryLoad() {
-            do {
-                print("DO CHECK")
-                // 1. Get the notes URL file
-                let url = getDocumentDirectory().appendingPathComponent("consumedCategories")
-                print("CATEGORY URL")
-                // 2. Create a new property for the data
-                let data = try Data(contentsOf: url)
-                print("CATEGORY DATA")
-
-                // 3. Decode the data
-                let consumedCategories = try JSONDecoder().decode([ConsumedCategory].self, from: data)
-                print("CATEGORY DECODE")
-
-                // 4. Initial Setting for items (Enviornment)
-                self.consumedCategories = consumedCategories
-                print("CATEGORY CHECK")
-
-                print("카테고리 입력 완료")
-            } catch {
-                // Do nothing
-            }
+        do {
+            print("DO CHECK")
+            // 1. Get the notes URL file
+            let url = getDocumentDirectory().appendingPathComponent("consumedCategories")
+            print("CATEGORY URL")
+            // 2. Create a new property for the data
+            let data = try Data(contentsOf: url)
+            print("CATEGORY DATA")
+            // 3. Decode the data
+            let consumedCategories = try JSONDecoder().decode([ConsumedCategory].self, from: data)
+            print("CATEGORY DECODE")
+            // 4. Initial Setting for items (Enviornment)
+            self.consumedCategories = consumedCategories
+            print("CATEGORY CHECK")
+            print("카테고리 입력 완료")
+        } catch {
+            // Do nothing
+        }
     }
     func consumedCategorySaved() {
         do {
@@ -230,5 +244,19 @@ class Items: Identifiable, ObservableObject {
                 consumedCategories[idx].consumedLimit[challengeCycle] = categoryLimit
             }
         }
+    }
+    func sortbyDate(categoryName: String, startDate: Date, endDate: Date) -> [ConsumedItem] {
+        let itemSortedbyDate = getCategoryItemsFiltered(categoryName: categoryName,
+                                                        startDate: startDate, endDate: endDate)
+            .sorted(by: { $0.consumedDate > $1.consumedDate })
+        print(itemSortedbyDate)
+        return itemSortedbyDate
+    }
+    func sortbyPrice(categoryName: String, startDate: Date, endDate: Date) -> [ConsumedItem] {
+        let itemSortedbyPrice = getCategoryItemsFiltered(categoryName: categoryName,
+                                                         startDate: startDate, endDate: endDate)
+            .sorted(by: { $0.consumedPrice > $1.consumedPrice })
+        print(itemSortedbyPrice)
+        return itemSortedbyPrice
     }
 }
