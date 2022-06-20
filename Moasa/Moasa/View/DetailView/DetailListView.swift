@@ -16,7 +16,6 @@ struct DetailListView: View {
         HStack {
             if let name = consumedItem.consumedName {
                 Text(name)
-                Text(items.targetItems[0].targetName)
             } else {
                 Text("")
             }

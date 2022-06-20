@@ -26,7 +26,7 @@ struct BudgetContentView: View {
                     NavigationLink(destination:
                                     DetailView(startDate: items.challengeStartDate,
                                                endDate: items.challengeEndDate,
-                                               category: category)) {
+                                               category: category).environmentObject(items)) {
                         BudgetItem(icon: category.icon, category: category.category, left: category.left)
                             .aspectRatio(contentMode: .fit)
                     }
