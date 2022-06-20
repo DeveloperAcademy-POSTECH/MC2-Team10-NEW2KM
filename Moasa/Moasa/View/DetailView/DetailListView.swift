@@ -26,6 +26,7 @@ struct DetailListView: View {
                     .foregroundColor(Color("AccentColor"))
                 Text("\(leftMoney)원")
                     .foregroundColor(Color.gray)
+                Divider()
             }
         }
         .background(Color.white)

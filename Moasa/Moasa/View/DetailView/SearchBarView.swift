@@ -22,6 +22,7 @@ struct SearchBarView: View {
                 .frame(width: 5, height: 5)
                 .foregroundColor(Color.accentColor)
         }
+        Divider()
         .padding(.horizontal)
     }
 }
