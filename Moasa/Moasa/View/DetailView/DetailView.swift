@@ -21,39 +21,37 @@ struct DetailView: View {
     // 디폴트: start <-> end까지의 소비 기록을 뽑을 커팅 포인트
     var body: some View {
         ZStack {
-            VStack(alignment: .center) {
-//                if items.getCategoryItemsFiltered(categoryName: category.category,
-//                                                  startDate: startDate, endDate: endDate).isEmpty {
-//                    WaveView(progress: 1)
-//                } else {
-//                    WaveView(progress: items.balancePercent(categoryName: category.category))
-//                }
-                SearchBarView(isShowing: $isShowing)
-                if items.consumedItems.isEmpty {
-                    DetailNothing()
-                } else {
-                    if selectedMethod { // 가격순 정렬
-                        let filtereditems = items.sortbyPrice(categoryName: category.category,
-                                                              startDate: startDate, endDate: endDate)
-                        ForEach(filtereditems) { block in
-                            //Text("\(block.consumedName)")
-                            DetailPriceListView(consumedItem: block, leftMoney: 5000).environmentObject(items)
-                                .padding()
-                            Divider()
-                        }
-                    } else { // 기간순 정렬
-                        let filtereditems = items.sortbyDate(categoryName: category.category,
-                                                             startDate: startDate, endDate: endDate)
-                        // print(category.category)
-                        let pointers = findPointer(consumedItemsSorted: filtereditems)
-                        ForEach(0..<pointers.count) { block in
-                            DetailBlockDateView(consumedItemsSorted: filtereditems,
-                                                date: filtereditems[block].consumedDate).environmentObject(items)
-                                .padding()
-                            Divider()
+            ScrollView {
+                VStack(alignment: .center) {
+                    SearchBarView(isShowing: $isShowing)
+                    if items.consumedItems.isEmpty {
+                        DetailNothing()
+                    } else {
+                        if selectedMethod { // 가격순 정렬
+                            let filtereditems = items.sortbyPrice(categoryName: category.category,
+                                                                  startDate: startDate, endDate: endDate)
+                            ForEach(filtereditems) { block in
+                                //Text("\(block.consumedName)")
+                                DetailPriceListView(consumedItem: block, leftMoney: 5000).environmentObject(items)
+                                    .padding()
+                                Divider()
+                            }
+                        } else { // 기간순 정렬
+                            let filtereditems = items.sortbyDate(categoryName: category.category,
+                                                                 startDate: startDate, endDate: endDate)
+                            // print(category.category)
+                            let pointers = findPointer(consumedItemsSorted: filtereditems)
+                            ForEach(0..<pointers.count) { block in
+                                DetailBlockDateView(consumedItemsSorted: filtereditems,
+                                                    date: filtereditems[block].consumedDate).environmentObject(items)
+                                    .padding()
+                                Divider()
+                            }
                         }
                     }
+                    Spacer()
                 }
+                .padding()
             }
             HalfASheet(isPresented: $isShowing) {
                 VStack {
