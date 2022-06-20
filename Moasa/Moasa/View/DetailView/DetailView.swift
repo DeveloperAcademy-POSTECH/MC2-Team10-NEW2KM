@@ -102,7 +102,7 @@ struct DetailView: View {
         .navigationBarTitle("Events")
         .navigationBarItems(trailing: Button("Add", action: { self.showModal.toggle() }))
         .sheet(isPresented: self.$showModal) {
-            DetailInputView(consumCategory: category.category, consumName: "음", consumPrice: 999_999_999)
+            DetailInputView(consumCategory: category.category, consumName: "", consumPrice: 0)
         }
     }
 }

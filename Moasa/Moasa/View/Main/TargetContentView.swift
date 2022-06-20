@@ -66,6 +66,7 @@ struct TargetGauge: View {
             if items.targetItems[0].targetImage == nil {
                 Image(systemName: "plus")
                     .resizable()
+                    .aspectRatio(contentMode: .fill)
                     .frame(width: 200, height: 200)
                     .clipShape(Circle())
                     .opacity(items.targetItems[0].targetImage == nil ? 1 : 0)

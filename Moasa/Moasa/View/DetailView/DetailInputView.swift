@@ -22,18 +22,33 @@ struct DetailInputView: View {
     }()
     var body: some View {
         VStack(alignment: .leading) {
-            TextField(/*@START_MENU_TOKEN@*/"Placeholder"/*@END_MENU_TOKEN@*/, text: $consumName)
-            TextField(/*@START_MENU_TOKEN@*/"Placeholder"/*@END_MENU_TOKEN@*/, value: $consumPrice,
+            TextField("내역을 입력하세요", text: $consumName)
+            TextField("0", value: $consumPrice,
                                             formatter: priceFormatter)
-            DatePicker(selection: $consumDate,
-                       displayedComponents: .date, label: {})
-            .labelsHidden()
+            HStack {
+                Text("날짜").foregroundColor(Color.systemGray)
+                DatePicker(selection: $consumDate,
+                           displayedComponents: .date, label: {})
+                .labelsHidden()
+                    .padding()
+                    .cornerRadius(15)
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 100))
+            }.padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
             // TextField("Placeholder", text: $consumMemo)
-            Picker("이름", selection: $consumCategory, content: {
-                ForEach(items.categoryList, id: \.self, content: { list in
-                    Text(list)
+            HStack {
+                Text("분류")
+                    .foregroundColor(Color.systemGray)
+                Picker("이름", selection: $consumCategory, content: {
+                    ForEach(items.categoryList, id: \.self, content: { list in
+                        Text(list)
+                    })
                 })
-            })
+            }
+            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
+            Divider()
+                .padding(.horizontal, 30).padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 0))
+            
+            
             Button(action: {
                 saveItem()
                 presentation.wrappedValue.dismiss()
@@ -56,6 +71,6 @@ struct DetailInputView: View {
 
 struct DetailInputView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailInputView(consumCategory: "Guitar", consumName: "기타", consumPrice: 999_999_999)
+        DetailInputView(consumCategory: "Guitar", consumName: "기타", consumPrice: 0)
     }
 }
