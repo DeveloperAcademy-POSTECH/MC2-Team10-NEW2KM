@@ -22,9 +22,26 @@ struct DetailInputView: View {
     }()
     var body: some View {
         VStack(alignment: .leading) {
-            TextField("내역을 입력하세요", text: $consumName)
-            TextField("0", value: $consumPrice,
-                                            formatter: priceFormatter)
+            HStack {
+                Text("내용")
+                    .foregroundColor(Color.systemGray)
+                TextField("내역을 입력하세요", text: $consumName)
+                    .padding(.horizontal, 30).padding(.top, 20)
+            }
+            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
+            Divider()
+                .padding(.horizontal, 30).padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 0))
+            
+            HStack {
+                Text("금액")
+                    .foregroundColor(Color.systemGray)
+                TextField("0", value: $consumPrice,
+                                                formatter: priceFormatter)
+            }
+            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
+            Divider()
+                .padding(.horizontal, 30).padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 0))
+            
             HStack {
                 Text("날짜").foregroundColor(Color.systemGray)
                 DatePicker(selection: $consumDate,
@@ -58,6 +75,7 @@ struct DetailInputView: View {
             }) {
                 Text("확인")
             }
+            .padding(EdgeInsets(top: 20, leading: 160, bottom: 0, trailing: 0))
         }
     }
     func saveItem() {
