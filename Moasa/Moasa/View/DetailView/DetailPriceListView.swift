@@ -13,8 +13,12 @@ struct DetailPriceListView: View {
     var leftMoney: Int
     var body: some View {
         HStack {
-            Text(dateFormatter(date: consumedItem.consumedDate, format: "MM월 dd일"))
-            Text(consumedItem.consumedName)
+            Text(dateFormatter(date: consumedItem.consumedDate, format:"MM월 dd일"))
+            if let name = consumedItem.consumedName {
+                Text(name)
+            } else {
+                Text("")
+            }
             Spacer()
             VStack(alignment: .trailing, spacing: 10) {
                 Text("\(consumedItem.consumedPrice)원")

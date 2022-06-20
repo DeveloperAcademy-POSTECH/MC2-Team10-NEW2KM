@@ -38,6 +38,8 @@ struct DetailView: View {
                         ForEach(filtereditems) { block in
                             //Text("\(block.consumedName)")
                             DetailPriceListView(consumedItem: block, leftMoney: 5000).environmentObject(items)
+                                .padding()
+                            Divider()
                         }
                     } else { // 기간순 정렬
                         let filtereditems = items.sortbyDate(categoryName: category.category,
@@ -47,6 +49,8 @@ struct DetailView: View {
                         ForEach(0..<pointers.count) { block in
                             DetailBlockDateView(consumedItemsSorted: filtereditems,
                                                 date: filtereditems[block].consumedDate).environmentObject(items)
+                                .padding()
+                            Divider()
                         }
                     }
                 }
@@ -98,7 +102,7 @@ struct DetailView: View {
         .navigationBarTitle("Events")
         .navigationBarItems(trailing: Button("Add", action: { self.showModal.toggle() }))
         .sheet(isPresented: self.$showModal) {
-            DetailInputView(consumCategory: category.category, consumName: "음", consumPrice: 999_999_999)
+            DetailInputView(consumCategory: category.category, consumName: "", consumPrice: 0)
         }
     }
 }
