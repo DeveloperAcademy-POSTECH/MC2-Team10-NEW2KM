@@ -21,7 +21,7 @@ struct DetailListView: View {
             }
             Spacer()
             VStack {
-                Text("\(consumedItem.consumedPrice)원")
+                Text("-\(consumedItem.consumedPrice)원")
                     .font(.title3)
                     .foregroundColor(Color("AccentColor"))
                 Text("\(leftMoney)원")
