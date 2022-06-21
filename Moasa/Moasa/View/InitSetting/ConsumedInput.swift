@@ -10,7 +10,6 @@ import SwiftUI
 struct ConsumedInput: View {
     @Binding var consumedCategories: [ConsumedCategory]
     @Binding var consumedLimitValues: [Int]
-
     @Binding var showList: Bool
     @Binding var consumedLimitStr: [String]
     @Binding var addArray: Int
@@ -53,12 +52,6 @@ struct ConsumedInput: View {
                                                     consumedLimitValues[idx] = Int(newValue)!
                                                 }
                                                 .keyboardType(.numberPad)
-//                                            .padding(.trailing, 16)
-
-//                                                TextField("100000", value: $consumedLimitValues[idx],
-//                                                          formatter: NumberFormatter())
-//                                                    .keyboardType(.numberPad)
-//                                                    .padding(.trailing, 16)
                                             Divider()
                                                 .background(Color.accentColor)
                                         }

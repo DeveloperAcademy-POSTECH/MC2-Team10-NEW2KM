@@ -31,7 +31,6 @@ struct DetailInputView: View {
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
             Divider()
                 .padding(.horizontal, 30).padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 0))
-            
             HStack {
                 Text("금액")
                     .foregroundColor(Color.systemGray)
@@ -41,7 +40,6 @@ struct DetailInputView: View {
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
             Divider()
                 .padding(.horizontal, 30).padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 0))
-            
             HStack {
                 Text("날짜").foregroundColor(Color.systemGray)
                 DatePicker(selection: $consumDate,
@@ -64,8 +62,6 @@ struct DetailInputView: View {
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
             Divider()
                 .padding(.horizontal, 30).padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 0))
-            
-            
             Button(action: {
                 saveItem()
                 presentation.wrappedValue.dismiss()

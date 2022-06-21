@@ -13,7 +13,6 @@ struct NewInitSettingView: View {
 
     @State private var showText = false
     @State private var showTargetImg = false
-
     @State var show = false
     @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State var image: Data?

@@ -31,7 +31,6 @@ struct DetailView: View {
                             let filtereditems = items.sortbyPrice(categoryName: category.category,
                                                                   startDate: startDate, endDate: endDate)
                             ForEach(filtereditems) { block in
-                                //Text("\(block.consumedName)")
                                 DetailPriceListView(consumedItem: block, leftMoney: 5000).environmentObject(items)
                                     .padding()
                                 Divider()
@@ -39,7 +38,6 @@ struct DetailView: View {
                         } else { // 기간순 정렬
                             let filtereditems = items.sortbyDate(categoryName: category.category,
                                                                  startDate: startDate, endDate: endDate)
-                            // print(category.category)
                             let pointers = findPointer(consumedItemsSorted: filtereditems)
                             ForEach(0..<pointers.count) { block in
                                 DetailBlockDateView(consumedItemsSorted: filtereditems,

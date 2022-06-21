@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ConsumedItem: Codable, Identifiable {
-    let id = UUID()
+    var id = UUID()
     var consumedCategory: String
     var consumedName: String
     var consumedPrice: Int

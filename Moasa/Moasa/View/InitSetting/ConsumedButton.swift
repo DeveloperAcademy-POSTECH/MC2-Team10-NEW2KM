@@ -13,11 +13,9 @@ struct ConsumedButton: View {
 
     @Binding var consumedCategories: [ConsumedCategory]
     @Binding var consumedLimitValues: [Int]
-
     @Binding var addArray: Int
     @Binding var showList: Bool
     @Binding var nextView: Bool?
-
     @Binding var fixedSaving: Int
     @Binding var btnText: [String]
 

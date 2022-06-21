@@ -16,8 +16,6 @@ struct CycleEndView: View {
     //
     var body: some View {
         VStack {
-            // Text("\(self.nowDate)")
-            // .padding()
             Spacer()
             HStack {
                 Text("축하합니다. 🥳")

@@ -26,10 +26,3 @@ struct SearchBarView: View {
         .padding(.horizontal)
     }
 }
-/*
-struct SearchBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchBarView(isShowing: <#T##Binding<Bool>#>)
-    }
-}
- */

@@ -41,8 +41,6 @@ struct InputDetailView: View {
                                                        challengeCycle: items.challengeCycle)
                     // challengeCycle: items의 getChallengeCycle 함수에 Date Picker로 뽑은 날짜 넣어야 합니다!
                     items.consumedItems.append(newConsumedItem)
-                    items.consumedItemSaved()
-                    // didSet이기 때문에 중복 저장으로 알고 있습니다!
                 }, label: {
                     Text("저장")
                 })
@@ -113,9 +111,3 @@ struct InputTitle: View {
             .padding(.horizontal, 30).padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 0))
     }
 }
-
-//struct InputDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        InputDetailView()
-//    }
-//}

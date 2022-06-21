@@ -48,7 +48,7 @@ struct InputCategoryPicker: UIViewRepresentable {
         }
     }
     class Helper {
-        public var doneButtonTapped: (() -> Void)?
+        var doneButtonTapped: (() -> Void)?
         @objc func doneButtonAction() {
             self.doneButtonTapped?()
         }
