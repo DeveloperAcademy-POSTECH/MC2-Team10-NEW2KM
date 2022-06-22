@@ -35,7 +35,7 @@ struct DetailInputView: View {
                 Text("금액")
                     .foregroundColor(Color.systemGray)
                 TextField("0", value: $consumPrice,
-                                                formatter: priceFormatter)
+                          formatter: priceFormatter)
             }
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
             Divider()
@@ -45,9 +45,9 @@ struct DetailInputView: View {
                 DatePicker(selection: $consumDate,
                            displayedComponents: .date, label: {})
                 .labelsHidden()
-                    .padding()
-                    .cornerRadius(15)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 100))
+                .padding()
+                .cornerRadius(15)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 100))
             }.padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
             // TextField("Placeholder", text: $consumMemo)
             HStack {
