@@ -26,7 +26,7 @@ class Items: Identifiable, ObservableObject {
     }
     var budgetAvailableDay: Int {
         let diff = Calendar.current.dateComponents([.day], from: Date(), to: challengeEndDate).day
-        return diff!
+        return 30 - diff!
     }
     var challengeStartDate: Date {
         let newStartDate = challengeEndDate
@@ -124,7 +124,8 @@ class Items: Identifiable, ObservableObject {
 //         1: 모든 아이템 확인
         print(consumedItems.last!.consumedName)
 //         2. 카테고리 이름 확인
-        print(consumedItems.filter{$0.consumedCategory == categoryName}[0])
+//        print(consumedItems.filter{$0.consumedCategory == categoryName}[0])
+        print(consumedItems.filter{$0.consumedCategory == categoryName})
 //         3. 카테고리 날짜 확인
         print("\(consumedItems.last!.consumedDate)")
 //         4. 들어온 날짜 확인

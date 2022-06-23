@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct TargetInput: View {
+    @State var text: String = ""
     @Binding var showText: Bool
     @Binding var showTargetImg: Bool
-
     @Binding var targetPrice: Int
-    @State var text: String = ""
     @Binding var targetName: String
-
     @Binding var show: Bool
     @Binding var image: Data?
 

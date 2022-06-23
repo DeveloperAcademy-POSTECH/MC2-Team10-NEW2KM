@@ -20,7 +20,7 @@ struct WaveView: View {
 //                .animation(Animation.linear(duration: 2).repeatForever(autoreverses: false), value: isAni) {
 //                    self.phase = .pi * 2
 //                }
-                .onAppear() {
+                .onAppear {
                     withAnimation(Animation.linear(duration: 2).repeatForever(autoreverses: true)) {
                         self.phase = .pi * 2
                     }

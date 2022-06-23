@@ -66,12 +66,15 @@ struct ChangeSettingDetailView: View {
     }
     func saveTargetPrice(changeTitle: String) -> TargetItem {
         return TargetItem(targetName: items.targetItems.first!.targetName,
+                          targetImage: items.targetItems.first!.targetImage,
                           targetPrice: Int(changeTitle)!,
+                          totalSaved: items.targetItems.first!.totalSaved,
+                          startDate: items.targetItems.first!.startDate,
                           fixedSaving: items.targetItems.first!.fixedSaving)
     }
     func saveTargetFixed(changeTitle: String) -> TargetItem {
         return TargetItem(targetName: items.targetItems.first!.targetName,
-                          targetImage: nil,
+                          targetImage: items.targetItems.first!.targetImage,
                           targetPrice: items.targetItems.first!.targetPrice,
                           totalSaved: items.targetItems.first!.totalSaved,
                           startDate: items.targetItems.first!.startDate,
@@ -79,7 +82,7 @@ struct ChangeSettingDetailView: View {
     }
     func saveTargetFree(changeTitle: String) -> TargetItem {
         return TargetItem(targetName: items.targetItems.first!.targetName,
-                          targetImage: nil,
+                          targetImage: items.targetItems.first!.targetImage,
                           targetPrice: items.targetItems.first!.targetPrice,
                           totalSaved: items.targetItems.first!.totalSaved + Int(changeTitle)!,
                           startDate: items.targetItems.first!.startDate,

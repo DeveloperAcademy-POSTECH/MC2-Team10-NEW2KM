@@ -9,6 +9,7 @@ import SwiftUI
 
 struct InitiateTargetSettingDetailView: View {
     @Environment(\.presentationMode) var presentation
+    @EnvironmentObject var items: Items
     @State var targetClearAlert: Bool = false
     var body: some View {
         Button(action: {
@@ -20,8 +21,8 @@ struct InitiateTargetSettingDetailView: View {
             title: Text("목표를 초기화 하시겠습니까?"),
             message: Text("초기화시 되돌릴 수 없습니다."),
             primaryButton: .cancel(Text("닫기")),
-            secondaryButton: .destructive(Text("초기화하기"), action : {
-                // 여기에 초기화하는 코드 추가하면 될 것 같다
+            secondaryButton: .destructive(Text("초기화하기"), action: {
+                UserDefaults.standard.set(false, forKey: "initSetting")
                 presentation.wrappedValue.dismiss()
             }))
         }

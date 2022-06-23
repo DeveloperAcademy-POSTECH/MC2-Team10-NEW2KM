@@ -31,25 +31,23 @@ struct DetailInputView: View {
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
             Divider()
                 .padding(.horizontal, 30).padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 0))
-            
             HStack {
                 Text("금액")
                     .foregroundColor(Color.systemGray)
                 TextField("0", value: $consumPrice,
-                                                formatter: priceFormatter)
+                          formatter: priceFormatter)
             }
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
             Divider()
                 .padding(.horizontal, 30).padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 0))
-            
             HStack {
                 Text("날짜").foregroundColor(Color.systemGray)
                 DatePicker(selection: $consumDate,
                            displayedComponents: .date, label: {})
                 .labelsHidden()
-                    .padding()
-                    .cornerRadius(15)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 100))
+                .padding()
+                .cornerRadius(15)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 100))
             }.padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
             // TextField("Placeholder", text: $consumMemo)
             HStack {
@@ -64,8 +62,6 @@ struct DetailInputView: View {
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
             Divider()
                 .padding(.horizontal, 30).padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 0))
-            
-            
             Button(action: {
                 saveItem()
                 presentation.wrappedValue.dismiss()

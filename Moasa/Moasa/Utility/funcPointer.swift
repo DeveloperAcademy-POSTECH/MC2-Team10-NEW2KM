@@ -8,8 +8,7 @@
 import Foundation
 
 func findPointer(consumedItemsSorted: [ConsumedItem]) -> [Int] {
-    var dateArray = consumedItemsSorted.map { $0.consumedDate }
-    // a
+    let dateArray = consumedItemsSorted.map { $0.consumedDate }
     var pointerArray: [Int] = [0]
 //    for item in consumedItemsSorted {
 //        dateArray.append(item.consumedDate)
