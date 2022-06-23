@@ -48,8 +48,10 @@ struct TargetInput: View {
         if showText {
             HStack {
                 TextField("금액을 입력해주세요.", text: $text)
-                    .onChange(of: text) {newValue in
-                        targetPrice = Int(newValue)!
+                    .onChange(of: text) { newValue in
+                        if let newValueInteger = Int(newValue) {
+                            targetPrice = newValueInteger
+                        }
                     }
                     .padding(.leading, 16)
                     .font(.system(size: 17, weight: .regular))
