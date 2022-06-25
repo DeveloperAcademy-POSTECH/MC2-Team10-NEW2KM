@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DetailView: View {
     @EnvironmentObject var items: Items
-    @State var selectedMethod = true // false => 기간순, true => 가격순
+    @State var selectedMethod = false // false => 기간순, true => 가격순
     @State var startDate: Date = addDate(date: Date(), days: -30)
     @State var endDate = Date() // Default Value 주고 나중에 DatePicker로 값 변경했을때 값 바꾸는게 좋을듯 싶습니다. ㅇㅈㅇㅈ
     @State var isShowing = false
@@ -23,6 +23,7 @@ struct DetailView: View {
         ZStack {
             ScrollView {
                 VStack(alignment: .center) {
+                    WaveView(progress: items.balancePercent(categoryName: category.category))
                     SearchBarView(isShowing: $isShowing)
                     if items.consumedItems.isEmpty {
                         DetailNothing()
@@ -39,6 +40,11 @@ struct DetailView: View {
                             let filtereditems = items.sortbyDate(categoryName: category.category,
                                                                  startDate: startDate, endDate: endDate)
                             let pointers = findPointer(consumedItemsSorted: filtereditems)
+                            // Start Date와 End Date 사이의 기간 일 수로 계산
+                            let gigan = Calendar.current.dateComponents([.day], from: endDate, to: startDate).day!
+                            // 그 만큼 반복하면서 View 그려내기
+                            // 필터는 캘린더 이용
+                            // 포인터버려
                             ForEach(0..<pointers.count) { block in
                                 DetailBlockDateView(consumedItemsSorted: filtereditems,
                                                     date: filtereditems[block].consumedDate).environmentObject(items)
@@ -57,12 +63,10 @@ struct DetailView: View {
                         Text("소비내역정렬")
                         Spacer()
                         HStack {
-                            Picker(selection: $selectedMethod,
-                                   label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
-                                Text("기간순").tag(1)
-                                Text("가격순").tag(2)
+                            Picker("피커", selection: $selectedMethod) {
+                                Text("기간순")
+                                Text("가격순")
                             }
-                                   .pickerStyle(SegmentedPickerStyle())
                         }
                         Spacer()
                     }
@@ -94,8 +98,7 @@ struct DetailView: View {
             .height(.proportional(0.5))
             .closeButtonColor(.orange)
         }
-        .navigationBarTitle("카테고리 이름", displayMode: .inline)
-        .navigationBarTitle("Events")
+        .navigationBarTitle(category.category, displayMode: .inline)
         .navigationBarItems(trailing: Button("Add", action: { self.showModal.toggle() }))
         .sheet(isPresented: self.$showModal) {
             DetailInputView(consumCategory: category.category, consumName: "", consumPrice: 0)
