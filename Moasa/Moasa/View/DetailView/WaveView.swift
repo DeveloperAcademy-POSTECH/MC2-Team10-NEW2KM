@@ -11,20 +11,18 @@ struct WaveView: View {
     @State var progress: CGFloat = 0.4
     @State var phase: CGFloat = 0.0
     var body: some View {
-        ZStack(alignment: .bottom) {
-            Rectangle()
-                .frame(width: 390.0, height: 300.0)
+        ZStack {//(alignment: .bottom) {
+//            Rectangle()
+//                .frame(width: 390.0, height: 300.0)
             WaterWave(progress: progress, phase: phase)
                 .fill(Color.accentColor)
                 .frame(width: 390, height: 200)
-//                .animation(Animation.linear(duration: 2).repeatForever(autoreverses: false), value: isAni) {
-//                    self.phase = .pi * 2
-//                }
                 .onAppear {
-                    withAnimation(Animation.linear(duration: 2).repeatForever(autoreverses: true)) {
+                    withAnimation(Animation.linear(duration: 2).repeatForever(autoreverses: false)) {
                         self.phase = .pi * 2
                     }
                 }
+            Text("잔액입니다")
         }
     }
 }

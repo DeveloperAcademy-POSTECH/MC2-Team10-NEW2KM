@@ -80,8 +80,10 @@ struct ConsumedInput: View {
         VStack {
             HStack {
                 TextField("월 저축액을 입력해주세요.", text: $text)
-                    .onChange(of: text) {newValue in
-                        fixedSaving = Int(newValue)!
+                    .onChange(of: text) { newValue in
+                        if let newValueInteger = Int(newValue) {
+                            fixedSaving = newValueInteger
+                        }
                     }
                     .padding(.leading, 16)
                     .font(.system(size: 17, weight: .regular))
