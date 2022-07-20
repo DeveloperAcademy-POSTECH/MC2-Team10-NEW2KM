@@ -29,17 +29,17 @@ struct DetailView: View {
                         DetailNothing()
                     } else {
                         if selectedMethod { // 가격순 정렬
-                            let filtereditems = items.sortbyPrice(categoryName: category.category,
+                            let filteredItems = items.sortbyPrice(categoryName: category.category,
                                                                   startDate: startDate, endDate: endDate)
-                            ForEach(filtereditems) { block in
+                            ForEach(filteredItems) { block in
                                 DetailPriceListView(consumedItem: block, leftMoney: 5000).environmentObject(items)
                                     .padding()
                                 Divider()
                             }
                         } else { // 기간순 정렬
-                            let filtereditems = items.sortbyDate(categoryName: category.category,
+                            let filteredItems = items.sortbyDate(categoryName: category.category,
                                                                  startDate: startDate, endDate: endDate)
-                            ForEach(filtereditems) { block in
+                            ForEach(filteredItems) { block in
                                 DetailPriceListView(consumedItem: block, leftMoney: 5000).environmentObject(items)
                                     .padding()
                                 Divider()
