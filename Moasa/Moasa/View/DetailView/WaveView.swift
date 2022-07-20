@@ -44,7 +44,7 @@ struct WaterWave: Shape {
             } else if progress < 0.03 {
                 return height * 0.97
             } else {
-                return height
+                return 0
             }
         }
         path.move(to: CGPoint(x: 0, y: progressHeight))
