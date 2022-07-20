@@ -23,7 +23,7 @@ struct DetailView: View {
         ZStack {
             ScrollView {
                 VStack(alignment: .center) {
-                    WaveView(progress: items.balancePercent(categoryName: category.category))
+                    WaveView(progress: items.balancePercent(categoryName: category.category), category: category).environmentObject(items)
                     SearchBarView(isShowing: $isShowing)
                     if items.consumedItems.isEmpty {
                         DetailNothing()

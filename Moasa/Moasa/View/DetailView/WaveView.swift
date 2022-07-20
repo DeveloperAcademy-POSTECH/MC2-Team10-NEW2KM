@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct WaveView: View {
+    @EnvironmentObject var items: Items
     @State var progress: CGFloat
     @State var phase: CGFloat = 0.0
+    var category: Items.CategoryLeft
     var body: some View {
         ZStack {
             WaterWave(progress: progress, phase: phase)
@@ -20,7 +22,9 @@ struct WaveView: View {
                         self.phase = .pi * 2
                     }
                 }
-            Text("잔액보여주기")
+            Text("\(items.categoryBalance(categoryName: category.category))원")
+                .font(.title)
+                .fontWeight(.heavy)
         }
     }
 }
@@ -60,8 +64,10 @@ struct WaterWave: Shape {
     }
 }
 
+/*
 struct WaveView_Previews: PreviewProvider {
     static var previews: some View {
-        WaveView(progress: 1)
+        WaveView(progress: 1, category: Items.CategoryLeft)
     }
 }
+ */
