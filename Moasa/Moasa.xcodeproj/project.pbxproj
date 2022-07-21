@@ -49,7 +49,6 @@
 		CF5FF4D12856CC18004FB062 /* DetailBlockDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5FF4D02856CC18004FB062 /* DetailBlockDateView.swift */; };
 		CF5FF4D32856CC23004FB062 /* DetailListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5FF4D22856CC23004FB062 /* DetailListView.swift */; };
 		CF5FF4D52856CC2A004FB062 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5FF4D42856CC2A004FB062 /* DetailView.swift */; };
-		CF5FF4D92856CC3B004FB062 /* CircleWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5FF4D82856CC3B004FB062 /* CircleWaveView.swift */; };
 		CF5FF4DB2856CC4F004FB062 /* dateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5FF4DA2856CC4F004FB062 /* dateFormatter.swift */; };
 		DF65DD4028546AEC00435F9E /* ChangeSettingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */; };
 		DF65DD422854966D00435F9E /* InitiateTargetSettingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65DD412854966D00435F9E /* InitiateTargetSettingDetailView.swift */; };
@@ -98,7 +97,6 @@
 		CF5FF4D02856CC18004FB062 /* DetailBlockDateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBlockDateView.swift; sourceTree = "<group>"; };
 		CF5FF4D22856CC23004FB062 /* DetailListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListView.swift; sourceTree = "<group>"; };
 		CF5FF4D42856CC2A004FB062 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		CF5FF4D82856CC3B004FB062 /* CircleWaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleWaveView.swift; sourceTree = "<group>"; };
 		CF5FF4DA2856CC4F004FB062 /* dateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dateFormatter.swift; sourceTree = "<group>"; };
 		DF65DD3F28546AEC00435F9E /* ChangeSettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeSettingDetailView.swift; sourceTree = "<group>"; };
 		DF65DD412854966D00435F9E /* InitiateTargetSettingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiateTargetSettingDetailView.swift; sourceTree = "<group>"; };
@@ -256,7 +254,6 @@
 				CF5FF4D02856CC18004FB062 /* DetailBlockDateView.swift */,
 				CF5FF4D22856CC23004FB062 /* DetailListView.swift */,
 				CF5FF4D42856CC2A004FB062 /* DetailView.swift */,
-				CF5FF4D82856CC3B004FB062 /* CircleWaveView.swift */,
 				CF3A011D28575C7B002A2C80 /* SearchBarView.swift */,
 				CF53EAF8285C59CB00EBB907 /* DetailNothing.swift */,
 				CF53EB01285DE23400EBB907 /* DetailInputView.swift */,
@@ -389,7 +386,6 @@
 				4AB8094328557EE800C772D1 /* MainTitleView.swift in Sources */,
 				4A040FEF2857593000DA507E /* Date+Extension.swift in Sources */,
 				DF65DD422854966D00435F9E /* InitiateTargetSettingDetailView.swift in Sources */,
-				CF5FF4D92856CC3B004FB062 /* CircleWaveView.swift in Sources */,
 				4AB8094028557EE800C772D1 /* BudgetContentView.swift in Sources */,
 				DF65DD442854A7FB00435F9E /* CategorySettingDetailView.swift in Sources */,
 				7B1B206E285AD4ED00262552 /* CycleEndView.swift in Sources */,
@@ -537,7 +533,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Moasa/Preview Content\"";
-				DEVELOPMENT_TEAM = X7H2S2S85P;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -567,7 +563,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Moasa/Preview Content\"";
-				DEVELOPMENT_TEAM = X7H2S2S85P;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct WaveView: View {
-    @State var progress: CGFloat = 0.4
+    @EnvironmentObject var items: Items
+    @State var progress: CGFloat
     @State var phase: CGFloat = 0.0
+    var category: Items.CategoryLeft
     var body: some View {
-        ZStack {//(alignment: .bottom) {
-//            Rectangle()
-//                .frame(width: 390.0, height: 300.0)
+        ZStack {
             WaterWave(progress: progress, phase: phase)
                 .fill(Color.accentColor)
                 .frame(width: 390, height: 200)
@@ -22,7 +22,9 @@ struct WaveView: View {
                         self.phase = .pi * 2
                     }
                 }
-            Text("잔액입니다")
+            Text("\(items.categoryBalance(categoryName: category.category))원")
+                .font(.title)
+                .fontWeight(.heavy)
         }
     }
 }
@@ -40,7 +42,15 @@ struct WaterWave: Shape {
         var path = Path()
         let width = rect.width
         let height = rect.height
-        let progressHeight = height * (1 - progress)
+        var progressHeight : CGFloat {
+            if progress >= 0.03 && progress <= 1 {
+                return height * (1 - progress)
+            } else if progress < 0.03 {
+                return height * 0.97
+            } else {
+                return 0
+            }
+        }
         path.move(to: CGPoint(x: 0, y: progressHeight))
         for str in stride(from: 0, to: width + 10, by: 10) {
             let pro = progressHeight + sin(phase + str / waveLength) * applitude
@@ -54,8 +64,10 @@ struct WaterWave: Shape {
     }
 }
 
+/*
 struct WaveView_Previews: PreviewProvider {
     static var previews: some View {
-        WaveView(progress: 1)
+        WaveView(progress: 1, category: Items.CategoryLeft)
     }
 }
+ */

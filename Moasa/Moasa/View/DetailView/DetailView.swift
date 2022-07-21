@@ -23,31 +23,24 @@ struct DetailView: View {
         ZStack {
             ScrollView {
                 VStack(alignment: .center) {
-                    WaveView(progress: items.balancePercent(categoryName: category.category))
+                    WaveView(progress: items.balancePercent(categoryName: category.category), category: category).environmentObject(items)
                     SearchBarView(isShowing: $isShowing)
                     if items.consumedItems.isEmpty {
                         DetailNothing()
                     } else {
                         if selectedMethod { // 가격순 정렬
-                            let filtereditems = items.sortbyPrice(categoryName: category.category,
+                            let filteredItems = items.sortbyPrice(categoryName: category.category,
                                                                   startDate: startDate, endDate: endDate)
-                            ForEach(filtereditems) { block in
+                            ForEach(filteredItems) { block in
                                 DetailPriceListView(consumedItem: block, leftMoney: 5000).environmentObject(items)
                                     .padding()
                                 Divider()
                             }
                         } else { // 기간순 정렬
-                            let filtereditems = items.sortbyDate(categoryName: category.category,
+                            let filteredItems = items.sortbyDate(categoryName: category.category,
                                                                  startDate: startDate, endDate: endDate)
-                            let pointers = findPointer(consumedItemsSorted: filtereditems)
-                            // Start Date와 End Date 사이의 기간 일 수로 계산
-                            let gigan = Calendar.current.dateComponents([.day], from: endDate, to: startDate).day!
-                            // 그 만큼 반복하면서 View 그려내기
-                            // 필터는 캘린더 이용
-                            // 포인터버려
-                            ForEach(0..<pointers.count) { block in
-                                DetailBlockDateView(consumedItemsSorted: filtereditems,
-                                                    date: filtereditems[block].consumedDate).environmentObject(items)
+                            ForEach(filteredItems) { block in
+                                DetailPriceListView(consumedItem: block, leftMoney: 5000).environmentObject(items)
                                     .padding()
                                 Divider()
                             }
